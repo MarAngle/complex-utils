@@ -1,4 +1,3 @@
-import { baseObject } from '../../../ts'
 import localEncodeURIComponent from './localEncodeURIComponent'
 
 /**
@@ -7,7 +6,7 @@ import localEncodeURIComponent from './localEncodeURIComponent'
  * @param {object} data 值对象
  * @returns {string}
  */
-function formatQueryUrl(url: string, data: baseObject<string>) {
+function formatQueryUrl(url: string, data: Record<PropertyKey, string>) {
   const type = url.indexOf('?') > -1 ? 'extra' : 'init'
   if (type == 'init') {
     url += '?'

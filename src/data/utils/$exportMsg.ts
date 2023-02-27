@@ -7,9 +7,9 @@ import exportMsg, { consoleType, exportOption } from './exportMsg'
  * @param {string} [option.data] 额外信息内容
  * @param {'error' | 'warn' | 'log'} [option.type] 额外信息提示类型
  */
-function exportSelfMsg(msg: string, type?: consoleType, option?: exportOption) {
+function $exportMsg(msg: string, type?: consoleType, option?: exportOption) {
   const preMsg = '[complex-func]'
   exportMsg(preMsg + msg, type, option)
 }
 
-export default exportSelfMsg
+export default $exportMsg

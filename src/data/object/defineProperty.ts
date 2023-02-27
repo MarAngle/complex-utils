@@ -1,4 +1,4 @@
-import exportSelfMsg from './../utils/exportSelfMsg'
+import $exportMsg from '../utils/$exportMsg'
 
 interface descriptorType<T> {
   enumerable?: boolean;
@@ -24,11 +24,11 @@ interface descriptorType<T> {
  */
 function defineProperty(obj: unknown, prop: string, descriptor: descriptorType<any>) {
   if (typeof obj != 'object') {
-    exportSelfMsg('defineProperty中obj需要对象格式')
+    $exportMsg('defineProperty中obj需要对象格式')
     return false
   }
   if (typeof descriptor != 'object') {
-    exportSelfMsg('defineProperty中descriptor需要传递descriptor对象')
+    $exportMsg('defineProperty中descriptor需要传递descriptor对象')
     return false
   }
   if (descriptor.configurable === undefined) {

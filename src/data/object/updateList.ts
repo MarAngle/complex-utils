@@ -1,4 +1,4 @@
-import exportSelfMsg from './../utils/exportSelfMsg'
+import $exportMsg from '../utils/$exportMsg'
 import getType from './../type/getType'
 import updateData from './updateData'
 import { optionType as updateOptionType } from './updateDataWidthOption'
@@ -39,7 +39,7 @@ export type optionType = {
 function updateList(targetlist: Record<PropertyKey, any>[], originlist: Record<PropertyKey, any>[], option: optionType) {
   // 生成check函数
   if (!option.check) {
-    exportSelfMsg('请传递check函数判断相同对象')
+    $exportMsg('请传递check函数判断相同对象')
     return
   } else {
     const type = getType(option.check)

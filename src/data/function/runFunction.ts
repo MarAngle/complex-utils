@@ -1,5 +1,5 @@
 import isPromise from './../type/isPromise'
-import exportSelfMsg from './../utils/exportSelfMsg'
+import $exportMsg from '../utils/$exportMsg'
 
 type resType = {
   status: 'fail' | 'success',
@@ -42,7 +42,7 @@ function runFunction(func?: (...args:any[]) => any, args?: any[], callback?: (..
     }
   } else {
     mainRes.code = 'argsError'
-    exportSelfMsg(`triggerTargetFunc函数运行错误，code: ${mainRes.code}`)
+    $exportMsg(`triggerTargetFunc函数运行错误，code: ${mainRes.code}`)
     next(mainRes, callback)
   }
 }

@@ -1,5 +1,5 @@
 import getType from '../type/getType'
-import exportSelfMsg from '../utils/exportSelfMsg'
+import $exportMsg from '../utils/$exportMsg'
 
 
 
@@ -51,7 +51,7 @@ function setDataByDefault(targetData: Record<PropertyKey, any> | any[], defaultD
   } else if (type === 'array') {
     return setArray((targetData as any[]), (defaultData as any[]))
   } else {
-    exportSelfMsg('setDataByDefault函数运行错误，defaultData参数仅可接收对象和数组格式！')
+    $exportMsg('setDataByDefault函数运行错误，defaultData参数仅可接收对象和数组格式！')
     return targetData
   }
 }

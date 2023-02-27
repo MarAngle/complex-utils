@@ -1,8 +1,7 @@
-import { objectAny } from '../../../ts'
 import triggerFunc from '../function/triggerFunction'
 
 
-type fnType = (mod: objectAny, path:string, index: number) => void
+type fnType = (mod: Record<PropertyKey, any>, path:string, index: number) => void
 
 /**
  * 加载require contents

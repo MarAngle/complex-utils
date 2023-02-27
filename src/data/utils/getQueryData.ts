@@ -1,4 +1,3 @@
-import { baseObject } from '../../../ts'
 import getQueryUrl from './getQueryUrl'
 
 /**
@@ -7,7 +6,7 @@ import getQueryUrl from './getQueryUrl'
  * @returns {object}
  */
 function getQueryData(url: string) {
-  const queryData: baseObject<string> = {}
+  const queryData: Record<PropertyKey, string> = {}
   const queryUrl = getQueryUrl(url)
   if (queryUrl) {
     const queryList = queryUrl.split('&')

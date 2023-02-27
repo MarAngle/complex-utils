@@ -1,4 +1,4 @@
-import exportSelfMsg from './../utils/exportSelfMsg'
+import $exportMsg from '../utils/$exportMsg'
 
 /**
  * 获取指定字符串在目标字符串中的位置数组,理论上不单独调用
@@ -45,7 +45,7 @@ function findTargetInStr(str: string, target: string, option: optionType = {}): 
     }
     return findTargetInStrNext(str, target, limitNum)
   } else {
-    exportSelfMsg('str/target参数不存在')
+    $exportMsg('str/target参数不存在')
     return []
   }
 }

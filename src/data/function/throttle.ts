@@ -1,4 +1,3 @@
-import { anyFunction } from '../../../ts'
 
 /**
  * @desc 函数节流，就是指连续触发事件但是在 n 秒中只执行一次函数。 节流会稀释函数的执行频率
@@ -6,7 +5,7 @@ import { anyFunction } from '../../../ts'
  * @param wait 延迟执行毫秒数
  * @param type 1 表时间戳版，2 表定时器版.时间戳版和定时器版的节流函数的区别就是，时间戳版的函数触发是在时间段内开始的时候，而定时器版的函数触发是在时间段内结束的时候。
  */
-function throttle(func: anyFunction, wait: number, type: 1 | 2 = 1) {
+function throttle(func: (...args:any[]) => any, wait: number, type: 1 | 2 = 1) {
   let previous: number, timeout: any
   if (type === 1) {
     previous = 0
