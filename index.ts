@@ -126,9 +126,18 @@ import {
 // environment加载完成
 // worker加载
 import runWorker from './src/data/worker/runWorker'
+import config from './config'
 // worker加载完成
 
-
+const install = function (Vue: any) {
+  const version = Vue.version.split('.')[0]
+  if (version == '2') {
+    // 设置属性重置为Vue.set
+    config.object.setData = function(target, prop, data) {
+      Vue.set(target, prop, data)
+    }
+  }
+}
 
 
 export {
@@ -248,5 +257,6 @@ export {
   setEnvMode,
   resetEnvData,
   // worker
-  runWorker
+  runWorker,
+  install
 }
