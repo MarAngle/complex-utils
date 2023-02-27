@@ -11,6 +11,7 @@ export interface LimitDataInitOption {
 // 限制数据格式
 // 需要保证类实例传递到initdata中依然能生成一个LimitData实例，保证数据的一致性
 class LimitData extends Data {
+  static $name = 'LimitData'
   type: LimitDataType
   list: any[]
   constructor (initdata: LimitDataInitOption = {}, autoType?: LimitDataType) {
@@ -52,4 +53,5 @@ class LimitData extends Data {
     }
   }
 }
+
 export default LimitData

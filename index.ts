@@ -126,8 +126,9 @@ import {
 // environment加载完成
 // worker加载
 import runWorker from './src/data/worker/runWorker'
-import config from './config'
 // worker加载完成
+import Data from './src/build/Data'
+import config from './config'
 
 const install = function (Vue: any) {
   const version = Vue.version.split('.')[0]
@@ -258,5 +259,6 @@ export {
   resetEnvData,
   // worker
   runWorker,
+  Data,
   install
 }
