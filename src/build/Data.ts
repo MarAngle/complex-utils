@@ -6,8 +6,11 @@ class Data {
    * 获取类实例名称
    * @returns {string}
    */
+  $getConstructorName(): string {
+    return (this.constructor as any).$name
+  }
   $selfName() {
-    return `${(this.constructor as any).$name}`
+    return this.$getConstructorName()
   }
   /**
    * 创建输出信息
