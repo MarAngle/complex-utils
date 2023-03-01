@@ -128,6 +128,7 @@ import {
 import runWorker from './src/data/worker/runWorker'
 // worker加载完成
 import Data from './src/build/Data'
+import LimitData from './src/build/LimitData'
 import config from './config'
 
 const install = function (Vue: any) {
@@ -260,5 +261,6 @@ export {
   // worker
   runWorker,
   Data,
+  LimitData,
   install
 }

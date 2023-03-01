@@ -1,5 +1,8 @@
 ### TODOLIST
 
+### 1.0.5
+- 输出LimitData
+
 ### 1.0.4
 - 优化Data基类
 
