@@ -44,7 +44,7 @@ function setArray(targetData: any[], defaultData: any[], map = new Map()) {
  * @param {object} defaultData 默认值
  * @returns {object}
  */
-function setDataByDefault(targetData: Record<PropertyKey, any> | any[], defaultData: Record<PropertyKey, any> | any[] = {}) {
+function setDataByDefault(targetData: Record<PropertyKey, any>, defaultData: Record<PropertyKey, any> = {}) {
   const type = getType(defaultData)
   if (type === 'object') {
     return setObject(targetData, defaultData)
