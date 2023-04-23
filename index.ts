@@ -87,6 +87,7 @@ import getCurrentUrl from './src/data/utils/getCurrentUrl'
 import getLimitData from './src/data/utils/getLimitData'
 import getQueryData from './src/data/utils/getQueryData'
 import getQueryUrl from './src/data/utils/getQueryUrl'
+import isCompleteUrl from './src/data/utils/isCompleteUrl'
 import isOriginUrl from './src/data/utils/isOriginUrl'
 import loadContents from './src/data/utils/loadContents'
 import openAnchor from './src/data/utils/openAnchor'
@@ -227,6 +228,7 @@ export {
   getLimitData,
   getQueryData,
   getQueryUrl,
+  isCompleteUrl,
   isOriginUrl,
   loadContents,
   openAnchor,
