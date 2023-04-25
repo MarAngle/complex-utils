@@ -104,7 +104,6 @@ import trimData from './src/data/utils/trimData'
 import getLocalData from './src/data/local/getLocalData'
 import removeLocalData from './src/data/local/removeLocalData'
 import setLocalData from './src/data/local/setLocalData'
-import setLocalProp from './src/data/local/setLocalProp'
 // local加载完成
 // time加载
 import formatTime from './src/data/time/formatTime'
@@ -244,7 +243,6 @@ export {
   getLocalData,
   removeLocalData,
   setLocalData,
-  setLocalProp,
   // time
   formatTime,
   getOffsetTime,

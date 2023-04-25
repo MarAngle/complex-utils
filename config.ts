@@ -1,7 +1,7 @@
 
 const config = {
   local: {
-    prop: 'default-'
+    prop: 'complex-utils-'
   },
   type: {
     emptyCheckList: ['object', 'array']
