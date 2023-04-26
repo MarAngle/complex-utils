@@ -89,7 +89,7 @@ import getQueryData from './src/data/utils/getQueryData'
 import getQueryUrl from './src/data/utils/getQueryUrl'
 import isCompleteUrl from './src/data/utils/isCompleteUrl'
 import isOriginUrl from './src/data/utils/isOriginUrl'
-import loadContents from './src/data/utils/loadContents'
+import loadContexts from './src/data/utils/loadContexts'
 import openAnchor from './src/data/utils/openAnchor'
 import openWindow from './src/data/utils/openWindow'
 import $exportMsg from './src/data/utils/$exportMsg'
@@ -229,7 +229,7 @@ export {
   getQueryUrl,
   isCompleteUrl,
   isOriginUrl,
-  loadContents,
+  loadContexts,
   openAnchor,
   openWindow,
   $exportMsg,
