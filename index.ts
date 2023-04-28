@@ -32,6 +32,7 @@ import getRandomData from './src/data/string/getRandomData'
 import getRandomInList from './src/data/string/getRandomInList'
 import getRandomLetter from './src/data/string/getRandomLetter'
 import strCodeNum from './src/data/string/strCodeNum'
+import upperCaseFirstChar from './src/data/string/upperCaseFirstChar'
 // string加载完成
 // object加载
 import appendProp from './src/data/object/appendProp'
@@ -175,6 +176,7 @@ export {
   getRandomInList,
   getRandomLetter,
   strCodeNum,
+  upperCaseFirstChar,
   // object
   appendProp,
   arrayClearOther,
