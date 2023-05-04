@@ -122,7 +122,9 @@ import {
   setCanUse,
   setEnv,
   setEnvMode,
-  resetEnvData
+  resetEnvData,
+  onEnvChange,
+  triggerEnvChange
 } from './src/data/environment/index'
 // environment加载完成
 // worker加载
@@ -260,6 +262,8 @@ export {
   setEnv,
   setEnvMode,
   resetEnvData,
+  onEnvChange,
+  triggerEnvChange,
   // worker
   runWorker,
   Data,

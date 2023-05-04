@@ -1,3 +1,12 @@
+import $exportMsg from "../utils/$exportMsg"
+
+type changeDataType = () => void
+interface changeObjectType {
+  data: changeDataType
+  once?: boolean
+  immediate?: boolean
+}
+type changeType = changeDataType | changeObjectType
 
 type optionType = {
   env: {
@@ -8,9 +17,9 @@ type optionType = {
   },
   canUse: {
     [prop: PropertyKey]: boolean
-  }
+  },
+  change: changeObjectType[]
 }
-
 
 const option: optionType = {
   env: {
@@ -26,7 +35,8 @@ const option: optionType = {
     Proxy: false,
     Symbol: false,
     MutationObserver: false
-  }
+  },
+  change: []
 }
 
 /**
@@ -34,8 +44,11 @@ const option: optionType = {
  * @param {*} data 环境变量
  * @param {'data' | 'real'} prop 环境变量属性值,data为当前环境变量,real为当前真实的环境变量
  */
-export function setEnv(data: string, prop = 'data') {
+export function setEnv(data: string, prop = 'data', unTriggerChange?: boolean) {
   option.env[prop] = data
+  if (!unTriggerChange) {
+    triggerEnvChange()
+  }
 }
 
 /**
@@ -51,8 +64,11 @@ export function getEnv(prop = 'data') {
  * @param {*} data 环境数据
  * @param {'data' | 'real'} prop 环境数据属性值,data为当前环境数据,real为当前真实的环境数据
  */
-export function setEnvMode(data: any, prop = 'data') {
+export function setEnvMode(data: any, prop = 'data', unTriggerChange?: boolean) {
   option.mode[prop] = data
+  if (!unTriggerChange) {
+    triggerEnvChange()
+  }
 }
 
 /**
@@ -64,17 +80,51 @@ export function getEnvMode(prop = 'data') {
 }
 
 /**
- * 真实环境为开发环境下数据变更函数
- * @param {function} fn 需要触发的函数
- * @param {string} info 控制台输出
- * @param  {...any} args 函数参数
+ * 真实环境为目标环境下数据变更函数
  */
-export function resetEnvData(fn: (...args:any[]) => any, info = 'resetEnvData函数触发！', ...args: any[]) {
-  // 真实环境为开发环境时触发操作
-  if (getEnv('real') == 'development') {
-    console.error(new Error(info))
+export function resetEnvData(fn: (...args:any[]) => any, { env, info, args }: { env?: string,  info?: string, args?: any[] } = {}) {
+  // 真实环境为目标环境时触发操作
+  if (!env) {
+    env = 'development'
+  }
+  if (getEnv('real') === env) {
+    $exportMsg(`resetEnvData:当前真实环境为${getEnv('real')}，触发目标环境为${env}的函数！`)
+    if (info) {
+      $exportMsg(info)
+    }
     if (fn) {
-      return fn(...args)
+      if (args) {
+        return fn(...args)
+      } else {
+        return fn()
+      }
+    }
+  }
+}
+
+export function onEnvChange(change: changeType) {
+  if (typeof change === 'function') {
+    option.change.push({
+      data: change
+    })
+  } else {
+    if (change.immediate && change.once) {
+      change.data()
+      return
+    } else if (change.immediate) {
+      change.data()
+    }
+    option.change.push(change)
+  }
+}
+
+export function triggerEnvChange() {
+  for (let i = 0; i < option.change.length; i++) {
+    const change = option.change[i]
+    change.data()
+    if (change.once) {
+      option.change.splice(i, 1)
+      i--
     }
   }
 }
