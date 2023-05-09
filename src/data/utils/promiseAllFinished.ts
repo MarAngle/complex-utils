@@ -10,7 +10,7 @@ type resType = {
  * @param {Promise[]} list Promise列表
  * @returns {Promise}
  */
-function promiseAllFinished(list: Promise<any>[]) {
+function promiseAllFinished(list: Promise<any>[]): Promise<resType[]> {
   return new Promise((resolve) => {
     let remainder: number
     const resList: resType[] = []
