@@ -1,6 +1,6 @@
 import isPromise from '../type/isPromise'
 
-type resType = {
+export type promiseAllFinishedResType = {
   status: 'success' | 'fail',
   data: any
 }
@@ -10,10 +10,10 @@ type resType = {
  * @param {Promise[]} list Promise列表
  * @returns {Promise}
  */
-function promiseAllFinished(list: Promise<any>[]): Promise<resType[]> {
+function promiseAllFinished(list: Promise<any>[]): Promise<promiseAllFinishedResType[]> {
   return new Promise((resolve) => {
     let remainder: number
-    const resList: resType[] = []
+    const resList: promiseAllFinishedResType[] = []
     /**
      * next
      * @param {number} remainder
@@ -22,7 +22,7 @@ function promiseAllFinished(list: Promise<any>[]): Promise<resType[]> {
      * @param {number} index
      * @param {*} res
      */
-    function next(index: number, res: resType) {
+    function next(index: number, res: promiseAllFinishedResType) {
       resList[index] = res
       remainder--
       if (remainder == 0) {
