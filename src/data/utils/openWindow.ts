@@ -24,7 +24,7 @@
  * [ top=pixels	窗口顶部的位置.仅限IE浏览器 ]
  * [ width=pixels	窗口的宽度.最小.值为100 ]
  */
- function openWindow(url: string, name = '_blank', features: any) {
+ function openWindow(url: string, name = '_blank', features?: any) {
   return window.open(url, name, features)
 }
 

@@ -144,7 +144,6 @@ const install = function (Vue: any) {
   }
 }
 
-
 export {
   // type
   checkComplex,

@@ -1,7 +1,6 @@
 import getType from './../type/getType'
 import downloadFileByAnchor from './downloadFileByAnchor'
 
-
 type fileData = {
   url: string,
   name?: string

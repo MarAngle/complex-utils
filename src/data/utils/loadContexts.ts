@@ -1,6 +1,5 @@
 import triggerFunc from '../function/triggerFunction'
 
-
 type fnType = (mod: any, path:string, index: number) => void
 
 /**

@@ -4,7 +4,6 @@ import getWorkerContent from './getWorkerContent'
 
 const URL = window.URL || window.webkitURL
 
-
 export type optionType = {
   func: (...args:any[]) => any,
   args: any[],

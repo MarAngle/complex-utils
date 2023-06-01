@@ -2,7 +2,6 @@ import config from '../../../config'
 
 const location = window.location
 
-
 type protocolType = 'http:' | 'https:' | 'ftp:'
 
 export type simpleLocation = {
@@ -10,7 +9,6 @@ export type simpleLocation = {
   protocol: string | undefined,
   hostname: string | undefined,
   port: string | undefined
-
 }
 
 /**

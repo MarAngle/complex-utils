@@ -5,7 +5,7 @@ import getOffsetTime, { unitType, optionType, complexOptionType, dataType } from
 
 
 type formatFunctionType = (data: dataType) => any
-type formatObjectType = {
+export type formatObjectType = {
   startShow?: boolean,
   endShow?: boolean,
   middleShow?: boolean,
@@ -13,7 +13,7 @@ type formatObjectType = {
   dict?: Record<PropertyKey, any>
 }
 
-interface currentOptionType extends optionType {
+export interface currentOptionType extends optionType {
   format?: formatFunctionType | formatObjectType
 }
 

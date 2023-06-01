@@ -5,7 +5,7 @@ import getLocalProp from './getLocalProp'
  * @param {string} name
  * @param {*} value
  */
-function setLocalData(name: string, value: any) {
+function setLocalData(name: string, value?: any) {
   name = getLocalProp(name)
   const localData = {
     value: value,

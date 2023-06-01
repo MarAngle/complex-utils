@@ -37,7 +37,7 @@ export type letterType = {
  * @param {boolean} [letter.number] 字符串库设置,整数,默认为真
  * @returns {string}
  */
-function getRandomLetter(letter?:letterType) {
+function getRandomLetter(letter?: letterType) {
   let list: string[] = []
   if (!letter) {
     letter = {}

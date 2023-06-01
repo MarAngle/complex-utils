@@ -1,6 +1,5 @@
 import isError from '../type/isError'
 
-
 export type consoleType = 'error' | 'warn' | 'log'
 
 export type exportOption = {

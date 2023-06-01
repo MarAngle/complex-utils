@@ -4,7 +4,7 @@ import triggerFunction from './triggerFunction'
 
 type cbFunction = (data?: any) => any
 
-type optionType = {
+export type optionType = {
   func: (...args:any[]) => any,
   args?: any[],
   promise: undefined,

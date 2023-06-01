@@ -32,7 +32,7 @@ type childrenType = {
 
 type formatType = (originItem: Record<PropertyKey, any>, type?: 'append' | 'init', mapItemData?: Record<PropertyKey, any>) => Record<PropertyKey, any>
 
-type optionType = {
+export type optionType = {
   type?: 'list' | 'map',
   id?: string,
   parentId?: string,

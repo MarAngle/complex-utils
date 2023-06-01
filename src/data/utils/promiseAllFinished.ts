@@ -1,8 +1,8 @@
 import isPromise from '../type/isPromise'
 
-export type promiseAllFinishedResType = {
+export type promiseAllFinishedResType<D = any> = {
   status: 'success' | 'fail',
-  data: any
+  data: D
 }
 
 /**

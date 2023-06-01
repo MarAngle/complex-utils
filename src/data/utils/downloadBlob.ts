@@ -2,7 +2,6 @@ import downloadFileByAnchor from './downloadFileByAnchor'
 
 const URL = window.URL || window.webkitURL
 
-
 /**
  * 下载blob文件
  * @param {*} blobValue

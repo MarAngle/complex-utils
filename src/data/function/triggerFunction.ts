@@ -4,7 +4,7 @@
  * @param  {...any} args func参数
  * @returns 是否触发
  */
-function triggerFunction(func?: (...args:any[]) => any, ...args: any[]) {
+function triggerFunction(func?: (...args: any[]) => any, ...args: any[]) {
   if (func && typeof func === 'function') {
     func(...args)
     return true
