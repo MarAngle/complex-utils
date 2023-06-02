@@ -102,9 +102,7 @@ import transformFile from './src/data/utils/transformFile'
 import trimData from './src/data/utils/trimData'
 // utils加载完成
 // local加载
-import getLocalData from './src/data/local/getLocalData'
-import removeLocalData from './src/data/local/removeLocalData'
-import setLocalData from './src/data/local/setLocalData'
+import { setLocalData, getLocalData, removeLocalData, setSessionLocalData, getSessionLocalData, removeSessionLocalData } from './src/data/local/index'
 // local加载完成
 // time加载
 import formatTime from './src/data/time/formatTime'
@@ -243,9 +241,12 @@ export {
   transformFile,
   trimData,
   // local
+  setLocalData,
   getLocalData,
   removeLocalData,
-  setLocalData,
+  setSessionLocalData,
+  getSessionLocalData,
+  removeSessionLocalData,
   // time
   formatTime,
   getOffsetTime,
