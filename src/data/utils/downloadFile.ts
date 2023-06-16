@@ -15,7 +15,7 @@ function downloadFile(data: string | fileData): boolean {
   if (data) {
     let url: string, name: string | undefined
     const type = getType(data)
-    if (type == 'string') {
+    if (type === 'string') {
       url = <string>data
     } else {
       url = (<fileData>data).url

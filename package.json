@@ -1,6 +1,6 @@
 {
   "name": "complex-utils",
-  "version": "1.0.16",
+  "version": "1.0.17",
   "description": "a complex utils",
   "main": "index.ts",
   "repository": {
@@ -9,7 +9,7 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "typescript": "~4.5.5"
+    "typescript": "~5.0.4"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
