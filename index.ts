@@ -106,6 +106,7 @@ import { setLocalData, getLocalData, removeLocalData, setSessionLocalData, getSe
 // local加载完成
 // time加载
 import formatTime from './src/data/time/formatTime'
+import transformTime from './src/data/time/transformTime'
 import getOffsetTime from './src/data/time/getOffsetTime'
 import getOffsetTimeStr from './src/data/time/getOffsetTimeStr'
 import parseTime from './src/data/time/parseTime'
@@ -132,9 +133,10 @@ import Data from './src/build/Data'
 import LimitData from './src/build/LimitData'
 import config from './config'
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const install = function (Vue: any) {
   const version = Vue.version.split('.')[0]
-  if (version == '2') {
+  if (version === '2') {
     // 设置属性重置为Vue.set
     config.object.setData = function(target, prop, data) {
       Vue.set(target, prop, data)
@@ -249,6 +251,7 @@ export {
   removeSessionLocalData,
   // time
   formatTime,
+  transformTime,
   getOffsetTime,
   getOffsetTimeStr,
   parseTime,

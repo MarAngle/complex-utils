@@ -1,18 +1,19 @@
 import config from '../../../config'
 import getType from '../type/getType'
 
-
 export type optionType = {
   format?: string,
   current?: boolean
 }
+
+export type allOptionType = string | optionType
 
 type formatOptionType = {
   format: string,
   current?: boolean
 }
 
-export const parseTimeOption = function(option?: string | optionType): formatOptionType {
+export const parseTimeOption = function(option?: allOptionType): formatOptionType {
   if (getType(option) !== 'object') {
     option = {
       format: (<string>option)
@@ -35,18 +36,20 @@ export const parseTimeOption = function(option?: string | optionType): formatOpt
  */
 function parseTime(data: number, option: 'X'): Date
 function parseTime(data: number | string, option: 'x'): Date
-function parseTime(data: string, option?: string | optionType): Date
-function parseTime(data: string | number, option?: string | optionType): Date {
+function parseTime(data: string, option?: allOptionType): Date
+function parseTime(data: string | number, option?: allOptionType): Date {
   const { format, current } = parseTimeOption(option)
   if (format === 'X') {
     return new Date((<number>data) * 1000)
   } else if (format === 'x') {
     return new Date(data)
   } else {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     let currentDate: any
     const args: number[] = []
     for (let i = 0; i < config.time.dict.list.length; i++) {
       const prop = config.time.dict.list[i]
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const dict = (config.time.dict.data as any)[prop]
       const index = format.indexOf(dict.code)
       if (index > -1) {
@@ -66,6 +69,7 @@ function parseTime(data: string | number, option?: string | optionType): Date {
         }
       }
     }
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     return new (Date as any)(...args)
   }
 }

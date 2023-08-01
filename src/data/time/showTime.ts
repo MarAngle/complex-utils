@@ -14,9 +14,11 @@ function showTime(date: Date, format?: string) {
   let dateStr = format
   for (let i = 0; i < config.time.dict.list.length; i++) {
     const prop = config.time.dict.list[i]
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const dict = (config.time.dict.data as any)[prop]
     const index = dateStr.indexOf(dict.code)
     if (index > -1) {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const data = (date as any)[dict.func]() + dict.offset
       dateStr = dateStr.replace(dict.code, fillString(data, dict.code.length))
     }

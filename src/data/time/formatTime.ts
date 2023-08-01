@@ -1,5 +1,4 @@
-import transformTime from './transformTime'
-import parseTime, { optionType } from './parseTime'
+import parseTime, { allOptionType } from './parseTime'
 import showTime from './showTime'
 
 /**
@@ -12,12 +11,8 @@ import showTime from './showTime'
  * @param {boolean} [complex] 是否复杂数据:复杂数据会先生成Date后再进行字符串化
  * @returns {string}
  */
-function formatTime(data: string, parseOption?: optionType, showFormat?: string, complex?: boolean) {
-  if (!complex) {
-    return transformTime(data, parseOption, showFormat)
-  } else {
-    return showTime(parseTime(data, parseOption), showFormat)
-  }
+function formatTime(data: string | number, parseOption?: allOptionType, showFormat?: string) {
+  return showTime(parseTime(data as string, parseOption), showFormat)
 }
 
 export default formatTime
