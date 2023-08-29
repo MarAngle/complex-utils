@@ -81,7 +81,7 @@ function formatTree(originList: Record<PropertyKey, any>[], option: optionType =
   for (let n = 0; n < originList.length; n++) {
     const originItem = originList[n]
     const id = originItem[idProp]
-    const parentId = originItem[parentIdProp]
+    const parentId = originItem[parentIdProp] || ''
     let mapItem = dataMap[id]
     // 存在值则说明此时存在虚拟构建的数据
     if (mapItem) {
