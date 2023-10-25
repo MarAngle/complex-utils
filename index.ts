@@ -35,6 +35,35 @@ import getNum from './src/number/getNum'
 import getRandomNum from './src/number/getRandomNum'
 import parseNum from './src/number/parseNum'
 
+// object加载
+import appendProp from './src/object/appendProp'
+import arrayClearOther from './src/object/arrayClearOther'
+import choiceProp from './src/object/choiceProp'
+import clearArray from './src/object/clearArray'
+import deepClone from './src/object/deepClone'
+import deepCloneData from './src/object/deepCloneData'
+import deepCloneDataWithOption from './src/object/deepCloneDataWithOption'
+import defineProperty from './src/object/defineProperty'
+import formatDataByType from './src/object/formatDataByType'
+import formatList from './src/object/formatList'
+import formatTree from './src/object/formatTree'
+import getDefaultData from './src/object/getDefaultData'
+import getProp from './src/object/getProp'
+import getPropByList from './src/object/getPropByList'
+import hasProp from './src/object/hasProp'
+import jsonToForm from './src/object/jsonToForm'
+import mergeData from './src/object/mergeData'
+import orderArrayByProp from './src/object/orderArrayByProp'
+import setDataByDefault from './src/object/setDataByDefault'
+import setDefaultData from './src/object/setDefaultData'
+import setProp from './src/object/setProp'
+import setPropByList from './src/object/setPropByList'
+import setPropByType from './src/object/setPropByType'
+import showArrayProp from './src/object/showArrayProp'
+import updateData from './src/object/updateData'
+import updateDataWidthOption from './src/object/updateDataWidthOption'
+import updateList from './src/object/updateList'
+
 export {
   // type
   checkComplex,
@@ -74,4 +103,33 @@ export {
   getNum,
   getRandomNum,
   parseNum,
+
+  // object
+  appendProp,
+  arrayClearOther,
+  choiceProp,
+  clearArray,
+  deepClone,
+  deepCloneData,
+  deepCloneDataWithOption,
+  defineProperty,
+  formatDataByType,
+  formatList,
+  formatTree,
+  getDefaultData,
+  getProp,
+  getPropByList,
+  hasProp,
+  jsonToForm,
+  mergeData,
+  orderArrayByProp,
+  setDataByDefault,
+  setDefaultData,
+  setProp,
+  setPropByList,
+  setPropByType,
+  showArrayProp,
+  updateData,
+  updateDataWidthOption,
+  updateList,
 }
