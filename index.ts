@@ -23,11 +23,17 @@ import triggerFunction from './src/function/triggerFunction'
 import triggerPromise from './src/function/triggerPromise'
 import debounce from './src/function/debounce'
 import throttle from './src/function/throttle'
-// function加载
 
 // local加载
 import { setLocalData, getLocalData, removeLocalData, setSessionLocalData, getSessionLocalData, removeSessionLocalData } from './src/local/index'
-// local加载完成
+
+// number加载
+import formatNum from './src/number/formatNum'
+import getDecimal from './src/number/getDecimal'
+import getInteger from './src/number/getInteger'
+import getNum from './src/number/getNum'
+import getRandomNum from './src/number/getRandomNum'
+import parseNum from './src/number/parseNum'
 
 export {
   // type
@@ -61,4 +67,11 @@ export {
   setSessionLocalData,
   getSessionLocalData,
   removeSessionLocalData,
+  // number
+  formatNum,
+  getDecimal,
+  getInteger,
+  getNum,
+  getRandomNum,
+  parseNum,
 }
