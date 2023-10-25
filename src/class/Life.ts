@@ -9,15 +9,15 @@ function getLifeId () {
 }
 
 export interface LifeDataType {
-  id?: PropertyKey,
-  data: (...args: any[]) => any,
-  index?: number,
-  replace?: boolean,
-  immediate?: boolean,
+  id?: PropertyKey
+  data: (...args: any[]) => any
+  index?: number
+  replace?: boolean
+  immediate?: boolean
   once?: boolean
 }
 
-class LifeData extends Data {
+export class LifeData extends Data {
   name: string
   data: Map<PropertyKey, LifeDataType>
   constructor(name: string, data?: LifeDataType | LifeDataType[]) {
@@ -137,11 +137,9 @@ class LifeData extends Data {
   }
 }
 
-
 export interface LifeInitOption {
   [prop: string]: LifeDataType | LifeDataType[]
 }
-
 
 class Life extends Data {
   static $name = 'Life'
