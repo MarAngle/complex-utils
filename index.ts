@@ -25,6 +25,10 @@ import debounce from './src/function/debounce'
 import throttle from './src/function/throttle'
 // function加载
 
+// local加载
+import { setLocalData, getLocalData, removeLocalData, setSessionLocalData, getSessionLocalData, removeSessionLocalData } from './src/local/index'
+// local加载完成
+
 export {
   // type
   checkComplex,
@@ -50,4 +54,11 @@ export {
   triggerPromise,
   debounce,
   throttle,
+  // local
+  setLocalData,
+  getLocalData,
+  removeLocalData,
+  setSessionLocalData,
+  getSessionLocalData,
+  removeSessionLocalData,
 }
