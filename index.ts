@@ -18,6 +18,12 @@ import isRegExp from './src/type/isRegExp'
 import isSymbol from './src/type/isSymbol'
 import isSame from './src/type/isSame'
 
+// function加载
+import triggerFunction from './src/function/triggerFunction'
+import triggerPromise from './src/function/triggerPromise'
+import debounce from './src/function/debounce'
+import throttle from './src/function/throttle'
+// function加载
 
 export {
   // type
@@ -39,4 +45,9 @@ export {
   isRegExp,
   isSymbol,
   isSame,
+  // function
+  triggerFunction,
+  triggerPromise,
+  debounce,
+  throttle,
 }
