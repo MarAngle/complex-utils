@@ -1,4 +1,4 @@
-import { ComplexType } from '../type/getType'
+import { ComplexType } from '../type/getComplexType'
 import getNum from './../number/getNum'
 
 /**
@@ -11,15 +11,13 @@ function formatDataByType(value: any, type: 'boolean'): boolean
 function formatDataByType(value: any, type: 'number'): number
 function formatDataByType<T>(value: T, type?: Exclude<ComplexType, 'boolean' | 'number'>): T
 function formatDataByType<T>(value: T, type?: ComplexType) {
-  let data
   if (type == 'boolean') {
-    data = !!value
+    return !!value
   } else if (type == 'number') {
-    data = getNum(value, 'origin')
+    return getNum(value, 'origin')
   } else {
-    data = value
+    return value
   }
-  return data
 }
 
 export default formatDataByType
