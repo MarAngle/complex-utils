@@ -1,11 +1,11 @@
 import getType from '../type/getType'
-import parseWorkerContent from './parseWorkerContent'
+import parseWorkerContent, { funcType } from './parseWorkerContent'
 
 const URL = window.URL || window.webkitURL
 
-export type optionType<T extends unknown[] = unknown[]> = {
-  func: (...args: T) => Promise<unknown>,
-  args: T,
+export type optionType<A extends unknown[] = unknown[], R extends Promise<unknown> = Promise<unknown>> = {
+  func: funcType<A, R>,
+  args: A,
   option?: WorkerOptions,
   log?: boolean
 }

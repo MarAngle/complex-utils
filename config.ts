@@ -8,7 +8,7 @@ const config = {
   },
   object: {
     existList: [false, 0],
-    setData(data: Record<PropertyKey, any>, prop: PropertyKey, value: any) {
+    setData(data: Record<PropertyKey, unknown>, prop: PropertyKey, value: unknown) {
       data[prop] = value
     }
   },
