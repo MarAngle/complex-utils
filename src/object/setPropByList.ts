@@ -1,4 +1,4 @@
-import config from '../../../config'
+import config from '../../config'
 
 /**
  * 根据属性列表设置属性值

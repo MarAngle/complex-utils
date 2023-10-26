@@ -1,7 +1,5 @@
 
-let checkAnchor: HTMLAnchorElement | null = document.createElement('a')
-const isSupportDownload = 'download' in checkAnchor
-checkAnchor = null
+const isSupportDownload = 'download' in document.createElement('a')
 
 /**
  * 基于a标签打开文件
@@ -10,7 +8,7 @@ checkAnchor = null
  * @param {string} [download] 下载名称
  * @returns {boolean} 是否成功
  */
-function openAnchor(url: string, target?: string, download?: string | true) {
+function openAnchor(url: string, download: string | true = true, target = '_blank') {
   let anchor: HTMLAnchorElement | null = document.createElement('a')
   anchor.href = url
   if (target) {
@@ -18,15 +16,14 @@ function openAnchor(url: string, target?: string, download?: string | true) {
   }
   if (isSupportDownload && download) {
     if (download === true) {
-      download = url.split('/').pop()
+      download = url.split('/').pop()!
     }
-    anchor.setAttribute('download', download!)
+    anchor.setAttribute('download', download)
   }
   anchor.click()
   setTimeout(function() {
     anchor = null
   }, 0)
-  return true
 }
 
 export default openAnchor

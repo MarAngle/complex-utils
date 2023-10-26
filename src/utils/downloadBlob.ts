@@ -1,4 +1,4 @@
-import downloadFileByAnchor from './downloadFileByAnchor'
+import downloadFile from './downloadFile'
 
 const URL = window.URL || window.webkitURL
 
@@ -19,9 +19,9 @@ function downloadBlob(blobValue: any, type: string, name?: string) {
     blobData.append(blobValue)
     blob = blobData.getBlob(type)
   }
-  const blobUrl = URL.createObjectURL(blob)
-  downloadFileByAnchor(blobUrl, name)
-  URL.revokeObjectURL(blobUrl)
+  const url = URL.createObjectURL(blob)
+  downloadFile(url, name)
+  URL.revokeObjectURL(url)
   return true
 }
 

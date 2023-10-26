@@ -1,4 +1,4 @@
-import { ComplexType } from '../type/getType'
+import { ComplexType } from '../type/getComplexType'
 import formatDataByType from './formatDataByType'
 import setProp from './setProp'
 

@@ -42,17 +42,13 @@ import choiceProp from './src/object/choiceProp'
 import clearArray from './src/object/clearArray'
 import deepClone from './src/object/deepClone'
 import deepCloneData from './src/object/deepCloneData'
-import deepCloneDataWithOption from './src/object/deepCloneDataWithOption'
-import defineProperty from './src/object/defineProperty'
 import formatDataByType from './src/object/formatDataByType'
-import formatList from './src/object/formatList'
 import formatTree from './src/object/formatTree'
 import getDefaultData from './src/object/getDefaultData'
 import getProp from './src/object/getProp'
 import getPropByList from './src/object/getPropByList'
 import hasProp from './src/object/hasProp'
 import jsonToForm from './src/object/jsonToForm'
-import mergeData from './src/object/mergeData'
 import orderArrayByProp from './src/object/orderArrayByProp'
 import setDataByDefault from './src/object/setDataByDefault'
 import setDefaultData from './src/object/setDefaultData'
@@ -60,9 +56,28 @@ import setProp from './src/object/setProp'
 import setPropByList from './src/object/setPropByList'
 import setPropByType from './src/object/setPropByType'
 import showArrayProp from './src/object/showArrayProp'
-import updateData from './src/object/updateData'
-import updateDataWidthOption from './src/object/updateDataWidthOption'
-import updateList from './src/object/updateList'
+
+
+// utils加载
+import downloadBlob from './src/utils/downloadBlob'
+import downloadFile from './src/utils/downloadFile'
+import localEncodeURIComponent from './src/utils/localEncodeURIComponent'
+import formatQueryUrl from './src/utils/formatQueryUrl'
+import getCurrentUrl from './src/utils/getCurrentUrl'
+import getLimit from './src/utils/getLimit'
+import getQueryData from './src/utils/getQueryData'
+import getQueryUrl from './src/utils/getQueryUrl'
+import isCompleteUrl from './src/utils/isCompleteUrl'
+import isOriginUrl from './src/utils/isOriginUrl'
+import loadContexts from './src/utils/loadContexts'
+import openAnchor from './src/utils/openAnchor'
+import openWindow from './src/utils/openWindow'
+import $exportMsg from './src/utils/$exportMsg'
+import exportMsg from './src/utils/exportMsg'
+import parseUrl from './src/utils/parseUrl'
+import showJson from './src/utils/showJson'
+import transformFile from './src/utils/transformFile'
+import trimData from './src/utils/trimData'
 
 export {
   // type
@@ -111,17 +126,13 @@ export {
   clearArray,
   deepClone,
   deepCloneData,
-  deepCloneDataWithOption,
-  defineProperty,
   formatDataByType,
-  formatList,
   formatTree,
   getDefaultData,
   getProp,
   getPropByList,
   hasProp,
   jsonToForm,
-  mergeData,
   orderArrayByProp,
   setDataByDefault,
   setDefaultData,
@@ -129,7 +140,25 @@ export {
   setPropByList,
   setPropByType,
   showArrayProp,
-  updateData,
-  updateDataWidthOption,
-  updateList,
+  
+  // utils
+  downloadBlob,
+  downloadFile,
+  localEncodeURIComponent,
+  formatQueryUrl,
+  getCurrentUrl,
+  getLimit,
+  getQueryData,
+  getQueryUrl,
+  isCompleteUrl,
+  isOriginUrl,
+  loadContexts,
+  openAnchor,
+  openWindow,
+  $exportMsg,
+  exportMsg,
+  parseUrl,
+  showJson,
+  transformFile,
+  trimData,
 }

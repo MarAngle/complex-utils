@@ -1,4 +1,4 @@
-import getType from './../type/getType'
+import getComplexType from './../type/getComplexType'
 
 /**
  * 将对象转换为FormData格式
@@ -8,7 +8,7 @@ import getType from './../type/getType'
 function jsonToForm(jsonData: Record<PropertyKey, any>): FormData {
   const formData = new FormData()
   for (const prop in jsonData) {
-    const type = getType(jsonData[prop], true)
+    const type = getComplexType(jsonData[prop])
     if (type === 'object') {
       formData.append(prop, JSON.stringify(jsonData[prop]))
     } else {

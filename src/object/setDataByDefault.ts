@@ -1,9 +1,6 @@
 import getType from '../type/getType'
 import $exportMsg from '../utils/$exportMsg'
 
-
-
-
 function setObject(targetData: Record<PropertyKey, any>, defaultData: Record<PropertyKey, any>, map = new Map()) {
   if (getType(targetData) !== 'object') {
     targetData = {}

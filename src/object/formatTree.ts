@@ -1,4 +1,3 @@
-import isExist from '../type/isExist'
 
 type formatType = (originItem: Record<PropertyKey, any>) => Record<PropertyKey, any>
 
@@ -9,63 +8,83 @@ export type optionType = {
   format?: formatType
 }
 
-export class MapItemData {
-  data: null | Record<PropertyKey, any>
-  children: MapItemData[]
+class MapItemData {
+  load: boolean
+  data: Record<PropertyKey, any>
   constructor(data?: Record<PropertyKey, any>) {
-    this.data = data || null
-    this.children = []
+    this.data = data || {}
+    this.load = data ? true : false
   }
-  assign(originData: Record<PropertyKey, any>, format?: formatType) {
-    if (format) {
-      this.data = format(originData)
-    } else {
-      this.data = originData
+  assign(originData: Record<PropertyKey, any>, children: string) {
+    for (const prop in originData) {
+      if (children != prop) {
+        this.data[prop] = originData[prop]
+      }
     }
+    this.load = true
   }
-  append(child: MapItemData) {
-    this.children.push(child)
+  append(children: string, childData: Record<PropertyKey, any>) {
+    if (!this.data[children]) {
+      this.data[children] = []
+    }
+    this.data[children].push(childData)
   }
 }
 
 export class MapData {
-  data: Map<PropertyKey, MapItemData>
   children: string
-  constructor(children: string) {
+  format?: formatType
+  data: Map<PropertyKey, MapItemData>
+  constructor(children: string, format?: formatType) {
     this.children = children
+    this.format = format
     this.data = new Map()
   }
-  getItem(id: PropertyKey) {
-    let data = this.data.get(id)
-    if (!data) {
-      data = new MapItemData()
-      this.data.set(id, data)
+  $assignItem(id: string, originData: Record<PropertyKey, any>) {
+    const finalData = this.format ? this.format(originData) : originData
+    let targetItem = this.data.get(id)
+    if (!targetItem) {
+      targetItem = new MapItemData(finalData)
+      this.data.set(id, targetItem)
+    } else {
+      targetItem.assign(finalData, this.children)
     }
-    return data
+    return targetItem
+  }
+  $appendItem(targetItem: MapItemData, parentId: string) {
+    let parentItem = this.data.get(parentId)
+    if (!parentItem) {
+      parentItem = new MapItemData()
+      this.data.set(parentId, parentItem)
+    }
+    parentItem.append(this.children, targetItem.data)
+  }
+  assignItem(id: string, parentId: string, originData: Record<PropertyKey, any>) {
+    const targetItem = this.$assignItem(id, originData)
+    this.$appendItem(targetItem, parentId)
   }
   parse() {
-    const list: Record<PropertyKey, any>[] = []
-    
+    let list: Record<PropertyKey, any>[] = []
+    this.data.forEach(item => {
+      if (!item.load) {
+        list = list.concat(item.data[this.children])
+      }
+    })
+    return list
   }
 }
 
 function formatTree(originList: Record<PropertyKey, any>[], option: optionType = {}) {
   // 配置参数获取
-  const format = option.format
   const idProp = option.id || 'id'
   const parentIdProp = option.parentId || 'parentId'
-  const mapData = new MapData(option.children || 'children')
+  const mapData = new MapData(option.children || 'children', option.format)
 
   for (let n = 0; n < originList.length; n++) {
     const originData = originList[n]
     const id = originData[idProp]
-    let parentId = originData[parentIdProp]
-    const mapItem = mapData.getItem(id)
-    mapItem.assign(originData, format)
-    if (isExist(parentId)) {
-      const parentItem = mapData.getItem(parentId)
-      parentItem.append(mapItem)
-    }
+    const parentId = originData[parentIdProp]
+    mapData.assignItem(id, parentId, originData)
   }
   return mapData
 }
