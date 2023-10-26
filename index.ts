@@ -1,22 +1,7 @@
-// type加载
-import checkComplex from './src/type/checkComplex'
-import getTag from './src/type/getTag'
-import getType from './src/type/getType'
-import getComplexType from './src/type/getComplexType'
-import isArray from './src/type/isArray'
-import isBlob from './src/type/isBlob'
-import isComplex from './src/type/isComplex'
-import isDate from './src/type/isDate'
-import isEmpty from './src/type/isEmpty'
-import isEmptyArray from './src/type/isEmptyArray'
-import isEmptyObject from './src/type/isEmptyObject'
-import isError from './src/type/isError'
-import isExist from './src/type/isExist'
-import isFile from './src/type/isFile'
-import isPromise from './src/type/isPromise'
-import isRegExp from './src/type/isRegExp'
-import isSymbol from './src/type/isSymbol'
-import isSame from './src/type/isSame'
+// class加载
+import Data from './src/class/Data'
+import Life from './src/class/Life'
+import Limit from './src/class/Limit'
 
 // function加载
 import triggerFunction from './src/function/triggerFunction'
@@ -57,6 +42,33 @@ import setPropByList from './src/object/setPropByList'
 import setPropByType from './src/object/setPropByType'
 import showArrayProp from './src/object/showArrayProp'
 
+// string加载
+import fillString from './src/string/fillString'
+import findTargetInStr from './src/string/findTargetInStr'
+import getRandomData from './src/string/getRandomData'
+import getRandomInList from './src/string/getRandomInList'
+import getRandomLetter from './src/string/getRandomLetter'
+import upperCaseFirstChar from './src/string/upperCaseFirstChar'
+
+// type加载
+import checkComplex from './src/type/checkComplex'
+import getTag from './src/type/getTag'
+import getType from './src/type/getType'
+import getComplexType from './src/type/getComplexType'
+import isArray from './src/type/isArray'
+import isBlob from './src/type/isBlob'
+import isComplex from './src/type/isComplex'
+import isDate from './src/type/isDate'
+import isEmpty from './src/type/isEmpty'
+import isEmptyArray from './src/type/isEmptyArray'
+import isEmptyObject from './src/type/isEmptyObject'
+import isError from './src/type/isError'
+import isExist from './src/type/isExist'
+import isFile from './src/type/isFile'
+import isPromise from './src/type/isPromise'
+import isRegExp from './src/type/isRegExp'
+import isSymbol from './src/type/isSymbol'
+import isSame from './src/type/isSame'
 
 // utils加载
 import downloadBlob from './src/utils/downloadBlob'
@@ -79,31 +91,21 @@ import showJson from './src/utils/showJson'
 import transformFile from './src/utils/transformFile'
 import trimData from './src/utils/trimData'
 
+// worker加载
+import startWorker from './src/worker/startWorker'
+
 export {
-  // type
-  checkComplex,
-  getTag,
-  getType,
-  getComplexType,
-  isArray,
-  isBlob,
-  isComplex,
-  isDate,
-  isEmpty,
-  isEmptyArray,
-  isEmptyObject,
-  isError,
-  isExist,
-  isFile,
-  isPromise,
-  isRegExp,
-  isSymbol,
-  isSame,
+  // class
+  Data,
+  Limit,
+  Life,
+
   // function
   triggerFunction,
   triggerPromise,
   debounce,
   throttle,
+
   // local
   setLocalData,
   getLocalData,
@@ -111,6 +113,7 @@ export {
   setSessionLocalData,
   getSessionLocalData,
   removeSessionLocalData,
+
   // number
   formatNum,
   getDecimal,
@@ -141,6 +144,34 @@ export {
   setPropByType,
   showArrayProp,
   
+  // string
+  fillString,
+  findTargetInStr,
+  getRandomData,
+  getRandomInList,
+  getRandomLetter,
+  upperCaseFirstChar,
+
+  // type
+  checkComplex,
+  getTag,
+  getType,
+  getComplexType,
+  isArray,
+  isBlob,
+  isComplex,
+  isDate,
+  isEmpty,
+  isEmptyArray,
+  isEmptyObject,
+  isError,
+  isExist,
+  isFile,
+  isPromise,
+  isRegExp,
+  isSymbol,
+  isSame,
+
   // utils
   downloadBlob,
   downloadFile,
@@ -161,4 +192,7 @@ export {
   showJson,
   transformFile,
   trimData,
+  
+  // worker
+  startWorker,
 }
