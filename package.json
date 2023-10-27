@@ -1,11 +1,11 @@
 {
-  "name": "simple-utils",
-  "version": "0.1.0",
-  "description": "a simple utils",
+  "name": "complex-utils-next",
+  "version": "2.0.1",
+  "description": "a complex utils-next",
   "main": "index.ts",
   "repository": {
     "type": "git",
-    "url": "https://github.com/MarAngle/simple-utils.git"
+    "url": "https://github.com/MarAngle/complex-utils-next.git"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -14,7 +14,7 @@
     "typescript": "^5.2.2"
   },
   "keywords": [
-    "simple",
+    "complex",
     "utils"
   ],
   "author": "MarAngle",
