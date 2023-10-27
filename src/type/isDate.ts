@@ -5,7 +5,7 @@ import getTag from './getTag'
  * @param {*} value 需要判断的数据
  * @returns {boolean} value is Date
  */
-function isDate(value: any): value is Date {
+function isDate(value: unknown): value is Date {
   return getTag(value) === '[object Date]'
 }
 

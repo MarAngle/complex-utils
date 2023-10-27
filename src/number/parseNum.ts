@@ -4,7 +4,7 @@
  * @param {*} value 需要解析的数据
  * @returns {[Number, Number]}
  */
-function parseNum(value: any): [number, number] {
+function parseNum(value: unknown): [number, number] {
   if (value) {
     const valueStr = typeof value === 'string' ? value : value.toString()
     const valueStrList = valueStr.split('.')

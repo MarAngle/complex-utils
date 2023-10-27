@@ -7,12 +7,7 @@ import localEncodeURIComponent from './localEncodeURIComponent'
  * @returns {string}
  */
 function formatQueryUrl(url: string, data: Record<PropertyKey, string>) {
-  const type = url.indexOf('?') > -1 ? 'extra' : 'init'
-  if (type == 'init') {
-    url += '?'
-  } else if (type == 'extra') {
-    url += '&'
-  }
+  url = url.indexOf('?') > -1 ? url += '&' : url += '?'
   for (const n in data) {
     url = url + n + '=' + localEncodeURIComponent(data[n])
     url += '&'

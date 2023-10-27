@@ -11,7 +11,7 @@ import formatNum from './formatNum'
 
 export type mathType = 'round' | 'floor' | 'ceil'
 
-function getNum(originNum: any, type: 'origin' | mathType = 'round', radix = 2, NANZERO = false) {
+function getNum(originNum: unknown, type: 'origin' | mathType = 'round', radix = 2, NANZERO = false) {
   let value = formatNum(originNum)
   if (isNaN(value) && NANZERO) {
     console.log('NAN is change to zero')

@@ -5,7 +5,7 @@ import getTag from './getTag'
  * @param {*} value 需要判断的数据
  * @returns {boolean} value is Symbol
  */
-function isSymbol(value: any): value is symbol {
+function isSymbol(value: unknown): value is symbol {
   return getTag(value) === '[object Symbol]' || typeof value === 'symbol'
 }
 

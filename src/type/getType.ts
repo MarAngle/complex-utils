@@ -7,7 +7,7 @@ export type SimpleType = "string" | "number" | "bigint" | "boolean" | "symbol" |
  * @param {*} value 需要获取类型的值
  * @returns {"string" | "number" | "bigint" | "boolean" | "symbol" | "undefined" | "object" | "function" | "array" | "null"}
  */
-function getType(value: any): SimpleType {
+function getType(value: unknown): SimpleType {
   const type = typeof (value)
   if (type === 'object') {
     if (isArray(value)) {

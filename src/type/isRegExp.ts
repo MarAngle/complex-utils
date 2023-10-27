@@ -5,7 +5,7 @@ import getTag from './getTag'
  * @param {*} value 需要判断的数据
  * @returns {boolean} value is RegExp
  */
-function isRegExp(value: any): value is RegExp {
+function isRegExp(value: unknown): value is RegExp {
   return getTag(value) === '[object RegExp]'
 }
 

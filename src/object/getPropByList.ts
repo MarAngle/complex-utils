@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /**
  * 根据属性列表获取对象属性
  * @param {object} value 对应对象

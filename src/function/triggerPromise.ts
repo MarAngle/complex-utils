@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import $exportMsg from '../utils/$exportMsg'
 import isPromise from './../type/isPromise'
 import triggerFunction from './triggerFunction'
@@ -31,7 +32,7 @@ function triggerPromise(promise: Promise<unknown>, {
 }: optionType = {}) {
   if (isPromise(promise)) {
     triggerFunction(start)
-    promise!.then(res => {
+    promise?.then(res => {
       triggerFunction(success, res)
       triggerFunction(finish, res)
     }, err => {

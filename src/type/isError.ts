@@ -5,7 +5,7 @@ import getTag from './getTag'
  * @param {*} value 需要判断的数据
  * @returns {boolean} value is Error
  */
-function isError(value: any): value is Error {
+function isError(value: unknown): value is Error {
   const tag = getTag(value)
   return tag === '[object Error]' || tag === '[object DOMException]'
 }

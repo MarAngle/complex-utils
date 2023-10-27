@@ -5,7 +5,7 @@ import getTag from './getTag'
  * @param {*} value 需要判断的数据
  * @returns {boolean} value is File
  */
-function isFile(value: any): value is File {
+function isFile(value: unknown): value is File {
   return getTag(value) === '[object File]'
 }
 

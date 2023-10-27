@@ -6,12 +6,12 @@ import getType from './getType'
  * @param {string} type 类型
  * @returns {boolean} value is EmptyObject
  */
-function isEmptyObject(value: any, type?: string): value is Record<string, never> {
+function isEmptyObject(value: unknown, type?: string): value is Record<string, never> {
   if (!type) {
     type = getType(value)
   }
   if (type === 'object') {
-    for (const n in value) {
+    for (const n in value as Record<PropertyKey, unknown>) {
       return false
     }
     return true

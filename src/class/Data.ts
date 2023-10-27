@@ -1,4 +1,4 @@
-import exportMsg, { consoleType, exportOption } from '../utils/exportMsg'
+import exportMsg, { consoleType } from '../utils/exportMsg'
 
 class Data {
   static $name = 'Data'
@@ -7,6 +7,7 @@ class Data {
    * @returns {string}
    */
   $getConstructorName(): string {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     return (this.constructor as any).$name
   }
   $getName() {
@@ -26,8 +27,8 @@ class Data {
    * @param {string} type 类型
    * @param {object} [option] 额外信息
    */
-  $exportMsg(content: string, type: consoleType = 'error', option?: exportOption) {
-    exportMsg(this.$createMsg(content), type, option)
+  $exportMsg(content: string, type: consoleType = 'error') {
+    exportMsg(this.$createMsg(content), type)
   }
   /**
    * toString方法改写

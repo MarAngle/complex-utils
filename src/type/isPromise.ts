@@ -6,13 +6,14 @@ import getType from './getType'
  * @param {*} value 需要判断的数据
  * @returns {boolean} value is Promise对象
  */
-function isPromise(value: any): value is Promise<any> {
+function isPromise(value: unknown): value is Promise<unknown> {
   if (getTag(value) === '[object Promise]') {
     return true
   }
   const type = getType(value)
   if (type === 'object' || type === 'function') {
-    return typeof value.then === 'function'
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    return typeof (value as any).then === 'function'
   }
   return false
 }

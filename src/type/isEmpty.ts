@@ -1,7 +1,8 @@
-import config from '../../config'
 import getType from './getType'
 import isEmptyArray from './isEmptyArray'
 import isEmptyObject from './isEmptyObject'
+
+type emptyCheckList = 'object' | 'array'
 
 const dict = {
   object: isEmptyObject,
@@ -14,17 +15,17 @@ const dict = {
  * @param {string[]} [checkList] 需要深入判断的数据类型，对象和数组可选
  * @returns {boolean} value is Empty
  */
-function isEmpty(value: any, checkList?: string[]) {
+function isEmpty(value: unknown, checkList?: emptyCheckList[]) {
   if (!value) {
     // undefined null '' 0 false
     return true
   } else {
     if (!checkList) {
-      checkList = config.type.emptyCheckList
+      checkList = ['object', 'array']
     }
     const type = getType(value)
-    if (checkList.indexOf(type) > -1 && (dict as any)[type]) {
-      return (dict as any)[type](value, type)
+    if (checkList.indexOf(type as emptyCheckList) > -1 && dict[type as emptyCheckList]) {
+      return dict[type as emptyCheckList](value, type)
     } else {
       return false
     }

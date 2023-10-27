@@ -16,6 +16,7 @@ function openAnchor(url: string, download: string | true = true, target = '_blan
   }
   if (isSupportDownload && download) {
     if (download === true) {
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       download = url.split('/').pop()!
     }
     anchor.setAttribute('download', download)

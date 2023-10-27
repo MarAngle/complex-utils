@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
 type formatType = (originItem: Record<PropertyKey, any>) => Record<PropertyKey, any>
 
@@ -56,7 +57,7 @@ export class MapData {
       this.assignItem(id, parentId, originData)
     }
   }
-  assignItem(id: PropertyKey, parentId: any, originData: Record<PropertyKey, any>) {
+  assignItem(id: PropertyKey, parentId: PropertyKey, originData: Record<PropertyKey, any>) {
     const targetItem = this.$assignItem(id, originData)
     this.$appendItem(targetItem, parentId)
   }

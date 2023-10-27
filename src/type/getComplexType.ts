@@ -8,7 +8,7 @@ export type ComplexType = SimpleType | "file" | "blob" | "regExp" | "date"
  * @param {*} value 需要获取类型的值
  * @returns {"string" | "number" | "bigint" | "boolean" | "symbol" | "undefined" | "object" | "function" | "null" | "array" | "file" | "blob" | "regExp" | "date"}
  */
-function getComplexType(value: any): ComplexType {
+function getComplexType(value: unknown): ComplexType {
   const type = getType (value)
   if (type === 'object') {
     const tag = getTag(value)

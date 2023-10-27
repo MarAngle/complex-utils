@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /**
  * 指定对象/FormData添加属性
  * @param {object | FormData} data 需要添加属性的对象
@@ -7,9 +8,9 @@
  */
 function appendProp(data: Record<string, any> | FormData, propName: string, propData: any, type: 'json' | 'form' = 'json') {
   if (type === 'json') {
-    (<Record<string, any>>data)[propName] = propData
+    (data as Record<string, any>)[propName] = propData
   } else if (type === 'form') {
-    (<FormData>data).set(propName, propData)
+    (data as FormData).set(propName, propData)
   }
 }
 

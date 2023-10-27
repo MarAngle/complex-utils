@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import getType from '../type/getType'
 import isExist from '../type/isExist'
 import hasProp from './hasProp'

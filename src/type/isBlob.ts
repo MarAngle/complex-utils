@@ -5,7 +5,7 @@ import getTag from './getTag'
  * @param {*} value 需要判断的数据
  * @returns {boolean} value is Blob
  */
-function isBlob(value: any): value is Blob {
+function isBlob(value: unknown): value is Blob {
   return getTag(value) === '[object Blob]'
 }
 

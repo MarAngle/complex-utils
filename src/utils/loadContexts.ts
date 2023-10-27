@@ -1,5 +1,6 @@
 import triggerFunc from '../function/triggerFunction'
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 type fnType = (mod: any, path:string, index: number) => void
 
 /**

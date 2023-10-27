@@ -9,7 +9,8 @@ import parseNum from './parseNum'
  * @param {boolean} NANZERO NAN是否格式化为0
  * @returns {number}
  */
-function getPreciseNum(originNum: any, type: mathType = 'round', radix = 2, NANZERO = false) {
+function getPreciseNum(originNum: unknown, type: mathType = 'round', radix = 2, NANZERO = false) {
+  // eslint-disable-next-line prefer-const
   let [integer, decimal] = parseNum(originNum)
   if (isNaN(integer) || isNaN(decimal)) {
     if (NANZERO) {

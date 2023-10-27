@@ -5,6 +5,7 @@ import getComplexType from './../type/getComplexType'
  * @param {object} jsonData 对象
  * @returns {FormData}
  */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 function jsonToForm(jsonData: Record<PropertyKey, any>): FormData {
   const formData = new FormData()
   for (const prop in jsonData) {

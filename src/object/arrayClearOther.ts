@@ -5,7 +5,7 @@
  * @param {*} index 清理到index
  * @param {*} startIndex 开始清理的startIndex
  */
-function arrayClearOther(list: any[], index: number, startIndex = 0) {
+function arrayClearOther(list: unknown[], index: number, startIndex = 0) {
   if (list.length - 1 >= index) {
     // 删除index + 1到结束
     let endIndex = index + 1

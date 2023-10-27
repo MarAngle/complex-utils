@@ -5,6 +5,7 @@ function $getLocalProp(name: string) {
 }
 
 function $buildSetLocalData(storage: Storage) {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   return function(name: string, value?: any) {
     name = $getLocalProp(name)
     const localData = {

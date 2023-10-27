@@ -1,4 +1,4 @@
-import getType from './getType'
+import isArray from './isArray'
 
 /**
  * 判断值是否是空数组
@@ -6,12 +6,9 @@ import getType from './getType'
  * @param {string} type 类型
  * @returns {boolean} value is EmptyArray
  */
-function isEmptyArray(value: any, type?: string): value is [] {
-  if (!type) {
-    type = getType(value)
-  }
-  if (type === 'array') {
-    return value.length === 0
+function isEmptyArray(value: unknown, type?: string): value is [] {
+  if (type === 'array' || isArray(value)) {
+    return (value as unknown[]).length === 0
   } else {
     return false
   }

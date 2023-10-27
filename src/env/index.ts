@@ -15,7 +15,7 @@ const option = {
   mode: {
     data: '',
     real: ''
-  } as Record<PropertyKey, any>,
+  } as Record<PropertyKey, unknown>,
   change: new LifeData('change')
 }
 
@@ -49,7 +49,7 @@ export function getEnv(prop = 'data') {
  * @param {*} data 环境数据
  * @param {'data' | 'real'} prop 环境数据属性值,data为当前环境数据,real为当前真实的环境数据
  */
-export function setEnvMode(data: any, prop = 'data', unTriggerChange?: boolean) {
+export function setEnvMode(data: unknown, prop = 'data', unTriggerChange?: boolean) {
   option.mode[prop] = data
   if (!unTriggerChange) {
     option.change.trigger('mode')
@@ -67,22 +67,19 @@ export function getEnvMode(prop = 'data') {
 /**
  * 真实环境为目标环境下数据变更函数
  */
-export function resetEnvData(fn: (...args:any[]) => any, { env, info, args }: { env?: string,  info?: string, args?: any[] } = {}) {
+export function resetEnvData(fn: () => void, { env, info }: { env?: string,  info?: string } = {}) {
   // 真实环境为目标环境时触发操作
   if (!env) {
     env = 'development'
   }
   if (getEnv('real') === env) {
-    $exportMsg(`resetEnvData:当前真实环境为${getEnv('real')}，触发目标环境为${env}的函数！`)
+    let msg = `[resetEnvData:触发目标真实环境为${env}的数据变更！]`
     if (info) {
-      $exportMsg(info)
+      msg += info
     }
+    $exportMsg(msg)
     if (fn) {
-      if (args) {
-        return fn(...args)
-      } else {
-        return fn()
-      }
+      return fn()
     }
   }
 }

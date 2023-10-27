@@ -7,7 +7,7 @@ const toString = Object.prototype.toString
  * @param {*} value The value to query.
  * @returns {string} Returns the `toStringTag`.
  */
-function getTag(value: any) {
+function getTag(value: unknown) {
   return toString.call(value)
 }
 

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /**
  * 触发可能存在的函数
  * @param {*} func 函数

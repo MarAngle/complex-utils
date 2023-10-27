@@ -6,7 +6,7 @@ const hasOwnProperty = Object.prototype.hasOwnProperty
  * @param {string} prop 属性
  * @returns value has prop
  */
-function hasProp(value: Record<PropertyKey, any>, prop: string): boolean {
+function hasProp(value: Record<PropertyKey, unknown>, prop: string): boolean {
   if (value[prop] === undefined) {
     if (!hasOwnProperty.call(value, prop)) {
       for (const n in value) {

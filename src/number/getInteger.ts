@@ -5,7 +5,7 @@ import parseNum from './parseNum'
  * @param {*} value 需要解析的数字
  * @returns {Number}
  */
-function getInteger(value: any): number {
+function getInteger(value: unknown): number {
   return parseNum(value)[0]
 }
 

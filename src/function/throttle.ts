@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
 /**
  * @desc 函数节流，就是指连续触发事件但是在 n 秒中只执行一次函数。 节流会稀释函数的执行频率
@@ -17,7 +18,7 @@ function throttle(func: (...args:any[]) => any, wait: number, type: 'immediate' 
       }
     }
   } else {
-    let timeout: undefined | number
+    let timeout: any
     return function(this: any, ...args: any[]) {
       const context = this
       if (!timeout) {

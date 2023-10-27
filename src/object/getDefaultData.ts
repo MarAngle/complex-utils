@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import isExist from './../type/isExist'
 
 /**
@@ -9,7 +10,7 @@ import isExist from './../type/isExist'
  * @param {*[]} [unExistList] 不存在列表
  * @returns {*}
  */
-function getDefaultData(value: any, prop: string, defaultData?: any, existList?: any[], unExistList?: any[]) {
+function getDefaultData(value: undefined | null | Record<PropertyKey, any>, prop: PropertyKey, defaultData?: any, existList?: any[], unExistList?: any[]) {
   if (value && isExist(value[prop], existList, unExistList)) {
     return value[prop]
   } else {

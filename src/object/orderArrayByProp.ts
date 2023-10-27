@@ -6,7 +6,7 @@ import getProp from './getProp'
  * @param {string} prop 对比属性
  * @param {*[]} ruleList 对比属性值列表
  */
-function orderArrayByProp(list: Record<PropertyKey, any>[], prop: string, ruleList: any[]) {
+function orderArrayByProp(list: Record<PropertyKey, unknown>[], prop: string, ruleList: unknown[]) {
   for (let i = 0; i < ruleList.length; i++) {
     const ruleData = ruleList[i]
     for (let n = i; n < list.length; n++) {

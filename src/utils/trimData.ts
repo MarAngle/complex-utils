@@ -5,10 +5,10 @@ import getType from './../type/getType'
  * @param {*} data
  * @returns {*}
  */
-function trimData(data: any) {
+function trimData(data: unknown) {
   const type = getType(data)
-  if (type == 'string') {
-    data = data.trim()
+  if (type === 'string') {
+    data = (data as string).trim()
   }
   return data
 }

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { ComplexType } from '../type/getComplexType'
 import formatDataByType from './formatDataByType'
 import setProp from './setProp'

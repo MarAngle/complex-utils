@@ -8,6 +8,7 @@ import getPropByList from './getPropByList'
  * @param {boolean} [showError] 显示错误输出
  * @returns
  */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 function getProp(value: undefined | Record<PropertyKey, any>, prop: string, intervalRepeat = false, showError?: boolean) {
   if (!value || !prop) {
     return undefined
