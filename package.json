@@ -1,7 +1,7 @@
 {
   "name": "complex-utils-next",
-  "version": "2.0.2",
-  "description": "a complex utils-next",
+  "version": "2.0.3",
+  "description": "a complex utils",
   "main": "index.ts",
   "repository": {
     "type": "git",

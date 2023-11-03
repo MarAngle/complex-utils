@@ -42,6 +42,13 @@ import setPropByList from './src/object/setPropByList'
 import setPropByType from './src/object/setPropByType'
 import showArrayProp from './src/object/showArrayProp'
 
+// observe加载
+import observe from './src/observe/observe'
+import Watcher from './src/observe/Watcher'
+
+// reactive加载
+import defineReactive from './src/reactive/defineReactive'
+
 // string加载
 import fillString from './src/string/fillString'
 import findTargetInStr from './src/string/findTargetInStr'
@@ -143,6 +150,13 @@ export {
   setPropByList,
   setPropByType,
   showArrayProp,
+  
+  // observe
+  observe,
+  Watcher,
+  
+  // reactive
+  defineReactive,
   
   // string
   fillString,
