@@ -4,3 +4,7 @@
 
 ### 2.0.3
 - 添加observe/reactive模块
+
+### 2.0.4
+- 简化setProp/getProp函数
+- 添加setComplexProp/getComplexProp函数

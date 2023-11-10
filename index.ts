@@ -31,6 +31,7 @@ import formatDataByType from './src/object/formatDataByType'
 import formatTree from './src/object/formatTree'
 import getDefaultData from './src/object/getDefaultData'
 import getProp from './src/object/getProp'
+import getComplexProp from './src/object/getComplexProp'
 import getPropByList from './src/object/getPropByList'
 import hasProp from './src/object/hasProp'
 import jsonToForm from './src/object/jsonToForm'
@@ -38,6 +39,7 @@ import orderArrayByProp from './src/object/orderArrayByProp'
 import setDataByDefault from './src/object/setDataByDefault'
 import setDefaultData from './src/object/setDefaultData'
 import setProp from './src/object/setProp'
+import setComplexProp from './src/object/setComplexProp'
 import setPropByList from './src/object/setPropByList'
 import setPropByType from './src/object/setPropByType'
 import showArrayProp from './src/object/showArrayProp'
@@ -140,6 +142,7 @@ export {
   formatTree,
   getDefaultData,
   getProp,
+  getComplexProp,
   getPropByList,
   hasProp,
   jsonToForm,
@@ -147,6 +150,7 @@ export {
   setDataByDefault,
   setDefaultData,
   setProp,
+  setComplexProp,
   setPropByList,
   setPropByType,
   showArrayProp,

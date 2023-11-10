@@ -1,39 +1,15 @@
 import getPropByList from './getPropByList'
 
 /**
- * 根据'mainprop.prop'格式字符串获取对象值
+ * 根据'mainprop.prop'格式字符串获取对象值 // 此函数认为targetData和prop必然存在，不做单独校验
  * @param {object} value 对应对象
  * @param {string} prop 对应属性
- * @param {boolean} [intervalRepeat] 分隔符.重复判断值, 默认为否;为真时连续.会全部删除,为否时连续和开始结束分隔符会保留,此时.视为属性,.a直接取[.a],a..b取[.a][.b],理论上无法对[a.]取值
  * @param {boolean} [showError] 显示错误输出
  * @returns
  */
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-function getProp(value: undefined | Record<PropertyKey, any>, prop: string, intervalRepeat = false, showError?: boolean) {
-  if (!value || !prop) {
-    return undefined
-  } else {
-    const interval = '.'
-    const originPropList = prop.split(interval)
-    const propList = []
-    let lastEmpty = 0
-    for (let n = 0; n < originPropList.length; n++) {
-      let originProp = originPropList[n]
-      if (originProp) {
-        if (lastEmpty && !intervalRepeat) {
-          originProp = interval.repeat(lastEmpty) + originProp
-          lastEmpty = 0
-        }
-        propList.push(originProp)
-      } else {
-        lastEmpty++
-      }
-    }
-    if (lastEmpty) {
-      propList.push(interval.repeat(lastEmpty))
-    }
-    return getPropByList(value, propList, showError)
-  }
+function getProp(value: Record<PropertyKey, unknown>, prop: string, showError?: boolean) {
+  const propList = prop.indexOf('.') > -1 ? prop.split('.') : [prop]
+  return getPropByList(value, propList, showError)
 }
 
 export default getProp
