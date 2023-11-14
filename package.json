@@ -1,11 +1,11 @@
 {
-  "name": "complex-utils-next",
+  "name": "complex-utils",
   "version": "2.0.4",
   "description": "a complex utils",
   "main": "index.ts",
   "repository": {
     "type": "git",
-    "url": "https://github.com/MarAngle/complex-utils-next.git"
+    "url": "https://github.com/MarAngle/complex-utils.git"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
