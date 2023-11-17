@@ -3,6 +3,9 @@ import Data from './src/class/Data'
 import Life from './src/class/Life'
 import Limit from './src/class/Limit'
 
+// env加载
+import { getEnv, setEnv, getEnvMode, setEnvMode, resetEnvData, onEnvChange } from './src/env/index'
+
 // function加载
 import triggerFunction from './src/function/triggerFunction'
 import triggerPromise from './src/function/triggerPromise'
@@ -108,6 +111,14 @@ export {
   Data,
   Limit,
   Life,
+
+  // env
+  getEnv,
+  setEnv,
+  getEnvMode,
+  setEnvMode,
+  resetEnvData,
+  onEnvChange,
 
   // function
   triggerFunction,
