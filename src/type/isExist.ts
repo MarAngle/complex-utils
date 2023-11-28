@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import config from '../../config';
 import isSame from './isSame';
 
@@ -9,7 +8,7 @@ import isSame from './isSame';
  * @param {*[]} [unExistList] 为真但是需要判断为不存在的值数组，默认为[]
  * @returns {boolean}
  */
-function isExist(value: unknown, existList?: any[], unExistList?: any[]) {
+function isExist(value: unknown, existList?: unknown[], unExistList?: unknown[]) {
   if (value) {
     if (unExistList) {
       for (let i = 0; i < unExistList.length; i++) {

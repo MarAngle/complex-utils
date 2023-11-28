@@ -26,6 +26,17 @@ export interface LifeDataType {
   once?: boolean
 }
 
+export interface DataWithLife {
+  $life: Life
+  $onLife: Life['on']
+  $emitLife: Life['emit']
+  $offLife: Life['off']
+  $triggerLife: Life['trigger']
+  $clearLife: Life['clear']
+  $resetLife: () => void
+  $destroyLife: () => void
+}
+
 export class LifeData extends Data {
   name: string
   data: Map<PropertyKey, LifeDataType>

@@ -1,5 +1,6 @@
 import { LifeData } from "../class/Life"
 import $exportMsg from "../utils/$exportMsg"
+import { consoleType } from "../utils/exportMsg"
 
 declare const process: {
   env?: {
@@ -67,20 +68,11 @@ export function getEnvMode(prop = 'data') {
 /**
  * 真实环境为目标环境下数据变更函数
  */
-export function resetEnvData(fn: () => void, { env, info }: { env?: string,  info?: string } = {}) {
+export function resetEnvData(fn: () => void, info?: string, type?: consoleType, env = 'development') {
   // 真实环境为目标环境时触发操作
-  if (!env) {
-    env = 'development'
-  }
   if (getEnv('real') === env) {
-    let msg = `[resetEnvData:触发目标真实环境为${env}的数据变更！]`
-    if (info) {
-      msg += info
-    }
-    $exportMsg(msg)
-    if (fn) {
-      return fn()
-    }
+    $exportMsg(`[resetEnvData:触发目标真实环境为${env}的数据变更！][${info || '-'}]`, type)
+    return fn()
   }
 }
 

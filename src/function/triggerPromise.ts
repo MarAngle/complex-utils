@@ -1,16 +1,15 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import $exportMsg from '../utils/$exportMsg'
 import isPromise from './../type/isPromise'
 import triggerFunction from './triggerFunction'
 
-type callback = (data?: any) => any
+type callback = (data?: unknown) => unknown
 
 export type optionType = {
-  error?: callback,
-  start?: callback,
-  success?: callback,
-  fail?: callback,
-  finish?: callback,
+  error?: callback
+  start?: callback
+  success?: callback
+  fail?: callback
+  finish?: callback
 }
 
 /**
