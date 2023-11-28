@@ -1,5 +1,5 @@
 
-### 2.0.6
+### 2.0.6/7
 - 实现接口-DataWithLife
 - 优化resetEnvData函数
 - 类型优化：减少any

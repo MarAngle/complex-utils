@@ -33,8 +33,8 @@ export interface DataWithLife {
   $offLife: Life['off']
   $triggerLife: Life['trigger']
   $clearLife: Life['clear']
-  $resetLife: () => void
-  $destroyLife: () => void
+  $resetLife?: () => void
+  $destroyLife?: () => void
 }
 
 export class LifeData extends Data {
