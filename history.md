@@ -1,6 +1,6 @@
 
 ### 2.0.8
-- 不兼容:getDefaultData=>getDefaultValue/setDefaultData=>setDefaultValue
+- 非兼容性更新:getDefaultData=>getDefaultValue/setDefaultData=>setDefaultValue
 - 添加mergeData/updateData
 
 ### 2.0.6/7
