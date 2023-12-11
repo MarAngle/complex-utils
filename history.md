@@ -1,4 +1,8 @@
 
+### 2.0.8
+- 不兼容:getDefaultData=>getDefaultValue/setDefaultData=>setDefaultValue
+- 添加mergeData/updateData
+
 ### 2.0.6/7
 - 实现接口-DataWithLife
 - 优化resetEnvData函数

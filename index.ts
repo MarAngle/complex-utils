@@ -32,20 +32,22 @@ import deepClone from './src/object/deepClone'
 import deepCloneData from './src/object/deepCloneData'
 import formatDataByType from './src/object/formatDataByType'
 import formatTree from './src/object/formatTree'
-import getDefaultData from './src/object/getDefaultData'
+import getDefaultValue from './src/object/getDefaultValue'
 import getProp from './src/object/getProp'
 import getComplexProp from './src/object/getComplexProp'
 import getPropByList from './src/object/getPropByList'
 import hasProp from './src/object/hasProp'
 import jsonToForm from './src/object/jsonToForm'
+import mergeData from './src/object/mergeData'
 import orderArrayByProp from './src/object/orderArrayByProp'
 import setDataByDefault from './src/object/setDataByDefault'
-import setDefaultData from './src/object/setDefaultData'
+import setDefaultValue from './src/object/setDefaultValue'
 import setProp from './src/object/setProp'
 import setComplexProp from './src/object/setComplexProp'
 import setPropByList from './src/object/setPropByList'
 import setPropByType from './src/object/setPropByType'
 import showArrayProp from './src/object/showArrayProp'
+import updateData from './src/object/updateData'
 
 // observe加载
 import observe from './src/observe/observe'
@@ -151,20 +153,22 @@ export {
   deepCloneData,
   formatDataByType,
   formatTree,
-  getDefaultData,
+  getDefaultValue,
   getProp,
   getComplexProp,
   getPropByList,
   hasProp,
   jsonToForm,
+  mergeData,
   orderArrayByProp,
   setDataByDefault,
-  setDefaultData,
+  setDefaultValue,
   setProp,
   setComplexProp,
   setPropByList,
   setPropByType,
   showArrayProp,
+  updateData,
   
   // observe
   observe,
