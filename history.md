@@ -1,6 +1,7 @@
 
-### 2.0.9
+### 2.0.9/10
 - 修正triggerFunction的类型
+- 删除env的默认process取值
 
 ### 2.0.8
 - 非兼容性更新:getDefaultData=>getDefaultValue/setDefaultData=>setDefaultValue

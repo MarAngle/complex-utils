@@ -2,12 +2,6 @@ import { LifeData } from "../class/Life"
 import $exportMsg from "../utils/$exportMsg"
 import { consoleType } from "../utils/exportMsg"
 
-declare const process: {
-  env?: {
-    NODE_ENV?: string
-  }
-}
-
 const option = {
   env: {
     data: '',
@@ -18,11 +12,6 @@ const option = {
     real: ''
   } as Record<PropertyKey, unknown>,
   change: new LifeData('change')
-}
-
-if (process && process.env && process.env.NODE_ENV) {
-  option.env.data = process.env.NODE_ENV
-  option.env.real = process.env.NODE_ENV
 }
 
 /**
