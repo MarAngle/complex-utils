@@ -7,8 +7,7 @@ class Data {
    * @returns {string}
    */
   $getConstructorName(): string {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    return (this.constructor as any).$name
+    return (this.constructor as typeof Data).$name
   }
   $getName() {
     return this.$getConstructorName()

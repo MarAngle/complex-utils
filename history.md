@@ -1,4 +1,7 @@
 
+### 2.0.9
+- 修正triggerFunction的类型
+
 ### 2.0.8
 - 非兼容性更新:getDefaultData=>getDefaultValue/setDefaultData=>setDefaultValue
 - 添加mergeData/updateData
