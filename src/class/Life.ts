@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import Data from './Data'
+import UtilsData from './UtilsData'
 import isArray from '../type/isArray'
 
 let lifeId = 1
@@ -37,7 +37,8 @@ export interface DataWithLife {
   $destroyLife?: () => void
 }
 
-export class LifeData extends Data {
+export class LifeData extends UtilsData {
+  static $name = 'LifeData'
   name: string
   data: Map<PropertyKey, LifeDataType>
   constructor(name: string, data?: LifeDataInitType | LifeDataInitType[]) {
@@ -161,7 +162,7 @@ export interface LifeInitOption {
   [prop: string]: LifeDataInitType | LifeDataInitType[]
 }
 
-class Life extends Data {
+class Life extends UtilsData {
   static $name = 'Life'
   data: Map<string, LifeData>
   constructor (initOption: LifeInitOption = {}) {

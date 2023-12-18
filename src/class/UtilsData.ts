@@ -1,13 +1,21 @@
 import exportMsg, { consoleType } from '../utils/exportMsg'
 
-class Data {
-  static $name = 'Data'
+class UtilsData {
+  static $name = 'UtilsData'
+  static $formatConfig: unknown = undefined // 不通过通用格式化函数格式化实例判断值
+  static $format: (null | ((data: UtilsData, formatOption: unknown) => UtilsData)) = null // 格式化函数格式化实例,constructor指向最终的类，通过原型链逻辑匹配
+  constructor() {
+    const $constructor = (this.constructor as typeof UtilsData)
+    if ($constructor.$format) {
+      return $constructor.$format(this, $constructor.$formatConfig)
+    }
+  }
   /**
    * 获取类实例名称
    * @returns {string}
    */
   $getConstructorName(): string {
-    return (this.constructor as typeof Data).$name
+    return (this.constructor as typeof UtilsData).$name
   }
   $getName() {
     return this.$getConstructorName()
@@ -38,4 +46,4 @@ class Data {
   }
 }
 
-export default Data
+export default UtilsData
