@@ -1,9 +1,16 @@
 import exportMsg, { consoleType } from '../utils/exportMsg'
 
+export type formatConfigType = {
+  name?: string
+  level: number
+  recommend: boolean
+  [prop: string]: undefined | boolean | string | number
+}
+
 class UtilsData {
   static $name = 'UtilsData'
-  static $formatConfig: unknown = undefined // 不通过通用格式化函数格式化实例判断值
-  static $format: (null | ((data: UtilsData, formatOption: unknown) => UtilsData)) = null // 格式化函数格式化实例,constructor指向最终的类，通过原型链逻辑匹配
+  static $formatConfig: formatConfigType = { level: 10, recommend: false } // 不通过通用格式化函数格式化实例判断值
+  static $format: (null | ((data: UtilsData, formatOption: formatConfigType) => UtilsData)) = null // 格式化函数格式化实例,constructor指向最终的类，通过原型链逻辑匹配
   constructor() {
     const $constructor = (this.constructor as typeof UtilsData)
     if ($constructor.$format) {

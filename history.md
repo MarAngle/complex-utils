@@ -1,8 +1,9 @@
 
-### 2.0.11/12
+### 2.0.11/12/13
 - 非兼容性更新:删除setDataByDefault函数，需要可通过deepClone+mergeData实现
 - 非兼容性更新:Data => UtilsData
 - UtilsData初始化时添加格式化函数
+- 扩展格式化函数的参数，添加级别和推荐值
 
 ### 2.0.9/10
 - 修正triggerFunction的类型
