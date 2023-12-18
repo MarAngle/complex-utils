@@ -40,7 +40,6 @@ import hasProp from './src/object/hasProp'
 import jsonToForm from './src/object/jsonToForm'
 import mergeData from './src/object/mergeData'
 import orderArrayByProp from './src/object/orderArrayByProp'
-import setDataByDefault from './src/object/setDataByDefault'
 import setDefaultValue from './src/object/setDefaultValue'
 import setProp from './src/object/setProp'
 import setComplexProp from './src/object/setComplexProp'
@@ -161,7 +160,6 @@ export {
   jsonToForm,
   mergeData,
   orderArrayByProp,
-  setDataByDefault,
   setDefaultValue,
   setProp,
   setComplexProp,

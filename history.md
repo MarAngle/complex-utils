@@ -1,4 +1,7 @@
 
+### 2.0.11
+- 非兼容性更新:删除setDataByDefault函数，需要可通过deepClone+mergeData实现
+
 ### 2.0.9/10
 - 修正triggerFunction的类型
 - 删除env的默认process取值
