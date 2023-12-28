@@ -1,4 +1,7 @@
 
+### 2.0.14
+- 添加camelToUnderline/underlinetoCamel函数
+
 ### 2.0.11/12/13
 - 非兼容性更新:删除setDataByDefault函数，需要可通过deepClone+mergeData实现
 - 非兼容性更新:Data => UtilsData

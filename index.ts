@@ -56,11 +56,13 @@ import Watcher from './src/observe/Watcher'
 import defineReactive from './src/reactive/defineReactive'
 
 // string加载
+import camelToUnderline from './src/string/camelToUnderline'
 import fillString from './src/string/fillString'
 import findTargetInStr from './src/string/findTargetInStr'
 import getRandomData from './src/string/getRandomData'
 import getRandomInList from './src/string/getRandomInList'
 import getRandomLetter from './src/string/getRandomLetter'
+import underlinetoCamel from './src/string/underlinetoCamel'
 import upperCaseFirstChar from './src/string/upperCaseFirstChar'
 
 // type加载
@@ -176,11 +178,13 @@ export {
   defineReactive,
   
   // string
+  camelToUnderline,
   fillString,
   findTargetInStr,
   getRandomData,
   getRandomInList,
   getRandomLetter,
+  underlinetoCamel,
   upperCaseFirstChar,
 
   // type
