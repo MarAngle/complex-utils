@@ -1,4 +1,7 @@
 
+### 2.1.0
+- 稳定版本
+
 ### 2.0.14
 - 添加camelToUnderline/underlinetoCamel函数
 

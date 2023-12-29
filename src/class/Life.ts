@@ -28,13 +28,13 @@ export interface LifeDataType {
 
 export interface DataWithLife {
   $life: Life
-  $onLife: Life['on']
-  $emitLife: Life['emit']
-  $offLife: Life['off']
-  $triggerLife: Life['trigger']
-  $clearLife: Life['clear']
-  $resetLife?: () => void
-  $destroyLife?: () => void
+  onLife: Life['on']
+  emitLife: Life['emit']
+  offLife: Life['off']
+  triggerLife: Life['trigger']
+  clearLife: Life['clear']
+  resetLife?: () => void
+  destroyLife?: () => void
 }
 
 export class LifeData extends UtilsData {
