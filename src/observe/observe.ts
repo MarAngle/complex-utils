@@ -1,3 +1,4 @@
+import getComplexType from "../type/getComplexType"
 import Observer, { oberveProp, observeObject } from "./data/Observer"
 
 /**
@@ -17,7 +18,7 @@ const hasOwnProperty = Object.prototype.hasOwnProperty
  * @returns {Observer}
  */
 function observe(value: unknown) {
-  if (typeof value !== 'object' || value === null) {
+  if (getComplexType(value) !== 'object') {
     return
   }
   let ob: Observer

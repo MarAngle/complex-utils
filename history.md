@@ -1,4 +1,8 @@
 
+### 2.1.1
+- 非兼容性更新:camelToUnderline/underlinetoCamel=>camelToLine/linetoCamel
+- observe不对File/Blob等特殊类型进行响应式构建
+
 ### 2.1.0
 - 稳定版本
 
