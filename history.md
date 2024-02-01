@@ -1,4 +1,8 @@
 
+### 2.1.2
+- 非兼容性更新:getRandomNum的第二个参数由之前的size长度修正为end结束值,调用逻辑简单明了
+- formatConfig添加module判断值判断是否是模块
+
 ### 2.1.1
 - 非兼容性更新:camelToUnderline/underlinetoCamel=>camelToLine/linetoCamel
 - observe不对File/Blob等特殊类型进行响应式构建

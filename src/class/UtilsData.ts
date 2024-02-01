@@ -1,9 +1,10 @@
 import exportMsg, { consoleType } from '../utils/exportMsg'
 
 export type formatConfigType = {
-  name?: string
-  level: number
-  recommend: boolean
+  name?: string // 模块名称
+  level: number // 响应式等级
+  recommend: boolean // 是否推荐响应式
+  module?: boolean // 是否为模块
   [prop: string]: undefined | boolean | string | number
 }
 
