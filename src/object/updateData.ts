@@ -3,7 +3,7 @@ import isComplex from "../type/isComplex"
 
 export type updateDataValueType = Record<PropertyKey, unknown> | unknown[]
 
-function updateData<R extends updateDataValueType = updateDataValueType>(targetData: R, originData?: updateDataValueType): R {
+function updateData<T extends updateDataValueType = updateDataValueType, O extends updateDataValueType = updateDataValueType>(targetData: T, originData?: O): T & O {
   if (originData) {
     for (const prop in originData) {
       if (targetData[prop] === undefined) {
@@ -29,7 +29,7 @@ function updateData<R extends updateDataValueType = updateDataValueType>(targetD
       }
     }
   }
-  return targetData
+  return targetData as T & O
 }
 
 export default updateData

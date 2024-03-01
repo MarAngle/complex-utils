@@ -6,8 +6,7 @@
  * @returns {number}
  */
 function getRandomNum(start = 0, end = 10) {
-  const size = end - start + 1
-  return start + Math.floor(Math.random() * size)
+  return start + Math.floor(Math.random() * (end - start + 1))
 }
 
 export default getRandomNum
