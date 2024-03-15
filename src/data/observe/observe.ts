@@ -1,3 +1,4 @@
+import getType from '../type/getType'
 import { OBNAME } from './data/config'
 import Observer from './data/Observer'
 
@@ -9,7 +10,7 @@ const hasOwnProperty = Object.prototype.hasOwnProperty
  * @returns {Observer}
  */
 function observe(value: any) {
-  if (typeof value !== 'object' || value === null) {
+  if (getType(value, true) !== 'object') {
     return
   }
   let ob
