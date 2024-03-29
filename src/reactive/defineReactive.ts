@@ -1,3 +1,4 @@
+import getComplexType from '../type/getComplexType'
 import $exportMsg from '../utils/$exportMsg'
 
 export type defineReactiveOptionType = {
@@ -20,7 +21,7 @@ export type defineReactiveOptionType = {
  * @returns {boolean} 是否设置成功
  */
 function defineReactive(obj: Record<PropertyKey, unknown>, prop: string, option: defineReactiveOptionType, val?: unknown) {
-  if (typeof obj != 'object') {
+  if (getComplexType(obj) != 'object') {
     $exportMsg('defineReactive函数错误，obj需要对象格式')
     return false
   }

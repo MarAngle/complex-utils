@@ -22,19 +22,23 @@ function $buildSetLocalData(storage: Storage) {
 }
 
 function $buildGetLocalData(storage: Storage) {
-  return function(name: string, time?: number, refresh?: boolean) {
+  return function(name: string, time?: true | number, refresh?: boolean) {
     name = $getLocalProp(name)
     const localDataStr = storage.getItem(name)
     if (localDataStr) {
       try {
         const localData = JSON.parse(localDataStr)
-        if (time && (Date.now() - localData.time) > time * 1000) {
+        if (time && time !== true && (Date.now() - localData.time) > time * 1000) {
           localData.value = undefined
         }
         if (refresh) {
           setLocalData(name, localData.value)
         }
-        return localData.value
+        if (time !== true) {
+          return localData.value
+        } else {
+          return localData
+        }
       } catch (err) {
         return undefined
       }

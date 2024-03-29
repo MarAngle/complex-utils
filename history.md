@@ -1,4 +1,8 @@
 
+### 2.1.4
+- defineReactive优化
+- getLocalData优化
+
 ### 2.1.3
 - 类型优化
 
