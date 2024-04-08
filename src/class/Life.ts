@@ -132,6 +132,17 @@ export class Life extends Data {
   }
 }
 
+export interface DataWithLife {
+  $life: LifeData
+  onLife: LifeData['on']
+  emitLife: LifeData['emit']
+  offLife: LifeData['off']
+  triggerLife: LifeData['trigger']
+  clearLife: LifeData['clear']
+  resetLife?: () => void
+  destroyLife?: () => void
+}
+
 export interface LifeDataInitOption {
   [prop: string]: LifeInitOption
 }
