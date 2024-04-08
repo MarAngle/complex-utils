@@ -1,4 +1,4 @@
-import Data from "./Data"
+import _Data from "./_Data"
 
 let lifeId = 1
 function getLifeId () {
@@ -35,7 +35,7 @@ export interface LifeInitOption extends LifeItemInitOption {
   immediate?: boolean
 }
 
-export class Life extends Data {
+export class Life extends _Data {
   static $name = 'Life'
   name: string
   data: Map<string, LifeItem>
@@ -147,7 +147,7 @@ export interface LifeDataInitOption {
   [prop: string]: LifeInitOption
 }
 
-class LifeData extends Data {
+class LifeData extends _Data {
   static $name = 'LifeData'
   data: Map<string, Life>
   constructor (initOption: LifeDataInitOption = {}) {

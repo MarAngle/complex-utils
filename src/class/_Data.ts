@@ -8,12 +8,12 @@ export type formatConfigType = {
   [prop: string]: undefined | boolean | string | number
 }
 
-class Data {
-  static $name = 'Data'
+class _Data {
+  static $name = '_Data'
   static $formatConfig: formatConfigType = { level: 10, recommend: false } // 不通过通用格式化函数格式化实例判断值
-  static $format: (null | ((data: Data, formatOption: formatConfigType) => Data)) = null // 格式化函数格式化实例,constructor指向最终的类，通过原型链逻辑匹配
+  static $format: (null | ((data: _Data, formatOption: formatConfigType) => _Data)) = null // 格式化函数格式化实例,constructor指向最终的类，通过原型链逻辑匹配
   constructor() {
-    const $constructor = (this.constructor as typeof Data)
+    const $constructor = (this.constructor as typeof _Data)
     if ($constructor.$format) {
       return $constructor.$format(this, $constructor.$formatConfig)
     }
@@ -22,7 +22,7 @@ class Data {
    * 获取类实例名称
    */
   protected _getConstructorName(): string {
-    return (this.constructor as typeof Data).$name
+    return (this.constructor as typeof _Data).$name
   }
   protected _getName() {
     return this._getConstructorName()
@@ -48,4 +48,4 @@ class Data {
   }
 }
 
-export default Data
+export default _Data

@@ -1,5 +1,5 @@
 // class加载
-import Data from './src/class/Data'
+import _Data from './src/class/_Data'
 import Life from './src/class/Life'
 import Limit from './src/class/Limit'
 
@@ -112,7 +112,7 @@ import startWorker from './src/worker/startWorker'
 
 export {
   // class
-  Data,
+  _Data,
   Limit,
   Life,
 
