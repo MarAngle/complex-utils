@@ -1,47 +1,45 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-import UtilsData from './UtilsData'
-import isArray from '../type/isArray'
+import Data from "./Data"
 
 let lifeId = 1
 function getLifeId () {
   lifeId++
-  return lifeId
+  return lifeId.toString()
 }
 
-export interface LifeDataInitType {
-  id?: PropertyKey
-  data: (...args: any[]) => any
+type lifeFunction = (lifeItem: LifeItem, ...args: any[]) => any
+
+export interface LifeItemInitOption {
+  id?: string
+  data: lifeFunction
   index?: number
   replace?: boolean
   immediate?: boolean
-  once?: boolean
 }
 
-export interface LifeDataType {
-  id: PropertyKey
-  data: (...args: any[]) => any
+export class LifeItem extends null {
+  id: string
+  data: lifeFunction
+  destroy: () => void
+  constructor(initOption: LifeItemInitOption, life: Life) {
+    this.id = initOption.id || getLifeId()
+    this.data = initOption.data
+    this.destroy = () => {
+      life.off(this.id)
+    }
+  }
+}
+
+export interface LifeInitOption extends LifeItemInitOption {
   index?: number
   replace?: boolean
   immediate?: boolean
-  once?: boolean
 }
 
-export interface DataWithLife {
-  $life: Life
-  onLife: Life['on']
-  emitLife: Life['emit']
-  offLife: Life['off']
-  triggerLife: Life['trigger']
-  clearLife: Life['clear']
-  resetLife?: () => void
-  destroyLife?: () => void
-}
-
-export class LifeData extends UtilsData {
-  static $name = 'LifeData'
+export class Life extends Data {
+  static $name = 'Life'
   name: string
-  data: Map<PropertyKey, LifeDataType>
-  constructor(name: string, data?: LifeDataInitType | LifeDataInitType[]) {
+  data: Map<string, LifeItem>
+  constructor(name: string, data?: LifeInitOption) {
     super()
     this.name = name
     this.data = new Map()
@@ -49,38 +47,17 @@ export class LifeData extends UtilsData {
       this.push(data)
     }
   }
-  /**
-   * 创建生命周期回调
-   * @param data 
-   * @returns {PropertyKey | PropertyKey[]}
-   */
-  push(data?: LifeDataInitType | LifeDataInitType[]) {
-    let resId: undefined | PropertyKey | (undefined | PropertyKey)[]
-    if (data) {
-      if (isArray(data)) {
-        resId = []
-        for (let n = 0; n < data.length; n++) {
-          resId.push(this.$push(data[n]))
-        }
-      } else {
-        resId = this.$push(data)
-      }
-    }
-    return resId
-  }
-  protected $push(data: LifeDataInitType) {
-    if (!data.id) {
-      data.id = getLifeId()
-    }
-    if (this.data.has(data.id) && !data.replace) {
-      this.$exportMsg(`存在当前回调:${String(data.id)}`)
+  push(data: LifeInitOption) {
+    if (data.id && this.data.has(data.id) && !data.replace) {
+      this.$exportMsg(`存在当前回调:${data.id}`)
     } else {
+      const lifeItem = new LifeItem(data, this)
       if (data.index === undefined) {
-        this.data.set(data.id, data as LifeDataType)
+        this.data.set(lifeItem.id, lifeItem)
       } else {
         const size = this.data.size
         if (data.index < size) {
-          const list: LifeDataType[] = []
+          const list: LifeItem[] = []
           this.data.forEach(function (item) {
             list.push(item)
           })
@@ -88,18 +65,18 @@ export class LifeData extends UtilsData {
           for (let n = 0; n < size; n++) {
             const item = list[n]
             if (data.index === n) {
-              this.data.set(data.id, data as LifeDataType)
+              this.data.set(lifeItem.id, lifeItem)
             }
             this.data.set(item.id, item)
           }
         } else {
-          this.data.set(data.id, data as LifeDataType)
+          this.data.set(lifeItem.id, lifeItem)
         }
       }
       if (data.immediate) {
-        this.emit(data.id)
+        this.emit(lifeItem.id)
       }
-      return data.id
+      return lifeItem.id
     }
   }
   /**
@@ -116,15 +93,12 @@ export class LifeData extends UtilsData {
    * @param {string} id id
    * @param  {...any} args 参数
    */
-  emit(id: PropertyKey, ...args: any[]) {
-    const data = this.data.get(id)
-    if (data && data.data) {
-      data.data(...args)
-      if (data.once) {
-        this.off(id)
-      }
+  emit(id: string, ...args: any[]) {
+    const lifeItem = this.data.get(id)
+    if (lifeItem) {
+      lifeItem.data(lifeItem, ...args)
     } else {
-      this.$exportMsg(`不存在当前值(${String(id)})`)
+      this.$exportMsg(`不存在当前值(${id})`)
     }
   }
   /**
@@ -132,7 +106,7 @@ export class LifeData extends UtilsData {
    * @param {string} id id
    * @returns {boolean}
    */
-  off(id: PropertyKey) {
+  off(id: string) {
     return this.data.delete(id)
   }
   /**
@@ -154,18 +128,18 @@ export class LifeData extends UtilsData {
     this.reset()
   }
   $getName() {
-    return `${super.$getName()}-NAME:${this.name}`
+    return `${super._getName()}-NAME:${this.name}`
   }
 }
 
-export interface LifeInitOption {
-  [prop: string]: LifeDataInitType | LifeDataInitType[]
+export interface LifeDataInitOption {
+  [prop: string]: LifeInitOption
 }
 
-class Life extends UtilsData {
-  static $name = 'Life'
-  data: Map<string, LifeData>
-  constructor (initOption: LifeInitOption = {}) {
+class LifeData extends Data {
+  static $name = 'LifeData'
+  data: Map<string, Life>
+  constructor (initOption: LifeDataInitOption = {}) {
     super()
     this.data = new Map()
     for (const n in initOption) {
@@ -178,9 +152,9 @@ class Life extends UtilsData {
    * @param {string} name 生命周期名称
    * @param {boolean} [auto = true] 不存在时自动设置
    */
-  protected build(name: string, auto = true) {
+  protected _build(name: string, auto = true) {
     if (!this.data.get(name) && auto) {
-      this.data.set(name,  new LifeData(name))
+      this.data.set(name,  new Life(name))
     }
   }
   /**
@@ -189,8 +163,8 @@ class Life extends UtilsData {
    * @param {boolean} [auto = true] 不存在时自动设置
    * @returns {LifeData}
    */
-  get(name: string, auto?: boolean) {
-    this.build(name, auto)
+  _get(name: string, auto?: boolean) {
+    this._build(name, auto)
     return this.data.get(name)
   }
   /**
@@ -199,9 +173,9 @@ class Life extends UtilsData {
    * @param {*} data LifeData参数
    * @returns {string | string} id/idList
    */
-  on(name: string, ...args: Parameters<LifeData['push']>) {
-    const lifeItem = this.get(name, true)
-    return lifeItem?.push(...args)
+  on(name: string, ...args: Parameters<Life['push']>) {
+    const life = this._get(name, true)!
+    return life.push(...args)
   }
   /**
    * 触发生命周期指定id函数
@@ -209,18 +183,18 @@ class Life extends UtilsData {
    * @param {string} id 指定ID
    * @param  {...any} args 参数
    */
-  emit(name: string, ...args: Parameters<LifeData['emit']>) {
-    const lifeItem = this.get(name, true)
-    lifeItem?.emit(...args)
+  emit(name: string, ...args: Parameters<Life['emit']>) {
+    const life = this._get(name, true)!
+    life.emit(...args)
   }
   /**
    * 触发生命周期
    * @param {string} name 生命周期
    * @param  {...any} args 参数
    */
-  trigger(name: string, ...args: Parameters<LifeData['trigger']>) {
-    const lifeItem = this.get(name, true)
-    lifeItem?.trigger(...args)
+  trigger(name: string, ...args: Parameters<Life['trigger']>) {
+    const life = this._get(name, true)!
+    life.trigger(...args)
   }
   /**
    * 删除生命周期指定函数
@@ -228,10 +202,10 @@ class Life extends UtilsData {
    * @param {string} id 指定ID
    * @returns {boolean}
    */
-  off(name: string, ...args: Parameters<LifeData['off']>): boolean {
-    const lifeItem = this.get(name, false)
-    if (lifeItem) {
-      return lifeItem.off(...args)
+  off(name: string, ...args: Parameters<Life['off']>): boolean {
+    const life = this._get(name, false)
+    if (life) {
+      return life.off(...args)
     } else {
       return false
     }
@@ -241,9 +215,9 @@ class Life extends UtilsData {
    * @param {string} name 生命周期
    */
   clear(name: string) {
-    const lifeItem = this.get(name, false)
-    if (lifeItem) {
-      lifeItem.clear()
+    const life = this._get(name, false)
+    if (life) {
+      life.clear()
     }
   }
   /**
@@ -263,4 +237,4 @@ class Life extends UtilsData {
   }
 }
 
-export default Life
+export default LifeData

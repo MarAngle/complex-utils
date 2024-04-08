@@ -3,7 +3,7 @@
 export type LimitType = 'forbid' | 'allow'
 
 export interface LimitInitOption {
-  type?: LimitType,
+  type?: LimitType
   list?: any[]
 }
 

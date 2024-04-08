@@ -1,7 +1,10 @@
 // class加载
-import UtilsData from './src/class/UtilsData'
+import Data from './src/class/Data'
 import Life from './src/class/Life'
 import Limit from './src/class/Limit'
+
+// storage加载
+import storage from './src/storage/index'
 
 // env加载
 import { getEnv, setEnv, getEnvMode, setEnvMode, resetEnvData, onEnvChange } from './src/env/index'
@@ -12,8 +15,6 @@ import triggerPromise from './src/function/triggerPromise'
 import debounce from './src/function/debounce'
 import throttle from './src/function/throttle'
 
-// local加载
-import { setLocalData, getLocalData, removeLocalData, setSessionLocalData, getSessionLocalData, removeSessionLocalData } from './src/local/index'
 
 // number加载
 import formatNum from './src/number/formatNum'
@@ -111,9 +112,12 @@ import startWorker from './src/worker/startWorker'
 
 export {
   // class
-  UtilsData,
+  Data,
   Limit,
   Life,
+
+  // storage
+  storage,
 
   // env
   getEnv,
@@ -129,13 +133,6 @@ export {
   debounce,
   throttle,
 
-  // local
-  setLocalData,
-  getLocalData,
-  removeLocalData,
-  setSessionLocalData,
-  getSessionLocalData,
-  removeSessionLocalData,
 
   // number
   formatNum,

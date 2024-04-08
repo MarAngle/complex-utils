@@ -8,50 +8,44 @@ export type formatConfigType = {
   [prop: string]: undefined | boolean | string | number
 }
 
-class UtilsData {
-  static $name = 'UtilsData'
+class Data {
+  static $name = 'Data'
   static $formatConfig: formatConfigType = { level: 10, recommend: false } // 不通过通用格式化函数格式化实例判断值
-  static $format: (null | ((data: UtilsData, formatOption: formatConfigType) => UtilsData)) = null // 格式化函数格式化实例,constructor指向最终的类，通过原型链逻辑匹配
+  static $format: (null | ((data: Data, formatOption: formatConfigType) => Data)) = null // 格式化函数格式化实例,constructor指向最终的类，通过原型链逻辑匹配
   constructor() {
-    const $constructor = (this.constructor as typeof UtilsData)
+    const $constructor = (this.constructor as typeof Data)
     if ($constructor.$format) {
       return $constructor.$format(this, $constructor.$formatConfig)
     }
   }
   /**
    * 获取类实例名称
-   * @returns {string}
    */
-  $getConstructorName(): string {
-    return (this.constructor as typeof UtilsData).$name
+  protected _getConstructorName(): string {
+    return (this.constructor as typeof Data).$name
   }
-  $getName() {
-    return this.$getConstructorName()
+  protected _getName() {
+    return this._getConstructorName()
   }
   /**
    * 创建输出信息
-   * @param {string} content 需要输出的信息
-   * @returns {string}
    */
-  $createMsg (content: string) {
-    return `${this.$getName()}:${content}`
+  _createMsg (content: string) {
+    return `${this._getName()}:${content}`
   }
   /**
    * 信息输出
-   * @param {string} content 信息
-   * @param {string} type 类型
-   * @param {object} [option] 额外信息
    */
   $exportMsg(content: string, type: consoleType = 'error') {
-    exportMsg(this.$createMsg(content), type)
+    exportMsg(this._createMsg(content), type)
   }
   /**
    * toString方法改写
    * @returns {string}
    */
   toString() {
-    return this.$getName()
+    return this._getName()
   }
 }
 
-export default UtilsData
+export default Data

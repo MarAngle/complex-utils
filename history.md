@@ -1,4 +1,8 @@
 
+### 2.2.0
+- 重构Data/Life相关逻辑
+- 重构本地缓存相关逻辑
+
 ### 2.1.4
 - defineReactive优化
 - getLocalData优化
