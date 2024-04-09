@@ -1,4 +1,4 @@
-import { Life } from "../class/Life"
+import LifeItem from "../class/LifeItem"
 import $exportMsg from "../utils/$exportMsg"
 import { consoleType } from "../utils/exportMsg"
 
@@ -11,7 +11,7 @@ const option = {
     data: '',
     real: ''
   } as Record<PropertyKey, unknown>,
-  change: new Life('change')
+  change: new LifeItem('change')
 }
 
 /**
@@ -65,6 +65,6 @@ export function resetEnvData(fn: () => void, info?: string, type?: consoleType, 
   }
 }
 
-export function onEnvChange(...args: Parameters<Life['push']>) {
+export function onEnvChange(...args: Parameters<LifeItem['push']>) {
   option.change.push(...args)
 }

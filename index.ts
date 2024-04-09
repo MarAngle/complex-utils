@@ -113,8 +113,8 @@ import startWorker from './src/worker/startWorker'
 export {
   // class
   _Data,
-  Limit,
   Life,
+  Limit,
 
   // storage
   storage,
