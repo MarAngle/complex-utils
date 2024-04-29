@@ -3,13 +3,12 @@ type setDataType = (name: string, value?: unknown) => boolean
 type getDataType = (name: string, option?: true | number, refresh?: boolean) => any
 type removeDataType = (name: string) => void
 
-type storageValueType = {
-  value: any
-  time: number
+type storageValueType<V = any> = {
+  v: V
 }
-
+const timeSuffix = '-$time'
 const storage = {
-  prop: 'complex-utils-storage-',
+  prop: 'complex-storage-',
   setProp(prop: string) {
     this.prop = prop
   },
@@ -20,10 +19,10 @@ const storage = {
     return function(name: string, value?: unknown, time?: number) {
       name = storage.getProp(name)
       const storageValue = {
-        value: value,
-        time: time || Date.now()
+        v: value
       } as storageValueType
       try {
+        targetStorage.setItem(name + timeSuffix, String(Math.floor((time || Date.now()) / 1000)))
         targetStorage.setItem(name, JSON.stringify(storageValue))
         return true
       } catch (err) {
@@ -32,23 +31,30 @@ const storage = {
       }
     }
   },
-  _buildGetData(targetStorage: Storage, setProp: 'setData' | 'setSessionData') {
+  _buildGetData(targetStorage: Storage) {
     return function(name: string, option?: true | number, refresh?: boolean) {
       name = storage.getProp(name)
+      if (option && option !== true) {
+        const storageTime = Number(targetStorage.getItem(name + timeSuffix))
+        if ((Date.now() - storageTime) > option) {
+          // 超时，此时option不会为true，直接返回undefined
+          return undefined
+        }
+      }
       const storageValueStr = targetStorage.getItem(name)
       if (storageValueStr) {
         try {
           const storageValue = JSON.parse(storageValueStr) as storageValueType
-          if (option && option !== true && (Date.now() - storageValue.time) > option * 1000) {
-            storageValue.value = undefined
-          }
           if (refresh) {
-            storage[setProp](name, storageValue.value)
+            targetStorage.setItem(name + timeSuffix, String(Math.floor(Date.now() / 1000)))
           }
           if (option !== true) {
-            return storageValue.value
+            return storageValue.v
           } else {
-            return storageValue
+            return {
+              v: storageValue.v,
+              t: Number(targetStorage.getItem(name + timeSuffix))
+            }
           }
         } catch (err) {
           return undefined
@@ -74,8 +80,8 @@ const storage = {
 
 storage.setData = storage._buildSetData(localStorage)
 storage.setSessionData = storage._buildSetData(sessionStorage)
-storage.getData = storage._buildGetData(localStorage, 'setData')
-storage.getSessionData = storage._buildGetData(sessionStorage, 'setSessionData')
+storage.getData = storage._buildGetData(localStorage)
+storage.getSessionData = storage._buildGetData(sessionStorage)
 storage.removeData = storage._buildRemoveData(localStorage)
 storage.removeSessionData = storage._buildRemoveData(sessionStorage)
 
