@@ -1,6 +1,6 @@
 import { oberveProp, observeObject } from "./Observer"
 
-const seenObjects:Set<number> = new Set()
+const seenObjects: Set<number> = new Set()
 
 /**
  * 循环读取经过observe的值

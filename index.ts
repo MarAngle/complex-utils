@@ -94,7 +94,6 @@ import formatQueryUrl from './src/utils/formatQueryUrl'
 import getCurrentUrl from './src/utils/getCurrentUrl'
 import getLimit from './src/utils/getLimit'
 import getQueryData from './src/utils/getQueryData'
-import getQueryUrl from './src/utils/getQueryUrl'
 import isCompleteUrl from './src/utils/isCompleteUrl'
 import isOriginUrl from './src/utils/isOriginUrl'
 import loadContexts from './src/utils/loadContexts'
@@ -212,7 +211,6 @@ export {
   getCurrentUrl,
   getLimit,
   getQueryData,
-  getQueryUrl,
   isCompleteUrl,
   isOriginUrl,
   loadContexts,

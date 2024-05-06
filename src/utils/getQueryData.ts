@@ -1,4 +1,3 @@
-import getQueryUrl from './getQueryUrl'
 
 /**
  * 解析query数据（#此处不做判断）
@@ -7,7 +6,7 @@ import getQueryUrl from './getQueryUrl'
  */
 function getQueryData(url: string) {
   const queryData: Record<PropertyKey, string> = {}
-  const queryUrl = getQueryUrl(url)
+  const queryUrl = url.split('?')[1]
   if (queryUrl) {
     const queryList = queryUrl.split('&')
     for (const n in queryList) {

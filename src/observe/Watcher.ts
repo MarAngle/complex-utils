@@ -3,16 +3,17 @@ import Dep from './data/Dep'
 import parsePath from './data/parsePath'
 import traverse from './data/traverse'
 
-
 type handlerType = (val: unknown, oldVal: unknown) => void
 
 type optionTypeObject = {
   handler: handlerType,
   deep?: boolean
 }
+
 export type optionType = handlerType | optionTypeObject
 
 let uid = 0
+
 class Watcher {
   id: number
   deps: {

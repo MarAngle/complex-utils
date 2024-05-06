@@ -6,13 +6,13 @@ export const oberveProp = Symbol('oberve')
 
 export type observeObject = {
   [oberveProp]: Observer
-  [prop: PropertyKey]: unknown
+  [prop: PropertyKey]: any
 }
 
 /**
  * Define a property.
  */
- function def (obj: Record<PropertyKey, unknown>, key: string, val: unknown, enumerable?: boolean) {
+ function def (obj: Record<PropertyKey, any>, key: string, val: any, enumerable?: boolean) {
   Object.defineProperty(obj, key, {
     value: val,
     enumerable: !!enumerable,
@@ -20,8 +20,9 @@ export type observeObject = {
     configurable: true
   })
 }
-const arrayProto = Array.prototype;
-const arrayMethods = Object.create(arrayProto);
+const arrayProto = Array.prototype
+
+const arrayMethods = Object.create(arrayProto)
 
 const methodsToPatch = [
   'push',
@@ -78,7 +79,7 @@ function copyAugment (target: unknown[], src: any, keys: string[]) {
   }
 }
 
-const arrayKeys = Object.getOwnPropertyNames(arrayMethods);
+const arrayKeys = Object.getOwnPropertyNames(arrayMethods)
 
 class Observer {
   dep: Dep
