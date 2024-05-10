@@ -16,7 +16,7 @@ export interface LifeDataInitOption {
   immediate?: boolean
 }
 
-export class LifeData extends null {
+export class LifeData {
   id: string
   data: lifeFunction
   destroy: () => void
