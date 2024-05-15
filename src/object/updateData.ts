@@ -1,5 +1,5 @@
 import getType from "../type/getType"
-import _isComplex from "../type/_isComplex"
+import { _isComplex } from "../type/isComplex"
 
 export type updateDataValueType = Record<PropertyKey, unknown> | unknown[]
 

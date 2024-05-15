@@ -1,5 +1,5 @@
 
-### 2.2.7
+### 2.2.7/8
 - 删除原isComplex,checkComplex=>isComplex
 
 ### 2.2.5/6
