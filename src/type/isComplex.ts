@@ -1,13 +1,22 @@
+import getType from './getType'
 import { ComplexType } from "./getComplexType"
 
 /**
  * 是否是复杂对象
- * @param {*} value 需要判断的类型值
- * @returns {boolean} value is 复杂对象
+ * @param {*} type 需要判断的类型值
+ * @returns {boolean} type is 复杂对象
  */
-function isComplex(value: ComplexType): boolean {
-  const complex = ['object', 'array']
-  return complex.indexOf(value) > -1
+export function _isComplex(type: ComplexType): boolean {
+  return ['object', 'array'].indexOf(type) > -1
+}
+
+/**
+ * 通过getType获取对应的类型并判断此类型是否是复杂对象
+ * @param {*} value 需要进行判断的值
+ * @returns {boolean} 是否是复杂对象
+ */
+function isComplex(value: unknown): value is object | Array<unknown> {
+  return _isComplex(getType(value))
 }
 
 export default isComplex

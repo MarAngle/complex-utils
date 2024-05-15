@@ -1,5 +1,5 @@
 import getType from "../type/getType"
-import isComplex from "../type/isComplex"
+import _isComplex from "../type/_isComplex"
 
 export type updateDataValueType = Record<PropertyKey, unknown> | unknown[]
 
@@ -18,7 +18,7 @@ function updateData<T extends updateDataValueType = updateDataValueType, O exten
           targetData[prop] = originData[prop]
         } else {
           // 目标数据与源数据类型相同时
-          if (isComplex(originType)) {
+          if (_isComplex(originType)) {
             // 同为复杂数据则通过updateData更新
             updateData(targetData[prop] as updateDataValueType, originData[prop] as updateDataValueType)
           } else {

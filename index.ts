@@ -67,7 +67,6 @@ import linetoCamel from './src/string/linetoCamel'
 import upperCaseFirstChar from './src/string/upperCaseFirstChar'
 
 // type加载
-import checkComplex from './src/type/checkComplex'
 import getTag from './src/type/getTag'
 import getType from './src/type/getType'
 import getComplexType from './src/type/getComplexType'
@@ -184,7 +183,6 @@ export {
   upperCaseFirstChar,
 
   // type
-  checkComplex,
   getTag,
   getType,
   getComplexType,

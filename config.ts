@@ -2,7 +2,7 @@
 const config = {
   object: {
     existList: [false, 0],
-    setData(data: Record<PropertyKey, unknown>, prop: PropertyKey, value: unknown) {
+    setData(data: Record<PropertyKey, any>, prop: PropertyKey, value: any) {
       data[prop] = value
     }
   },

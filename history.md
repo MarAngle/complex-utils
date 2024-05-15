@@ -1,4 +1,7 @@
 
+### 2.2.7
+- 删除原isComplex,checkComplex=>isComplex
+
 ### 2.2.5/6
 - 删除getQueryUrl
 
