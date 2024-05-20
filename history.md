@@ -1,3 +1,5 @@
+### 2.2.9
+- 删除loadContexts
 
 ### 2.2.7/8
 - 删除原isComplex,checkComplex=>isComplex

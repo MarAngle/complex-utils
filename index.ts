@@ -95,7 +95,6 @@ import getLimit from './src/utils/getLimit'
 import getQueryData from './src/utils/getQueryData'
 import isCompleteUrl from './src/utils/isCompleteUrl'
 import isOriginUrl from './src/utils/isOriginUrl'
-import loadContexts from './src/utils/loadContexts'
 import openAnchor from './src/utils/openAnchor'
 import openWindow from './src/utils/openWindow'
 import $exportMsg from './src/utils/$exportMsg'
@@ -211,7 +210,6 @@ export {
   getQueryData,
   isCompleteUrl,
   isOriginUrl,
-  loadContexts,
   openAnchor,
   openWindow,
   $exportMsg,
