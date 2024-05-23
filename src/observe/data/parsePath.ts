@@ -6,7 +6,7 @@ import getProp from '../../object/getProp'
  * @returns {function}
  */
 function parsePath(prop: string) {
-  return (obj: Record<PropertyKey, unknown>) => {
+  return (obj: Record<PropertyKey, any>) => {
     return getProp(obj, prop)
   }
 }

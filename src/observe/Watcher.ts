@@ -28,11 +28,11 @@ class Watcher {
   }
   active: boolean
   target: unknown
-  getter: (obj: Record<PropertyKey, unknown>) => unknown
+  getter: (obj: Record<PropertyKey, any>) => unknown
   callback: handlerType
   deep: boolean
   value: unknown
-  constructor(target: Record<PropertyKey, unknown>, expression: string, option: optionType) {
+  constructor(target: Record<PropertyKey, any>, expression: string, option: optionType) {
     this.id = uid++
     this.deps = {
       current: {
@@ -109,7 +109,7 @@ class Watcher {
     const obj = this.target
     let value
     try {
-      value = this.getter(obj as Record<PropertyKey, unknown>)
+      value = this.getter(obj as Record<PropertyKey, any>)
     } finally {
       if (this.deep) {
         traverse(value)

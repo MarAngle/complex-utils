@@ -25,7 +25,7 @@ function observe(value: unknown) {
   if (hasOwnProperty.call(value, oberveProp) && (value as observeObject)[oberveProp] instanceof Observer) {
     ob = (value as observeObject)[oberveProp]
   } else {
-    ob = new Observer(value as Record<PropertyKey, unknown>)
+    ob = new Observer(value as Record<PropertyKey, any>)
   }
   return ob
 }

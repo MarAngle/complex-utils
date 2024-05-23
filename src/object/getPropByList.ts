@@ -6,13 +6,13 @@
  * @param {boolean} [showError] 显示错误输出
  * @returns
  */
-function getPropByList(value: Record<PropertyKey, unknown>, propList: string[] | number[], showError?: boolean): unknown {
+function getPropByList(value: Record<PropertyKey, any>, propList: string[] | number[], showError?: boolean): unknown {
   let data = value
   try {
     for (let n = 0; n < propList.length; n++) {
       const prop = propList[n]
       if (prop || prop === 0) {
-        data = data[prop] as Record<PropertyKey, unknown>
+        data = data[prop] as Record<PropertyKey, any>
       }
     }
     return data

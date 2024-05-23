@@ -1,3 +1,6 @@
+### 2.2.10
+- 全局减少Record<PropertyKey, unknow>类型的使用
+
 ### 2.2.9
 - 删除loadContexts
 

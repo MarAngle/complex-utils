@@ -8,7 +8,7 @@ import Dep from './Dep'
  * @param {string} prop 对应的属性
  * @returns {boolean}
  */
-function createReactive(obj: Record<PropertyKey, unknown>, prop: PropertyKey) {
+function createReactive(obj: Record<PropertyKey, any>, prop: PropertyKey) {
   const dep = new Dep()
   let childOb = observe(obj[prop])
   return defineReactive(obj, prop, {

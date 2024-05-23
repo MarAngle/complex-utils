@@ -84,7 +84,7 @@ const arrayKeys = Object.getOwnPropertyNames(arrayMethods)
 class Observer {
   dep: Dep
   [oberveProp]!: Observer
-  constructor(value: Record<PropertyKey, unknown>) {
+  constructor(value: Record<PropertyKey, any>) {
     // 每个Observer实例上都存在dep
     this.dep = new Dep()
     Object.defineProperty(value, oberveProp, {
@@ -108,7 +108,7 @@ class Observer {
    * 遍历
    * @param {*} value 需要遍历的值
    */
-  walk(value: Record<PropertyKey, unknown>) {
+  walk(value: Record<PropertyKey, any>) {
     for (const k in value) {
       createReactive(value, k)
     }

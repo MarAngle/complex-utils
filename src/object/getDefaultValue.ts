@@ -9,7 +9,7 @@ import isExist from './../type/isExist'
  * @param {*[]} [unExistList] 不存在列表
  * @returns {*}
  */
-function getDefaultValue(data: undefined | null | Record<PropertyKey, unknown>, prop: PropertyKey, defaultValue?: unknown, existList?: unknown[], unExistList?: unknown[]) {
+function getDefaultValue(data: undefined | null | Record<PropertyKey, any>, prop: PropertyKey, defaultValue?: unknown, existList?: unknown[], unExistList?: unknown[]) {
   if (data && isExist(data[prop], existList, unExistList)) {
     return data[prop]
   } else {

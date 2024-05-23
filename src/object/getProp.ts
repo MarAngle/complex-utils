@@ -7,7 +7,7 @@ import getPropByList from './getPropByList'
  * @param {boolean} [showError] 显示错误输出
  * @returns
  */
-function getProp(value: Record<PropertyKey, unknown>, prop: string, showError?: boolean) {
+function getProp(value: Record<PropertyKey, any>, prop: string, showError?: boolean) {
   const propList = prop.indexOf('.') > -1 ? prop.split('.') : [prop]
   return getPropByList(value, propList, showError)
 }

@@ -10,7 +10,7 @@ export type consoleType = 'error' | 'warn' | 'log'
  * @param {string} [option.data] 额外信息内容
  * @param {'error' | 'warn' | 'log'} [option.type] 额外信息提示类型
  */
-function exportMsg(msg: string | Error | Record<PropertyKey, unknown>, type: consoleType = 'error') {
+function exportMsg(msg: string | Error | Record<PropertyKey, any>, type: consoleType = 'error') {
   if (type == 'error') {
     if (isError(msg) || typeof msg === 'object') {
       console[type](msg)

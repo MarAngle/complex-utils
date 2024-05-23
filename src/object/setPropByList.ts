@@ -7,14 +7,14 @@ import config from '../../config'
  * @param {*} value 属性值
  * @param {boolean} [useSetData] 为真时通过setData进行赋值操作,主要针对框架中直接赋值无法响应的操作
  */
-function setPropByList(targetData: Record<PropertyKey, unknown>, propList: string[], value: unknown, useSetData?: boolean) {
+function setPropByList(targetData: Record<PropertyKey, any>, propList: string[], value: unknown, useSetData?: boolean) {
   let data = targetData
   for (let n = 0; n < propList.length; n++) {
     if (n < propList.length - 1) {
       if (!data[propList[n]]) {
-        data[propList[n]] = {} as Record<PropertyKey, unknown>
+        data[propList[n]] = {} as Record<PropertyKey, any>
       }
-      data = data[propList[n]] as Record<PropertyKey, unknown>
+      data = data[propList[n]] as Record<PropertyKey, any>
     } else {
       if (!useSetData) {
         data[propList[n]] = value

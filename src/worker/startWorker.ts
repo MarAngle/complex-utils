@@ -2,9 +2,9 @@ import getType from '../type/getType'
 
 const URL = window.URL || window.webkitURL
 
-export type funcType<A extends unknown[] = unknown[], R extends Promise<unknown> = Promise<unknown>> = (...args: A) => R
+export type funcType<A extends any[] = any[], R extends Promise<unknown> = Promise<unknown>> = (...args: A) => R
 
-export type optionType<A extends unknown[] = unknown[], R extends Promise<unknown> = Promise<unknown>> = {
+export type optionType<A extends any[] = any[], R extends Promise<unknown> = Promise<unknown>> = {
   func: funcType<A, R>,
   args: A,
   option?: WorkerOptions,
@@ -17,7 +17,7 @@ export type optionType<A extends unknown[] = unknown[], R extends Promise<unknow
  * @param {boolean} [log] 日志打印判断
  * @returns {string} 分支代码字符串
  */
-function parseWorkerContent(func: (...args: unknown[]) => unknown, log?: boolean) {
+function parseWorkerContent(func: (...args: any[]) => unknown, log?: boolean) {
   return `
     onmessage = function (e) {
       ${log ? 'console.log("Worker Start")' : '' }

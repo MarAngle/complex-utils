@@ -1,7 +1,7 @@
 import getType from "../type/getType"
 import { _isComplex } from "../type/isComplex"
 
-export type updateDataValueType = Record<PropertyKey, unknown> | unknown[]
+export type updateDataValueType = Record<PropertyKey, any> | unknown[]
 
 function updateData<T extends updateDataValueType = updateDataValueType, O extends updateDataValueType = updateDataValueType>(targetData: T, originData?: O): T & O {
   if (originData) {

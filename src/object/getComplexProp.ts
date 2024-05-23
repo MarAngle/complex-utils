@@ -8,7 +8,7 @@ import getPropByList from './getPropByList'
  * @param {boolean} [showError] 显示错误输出
  * @returns
  */
-function getComplexProp(value: undefined | Record<PropertyKey, unknown>, prop: string, intervalRepeat = false, showError?: boolean) {
+function getComplexProp(value: undefined | Record<PropertyKey, any>, prop: string, intervalRepeat = false, showError?: boolean) {
   if (!value || !prop) {
     return undefined
   } else {

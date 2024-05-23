@@ -7,7 +7,7 @@
  * @param {object} [item] 特殊对象
  * @param {*} [itemTarget] 特殊对象值
  */
-function choiceProp(list: Record<PropertyKey, unknown>[], prop: PropertyKey, target: unknown = false, item: Record<PropertyKey, unknown>, itemTarget: unknown = true) {
+function choiceProp(list: Record<PropertyKey, any>[], prop: PropertyKey, target: unknown = false, item: Record<PropertyKey, any>, itemTarget: unknown = true) {
   for (const n in list) {
     list[n][prop] = target
   }

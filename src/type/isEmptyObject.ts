@@ -11,7 +11,7 @@ function isEmptyObject(value: unknown, type?: string): value is Record<string, n
     type = getType(value)
   }
   if (type === 'object') {
-    for (const _prop in value as Record<PropertyKey, unknown>) {
+    for (const _prop in value as Record<PropertyKey, any>) {
       return false
     }
     return true
