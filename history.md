@@ -1,3 +1,9 @@
+
+### 2.2.11
+- env环境life优化
+- storage添加clear
+- 其他代码和类型优化
+
 ### 2.2.10
 - 全局减少Record<PropertyKey, unknow>类型的使用
 

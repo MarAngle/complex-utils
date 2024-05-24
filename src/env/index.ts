@@ -10,8 +10,8 @@ const option = {
   mode: {
     data: '',
     real: ''
-  } as Record<PropertyKey, unknown>,
-  change: new LifeItem('change')
+  } as Record<PropertyKey, any>,
+  life: new LifeItem('life')
 }
 
 /**
@@ -22,7 +22,7 @@ const option = {
 export function setEnv(data: string, prop = 'data', unTriggerChange?: boolean) {
   option.env[prop] = data
   if (!unTriggerChange) {
-    option.change.trigger('env')
+    option.life.trigger('env')
   }
 }
 
@@ -42,7 +42,7 @@ export function getEnv(prop = 'data') {
 export function setEnvMode(data: unknown, prop = 'data', unTriggerChange?: boolean) {
   option.mode[prop] = data
   if (!unTriggerChange) {
-    option.change.trigger('mode')
+    option.life.trigger('mode')
   }
 }
 
@@ -66,5 +66,5 @@ export function resetEnvData(fn: () => void, info?: string, type?: consoleType, 
 }
 
 export function onEnvChange(...args: Parameters<LifeItem['push']>) {
-  option.change.push(...args)
+  return option.life.push(...args)
 }

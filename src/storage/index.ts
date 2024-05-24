@@ -2,6 +2,7 @@
 type setDataType = (name: string, value?: unknown) => boolean
 type getDataType = (name: string, option?: true | number, refresh?: boolean) => any
 type removeDataType = (name: string) => void
+type clearDataType = () => void
 
 type storageValueType<V = any> = {
   v: V
@@ -70,12 +71,19 @@ const storage = {
       targetStorage.removeItem(name)
     }
   },
+  _buildClearData(targetStorage: Storage) {
+    return function() {
+      targetStorage.clear()
+    }
+  },
   setData: null as unknown as setDataType,
   setSessionData: null as unknown as setDataType,
   getData: null as unknown as getDataType,
   getSessionData: null as unknown as getDataType,
   removeData: null as unknown as removeDataType,
   removeSessionData: null as unknown as removeDataType,
+  clearData: null as unknown as clearDataType,
+  clearSessionData: null as unknown as clearDataType,
 }
 
 storage.setData = storage._buildSetData(localStorage)
@@ -84,6 +92,8 @@ storage.getData = storage._buildGetData(localStorage)
 storage.getSessionData = storage._buildGetData(sessionStorage)
 storage.removeData = storage._buildRemoveData(localStorage)
 storage.removeSessionData = storage._buildRemoveData(sessionStorage)
+storage.clearData = storage._buildClearData(localStorage)
+storage.clearSessionData = storage._buildClearData(sessionStorage)
 
 export default storage
 

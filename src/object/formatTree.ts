@@ -10,7 +10,7 @@ export type optionType = {
   format?: formatType
 }
 
-class MapItemData {
+class MapItem {
   load: boolean
   childrenProp: string
   data: Record<PropertyKey, any>
@@ -42,7 +42,7 @@ export class MapData {
   childrenProp: string
   childrenBuild?: boolean
   format?: formatType
-  data: Map<PropertyKey, MapItemData>
+  data: Map<PropertyKey, MapItem>
   constructor(originList: Record<PropertyKey, any>[], option: optionType = {}) {
     const idProp = option.id || 'id'
     const parentIdProp = option.parentId || 'parentId'
@@ -65,7 +65,7 @@ export class MapData {
     const finalData = this.format ? this.format(originData) : originData
     let targetItem = this.data.get(id)
     if (!targetItem) {
-      targetItem = new MapItemData(this.childrenProp, finalData, this.childrenBuild)
+      targetItem = new MapItem(this.childrenProp, finalData, this.childrenBuild)
       this.data.set(id, targetItem)
     } else {
       // 理论上在构建时已经生成children字段，赋值时无需单独处理
@@ -73,10 +73,10 @@ export class MapData {
     }
     return targetItem
   }
-  $appendItem(targetItem: MapItemData, parentId: PropertyKey) {
+  $appendItem(targetItem: MapItem, parentId: PropertyKey) {
     let parentItem = this.data.get(parentId)
     if (!parentItem) {
-      parentItem = new MapItemData(this.childrenProp)
+      parentItem = new MapItem(this.childrenProp)
       this.data.set(parentId, parentItem)
     }
     parentItem.append(targetItem.data)
