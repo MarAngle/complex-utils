@@ -9,19 +9,24 @@ import config from '../../config'
  */
 function setPropByList(targetData: Record<PropertyKey, any>, propList: string[], value: unknown, useSetData?: boolean) {
   let data = targetData
-  for (let n = 0; n < propList.length; n++) {
-    if (n < propList.length - 1) {
-      if (!data[propList[n]]) {
-        data[propList[n]] = {} as Record<PropertyKey, any>
-      }
-      data = data[propList[n]] as Record<PropertyKey, any>
-    } else {
-      if (!useSetData) {
-        data[propList[n]] = value
+  try {
+    for (let n = 0; n < propList.length; n++) {
+      if (n < propList.length - 1) {
+        if (!data[propList[n]]) {
+          data[propList[n]] = {} as Record<PropertyKey, any>
+        }
+        data = data[propList[n]] as Record<PropertyKey, any>
       } else {
-        config.object.setData(data, propList[n], value)
+        if (!useSetData) {
+          data[propList[n]] = value
+        } else {
+          config.object.setData(data, propList[n], value)
+        }
       }
     }
+    return true
+  } catch (e) {
+    return false
   }
 }
 

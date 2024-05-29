@@ -1,4 +1,8 @@
 
+### 2.2.12
+- 删除getProp/setPropByType函数
+- 因setProp可能存在的大量调用，setProp不解析'a.b'的prop,需要解析'a.b'的prop的相关函数限定为getComplexProp/setComplexProp
+
 ### 2.2.11
 - env环境life优化
 - storage添加clear

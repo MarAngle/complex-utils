@@ -1,4 +1,4 @@
-import getProp from './getProp'
+import getComplexProp from './getComplexProp'
 
 /**
  * 根据rule数组顺序对list[index][prop]的值进行排序
@@ -11,7 +11,7 @@ function orderArrayByProp(list: Record<PropertyKey, any>[], prop: string, ruleLi
     const ruleData = ruleList[i]
     for (let n = i; n < list.length; n++) {
       const item = list[n]
-      if (getProp(item, prop) == ruleData) {
+      if (getComplexProp(item, prop) == ruleData) {
         // 当前位置删除并在需求位置添加上
         list.splice(n, 1)
         list.splice(i, 0, item)

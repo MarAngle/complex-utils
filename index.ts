@@ -34,7 +34,6 @@ import deepCloneData from './src/object/deepCloneData'
 import formatDataByType from './src/object/formatDataByType'
 import formatTree from './src/object/formatTree'
 import getDefaultValue from './src/object/getDefaultValue'
-import getProp from './src/object/getProp'
 import getComplexProp from './src/object/getComplexProp'
 import getPropByList from './src/object/getPropByList'
 import hasProp from './src/object/hasProp'
@@ -45,7 +44,6 @@ import setDefaultValue from './src/object/setDefaultValue'
 import setProp from './src/object/setProp'
 import setComplexProp from './src/object/setComplexProp'
 import setPropByList from './src/object/setPropByList'
-import setPropByType from './src/object/setPropByType'
 import showArrayProp from './src/object/showArrayProp'
 import updateData from './src/object/updateData'
 
@@ -149,7 +147,6 @@ export {
   formatDataByType,
   formatTree,
   getDefaultValue,
-  getProp,
   getComplexProp,
   getPropByList,
   hasProp,
@@ -160,7 +157,6 @@ export {
   setProp,
   setComplexProp,
   setPropByList,
-  setPropByType,
   showArrayProp,
   updateData,
   

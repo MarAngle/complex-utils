@@ -1,4 +1,4 @@
-import getProp from '../../object/getProp'
+import getComplexProp from '../../object/getComplexProp'
 
 /**
  * 返回读取指定属性的函数
@@ -7,7 +7,7 @@ import getProp from '../../object/getProp'
  */
 function parsePath(prop: string) {
   return (obj: Record<PropertyKey, any>) => {
-    return getProp(obj, prop)
+    return getComplexProp(obj, prop)
   }
 }
 

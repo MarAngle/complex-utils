@@ -12,9 +12,7 @@ function setComplexProp(targetData: Record<PropertyKey, any>, prop: string, valu
   if (!targetData || !prop) {
     return false
   } else {
-    const propList = prop != '.' ? prop.split('.') : [prop]
-    setPropByList(targetData, propList, value, useSetData)
-    return true
+    return setPropByList(targetData, prop.split('.'), value, useSetData)
   }
 }
 

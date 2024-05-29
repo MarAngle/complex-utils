@@ -1,4 +1,4 @@
-import getProp from './getProp'
+import getComplexProp from './getComplexProp'
 
 /**
  * 数组属性快速输出到控制台
@@ -9,7 +9,7 @@ function showArrayProp(list: Record<PropertyKey, any>[], prop: string) {
   const propList = []
   for (let i = 0; i < list.length; i++) {
     const item = list[i]
-    propList.push(getProp(item, prop))
+    propList.push(getComplexProp(item, prop))
   }
   console.log(JSON.stringify(propList))
 }
