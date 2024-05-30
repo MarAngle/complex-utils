@@ -20,7 +20,7 @@ function setPropByList(targetData: Record<PropertyKey, any>, propList: string[],
         if (!useSetData) {
           data[propList[n]] = value
         } else {
-          config.object.setData(data, propList[n], value)
+          config.setData(data, propList[n], value)
         }
       }
     }

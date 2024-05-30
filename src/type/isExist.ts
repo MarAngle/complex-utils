@@ -8,12 +8,12 @@ import isSame from './isSame';
  * @param {*[]} [unExistList] 为真但是需要判断为不存在的值数组，默认为[]
  * @returns {boolean}
  */
-function isExist(value: unknown, existList?: unknown[], unExistList?: unknown[]) {
+function isExist(value: any, existList?: any[], unExistList?: any[]) {
   if (value) {
     if (unExistList) {
       for (let i = 0; i < unExistList.length; i++) {
-        const unExistItem = unExistList[i];
-        if (isSame(unExistItem, value)) {
+        const unExistValue = unExistList[i];
+        if (isSame(unExistValue, value)) {
           return false
         }
       }
@@ -23,7 +23,7 @@ function isExist(value: unknown, existList?: unknown[], unExistList?: unknown[])
     }
   }
   if (!existList) {
-    existList = config.object.existList
+    existList = config.existList
   }
   return existList.indexOf(value) > -1
 }

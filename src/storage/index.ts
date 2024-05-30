@@ -3,11 +3,12 @@ type setDataType = (name: string, value?: unknown) => boolean
 type getDataType = (name: string, option?: true | number, refresh?: boolean) => any
 type removeDataType = (name: string) => void
 type clearDataType = () => void
-
 type storageValueType<V = any> = {
   v: V
 }
+
 const timeSuffix = '-$time'
+
 const storage = {
   prop: 'complex-storage-',
   setProp(prop: string) {

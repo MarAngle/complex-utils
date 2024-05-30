@@ -11,7 +11,7 @@ function setProp(targetData: Record<PropertyKey, any>, prop: string, value: unkn
   if (!useSetData) {
     targetData[prop] = value
   } else {
-    config.object.setData(targetData, prop, value)
+    config.setData(targetData, prop, value)
   }
 }
 

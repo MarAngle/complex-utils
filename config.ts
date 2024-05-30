@@ -1,10 +1,9 @@
 
 const config = {
-  object: {
-    existList: [false, 0],
-    setData(data: Record<PropertyKey, any>, prop: PropertyKey, value: any) {
-      data[prop] = value
-    }
+  empty: Symbol('empty'),
+  existList: [false, 0],
+  setData(data: Record<PropertyKey, any>, prop: PropertyKey, value: any) {
+    data[prop] = value
   },
   url: {
     protocolPort: {
