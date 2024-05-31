@@ -4,20 +4,20 @@
  * @param wait 延迟执行毫秒数
  * @param type immediate 表时间戳版，delay 表定时器版.时间戳版和定时器版的节流函数的区别就是，时间戳版的函数触发是在时间段内开始的时候，而定时器版的函数触发是在时间段内结束的时候。
  */
-function throttle(func: (...args: any[]) => unknown, wait: number, type: 'immediate' | 'delay' = 'immediate') {
+function throttle<T extends ((this: any, ...args: any[]) => void) = ((this: any, ...args: any[]) => void)>(func: T, wait: number, type: 'immediate' | 'delay' = 'immediate'): T {
   if (type === 'immediate') {
     let previous = 0
-    return function(this: unknown, ...args: any[]) {
+    return function(this: any, ...args: any[]) {
       const context = this
       const now = Date.now()
       if (now - previous > wait) {
         func.apply(context, args)
         previous = now
       }
-    }
+    } as T
   } else {
     let timeout: unknown
-    return function(this: unknown, ...args: any[]) {
+    return function(this: any, ...args: any[]) {
       const context = this
       if (!timeout) {
         timeout = setTimeout(() => {
@@ -25,7 +25,7 @@ function throttle(func: (...args: any[]) => unknown, wait: number, type: 'immedi
           func.apply(context, args)
         }, wait)
       }
-    }
+    } as T
   }
 }
 

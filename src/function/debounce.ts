@@ -4,9 +4,9 @@
 * @param wait 延迟执行毫秒数
 * @param immediate true 表立即执行，false 表非立即执行.非立即执行的意思是触发事件后函数不会立即执行，而是在 n 秒后执行，如果在 n 秒内又触发了事件，则会重新计算函数执行时间。立即执行的意思是触发事件后函数会立即执行，然后 n 秒内不触发事件才能继续执行函数的效果。
 */
-function debounce(func: (...args: any[]) => unknown, wait: number, immediate?: boolean) {
+function debounce<T extends ((this: any, ...args: any[]) => void) = ((this: any, ...args: any[]) => void)>(func: T, wait: number, immediate?: boolean): T {
   let timeout: unknown
-  return function(this: unknown, ...args: any[]) {
+  return function(this: any, ...args: any[]) {
     const context = this
     if (timeout) {
       clearTimeout(timeout as number)
@@ -24,7 +24,7 @@ function debounce(func: (...args: any[]) => unknown, wait: number, immediate?: b
         func.apply(context, args)
       }, wait)
     }
-  }
+  } as T
 }
 
 export default debounce
