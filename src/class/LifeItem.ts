@@ -52,7 +52,7 @@ export class LifeItem extends _Data {
       this.$exportMsg(`存在当前回调:${data.id}`)
     } else {
       const lifeItem = new LifeData(data, this)
-      if (data.index === undefined) {
+      if (data.index == undefined) {
         this.data.set(lifeItem.id, lifeItem)
       } else {
         const size = this.data.size

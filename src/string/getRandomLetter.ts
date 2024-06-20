@@ -40,13 +40,13 @@ function getRandomLetter(letter?: letterType) {
   if (!letter) {
     letter = {}
   }
-  if (letter.small === undefined || letter.small) {
+  if (letter.small == undefined || letter.small) {
     list = list.concat(letterData.small)
   }
-  if (letter.big === undefined || letter.big) {
+  if (letter.big == undefined || letter.big) {
     list = list.concat(letterData.big)
   }
-  if (letter.number === undefined || letter.number) {
+  if (letter.number == undefined || letter.number) {
     list = list.concat(letterData.number)
   }
   return getRandomInList(list)
