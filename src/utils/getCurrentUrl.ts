@@ -13,7 +13,7 @@ type optionType = {
  */
 function getCurrentUrl(option: optionType = {}) {
   let url = location.protocol + '//' + location.host
-  if (option.pathname || option.pathname === undefined) {
+  if (option.pathname || option.pathname == undefined) {
     url += location.pathname
   }
   return url

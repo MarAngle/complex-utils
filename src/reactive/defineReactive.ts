@@ -33,10 +33,10 @@ function defineReactive(obj: Record<PropertyKey, any>, prop: PropertyKey, option
   const getter = currentDescriptor && currentDescriptor.get
   const setter = currentDescriptor && currentDescriptor.set
   const descriptor = option.descriptor || {}
-  if (descriptor.configurable === undefined) {
+  if (descriptor.configurable == undefined) {
     descriptor.configurable = true
   }
-  if (descriptor.enumerable === undefined) {
+  if (descriptor.enumerable == undefined) {
     descriptor.enumerable = true
   }
   if (getter && setter) {
