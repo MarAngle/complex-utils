@@ -1,5 +1,5 @@
 import _Data from "./_Data"
-import LifeItem, { LifeDataInitOptionWithExtra } from "./LifeItem"
+import { LifeData, LifeValueInitOptionWithExtra } from "./LifeData"
 
 export interface DataWithLife {
   $life: Life
@@ -13,15 +13,15 @@ export interface DataWithLife {
 }
 
 export interface LifeInitOption {
-  [prop: string]: LifeDataInitOptionWithExtra
+  [prop: string]: LifeValueInitOptionWithExtra
 }
 
 class Life extends _Data {
   static $name = 'Life'
-  data: Map<string, LifeItem>
+  data: Record<string, LifeData>
   constructor (initOption: LifeInitOption = {}) {
     super()
-    this.data = new Map()
+    this.data = {}
     for (const n in initOption) {
       const item = initOption[n]
       this.on(n, item)
@@ -33,13 +33,13 @@ class Life extends _Data {
    * @param {boolean} [build = true] 不存在时自动设置
    * @returns {Life}
    */
-  get(name: string): undefined | LifeItem
-  get(name: string, build: false | undefined): undefined | LifeItem
-  get(name: string, build: true): LifeItem
+  get(name: string): undefined | LifeData
+  get(name: string, build: false | undefined): undefined | LifeData
+  get(name: string, build: true): LifeData
   get(name: string, build?: boolean) {
     let lifeItem = this.data.get(name)
     if (!lifeItem && build) {
-      lifeItem = new LifeItem(name)
+      lifeItem = new LifeData(name)
       this.data.set(name, lifeItem)
     }
     return lifeItem
@@ -50,7 +50,7 @@ class Life extends _Data {
    * @param {*} data Life参数
    * @returns {string | string} id/idList
    */
-  on(name: string, ...args: Parameters<LifeItem['push']>) {
+  on(name: string, ...args: Parameters<LifeData['push']>) {
     return this.get(name, true).push(...args)
   }
   /**
@@ -59,7 +59,7 @@ class Life extends _Data {
    * @param {string} id 指定ID
    * @param  {...any} args 参数
    */
-  emit(name: string, ...args: Parameters<LifeItem['emit']>) {
+  emit(name: string, ...args: Parameters<LifeData['emit']>) {
     return this.get(name, true).emit(...args)
   }
   /**
@@ -67,7 +67,7 @@ class Life extends _Data {
    * @param {string} name 生命周期
    * @param  {...any} args 参数
    */
-  trigger(name: string, ...args: Parameters<LifeItem['trigger']>) {
+  trigger(name: string, ...args: Parameters<LifeData['trigger']>) {
     return this.get(name, true).trigger(...args)
   }
   /**
@@ -76,7 +76,7 @@ class Life extends _Data {
    * @param {string} id 指定ID
    * @returns {boolean}
    */
-  off(name: string, ...args: Parameters<LifeItem['off']>): boolean {
+  off(name: string, ...args: Parameters<LifeData['off']>): boolean {
     const life = this.get(name, false)
     if (life) {
       return life.off(...args)

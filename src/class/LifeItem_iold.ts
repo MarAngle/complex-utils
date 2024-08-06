@@ -6,9 +6,9 @@ function getLifeId () {
   return lifeId.toString()
 }
 
-type lifeFunction = (lifeItem: LifeData, ...args: any[]) => any
+type lifeFunction = (lifeItem: LifeValue, ...args: any[]) => any
 
-export interface LifeDataInitOption {
+export interface LifeValueInitOption {
   id?: string
   data: lifeFunction
   index?: number
@@ -16,11 +16,11 @@ export interface LifeDataInitOption {
   immediate?: boolean
 }
 
-export class LifeData {
+export class LifeValue {
   id: string
   data: lifeFunction
   destroy: () => void
-  constructor(initOption: LifeDataInitOption, life: LifeItem) {
+  constructor(initOption: LifeValueInitOption, life: LifeItem) {
     this.id = initOption.id || getLifeId()
     this.data = initOption.data
     this.destroy = () => {
@@ -29,7 +29,7 @@ export class LifeData {
   }
 }
 
-export interface LifeDataInitOptionWithExtra extends LifeDataInitOption {
+export interface LifeValueInitOptionWithExtra extends LifeValueInitOption {
   index?: number
   replace?: boolean
   immediate?: boolean
@@ -38,8 +38,8 @@ export interface LifeDataInitOptionWithExtra extends LifeDataInitOption {
 export class LifeItem extends _Data {
   static $name = 'LifeItem'
   name: string
-  data: Map<string, LifeData>
-  constructor(name: string, data?: LifeDataInitOptionWithExtra) {
+  data: Map<string, LifeValue>
+  constructor(name: string, data?: LifeValueInitOptionWithExtra) {
     super()
     this.name = name
     this.data = new Map()
@@ -47,17 +47,17 @@ export class LifeItem extends _Data {
       this.push(data)
     }
   }
-  push(data: LifeDataInitOptionWithExtra) {
+  push(data: LifeValueInitOptionWithExtra) {
     if (data.id && this.data.has(data.id) && !data.replace) {
       this.$exportMsg(`存在当前回调:${data.id}`)
     } else {
-      const lifeItem = new LifeData(data, this)
+      const lifeItem = new LifeValue(data, this)
       if (data.index == undefined) {
         this.data.set(lifeItem.id, lifeItem)
       } else {
         const size = this.data.size
         if (data.index < size) {
-          const list: LifeData[] = []
+          const list: LifeValue[] = []
           this.data.forEach(function (item) {
             list.push(item)
           })
@@ -94,9 +94,9 @@ export class LifeItem extends _Data {
    * @param  {...any} args 参数
    */
   emit(id: string, ...args: any[]) {
-    const lifeItem = this.data.get(id)
-    if (lifeItem) {
-      lifeItem.data(lifeItem, ...args)
+    const lifeValue = this.data.get(id)
+    if (lifeValue) {
+      lifeValue.data(lifeValue, ...args)
     } else {
       this.$exportMsg(`不存在当前值(${id})`)
     }
