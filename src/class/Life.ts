@@ -48,12 +48,12 @@ class Life extends _Data {
   get(prop: string, build: undefined): undefined | LifeData
   get(prop: string, build: 'map' | 'list'): LifeData
   get(prop: string, build?: 'map' | 'list') {
-    let lifeItem = this.data[prop]
-    if (!lifeItem && build) {
-      lifeItem = build !== 'map' ? new LifeList(prop) : new LifeMap(prop)
-      this.data[prop] = lifeItem
+    let lifeData = this.data[prop]
+    if (!lifeData && build) {
+      lifeData = build !== 'map' ? new LifeList(prop) : new LifeMap(prop)
+      this.data[prop] = lifeData
     }
-    return lifeItem
+    return lifeData
   }
   /**
    * 设置生命周期回调

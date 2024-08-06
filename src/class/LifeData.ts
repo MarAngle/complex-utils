@@ -7,7 +7,7 @@ function getLifeId () {
   return lifeId.toString()
 }
 
-type lifeFunction = (lifeItem: LifeValue, ...args: any[]) => any
+type lifeFunction = (lifeValue: LifeValue, ...args: any[]) => any
 
 export interface LifeValueInitOption {
   id?: string
@@ -174,9 +174,9 @@ export class LifeMap extends LifeData {
     if (lifeValueInitOption.id && this.get(lifeValueInitOption.id) && !lifeValueInitOption.replace) {
       this.$exportMsg(`存在当前回调:${lifeValueInitOption.id}`)
     } else {
-      const lifeItem = new LifeValue(lifeValueInitOption, this)
+      const lifeValue = new LifeValue(lifeValueInitOption, this)
       if (lifeValueInitOption.index == undefined) {
-        this.map.set(lifeItem.id, lifeItem)
+        this.map.set(lifeValue.id, lifeValue)
       } else {
         const size = this.map.size
         if (lifeValueInitOption.index < size) {
@@ -188,18 +188,18 @@ export class LifeMap extends LifeData {
           for (let n = 0; n < size; n++) {
             const item = list[n]
             if (lifeValueInitOption.index === n) {
-              this.map.set(lifeItem.id, lifeItem)
+              this.map.set(lifeValue.id, lifeValue)
             }
             this.map.set(item.id, item)
           }
         } else {
-          this.map.set(lifeItem.id, lifeItem)
+          this.map.set(lifeValue.id, lifeValue)
         }
       }
       if (lifeValueInitOption.immediate) {
-        this.$emit(lifeItem)
+        this.$emit(lifeValue)
       }
-      return lifeItem.id
+      return lifeValue.id
     }
   }
   /**
