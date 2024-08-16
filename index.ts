@@ -2,6 +2,7 @@
 import _Data from './src/class/_Data'
 import Life from './src/class/Life'
 import Limit from './src/class/Limit'
+import Wait from './src/class/Wait'
 
 // storage加载
 import storage from './src/storage/index'
@@ -110,6 +111,7 @@ export {
   _Data,
   Life,
   Limit,
+  Wait,
 
   // storage
   storage,
