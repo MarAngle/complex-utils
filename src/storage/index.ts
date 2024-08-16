@@ -7,24 +7,28 @@ type storageValueType<V = any> = {
   v: V
 }
 
-const timeSuffix = '-$time'
-
 const storage = {
-  prop: 'complex-storage-',
+  prop: '$CS',
+  timeProp: '$CS-T',
   setProp(prop: string) {
     this.prop = prop
+    this.timeProp = prop + '-T'
   },
   getProp(name: string) {
-    return this.prop + name
+    return this.prop + ':' + name
+  },
+  getTimeProp(name: string) {
+    return this.timeProp + ':' + name
   },
   _buildSetData(targetStorage: Storage) {
     return function(name: string, value?: unknown, time?: number) {
       name = storage.getProp(name)
+      const timeName = storage.getTimeProp(name)
       const storageValue = {
         v: value
       } as storageValueType
       try {
-        targetStorage.setItem(name + timeSuffix, String(Math.floor((time || Date.now()) / 1000)))
+        targetStorage.setItem(timeName, String(Math.floor((time || Date.now()) / 1000)))
         targetStorage.setItem(name, JSON.stringify(storageValue))
         return true
       } catch (err) {
@@ -36,8 +40,9 @@ const storage = {
   _buildGetData(targetStorage: Storage) {
     return function(name: string, option?: true | number, refresh?: boolean) {
       name = storage.getProp(name)
+      const timeName = storage.getTimeProp(name)
       if (option && option !== true) {
-        const storageTime = Number(targetStorage.getItem(name + timeSuffix))
+        const storageTime = Number(targetStorage.getItem(timeName))
         if ((Date.now() - storageTime) > option) {
           // 超时，此时option不会为true，直接返回undefined
           return undefined
@@ -48,14 +53,14 @@ const storage = {
         try {
           const storageValue = JSON.parse(storageValueStr) as storageValueType
           if (refresh) {
-            targetStorage.setItem(name + timeSuffix, String(Math.floor(Date.now() / 1000)))
+            targetStorage.setItem(timeName, String(Math.floor(Date.now() / 1000)))
           }
           if (option !== true) {
             return storageValue.v
           } else {
             return {
               v: storageValue.v,
-              t: Number(targetStorage.getItem(name + timeSuffix))
+              t: Number(targetStorage.getItem(timeName))
             }
           }
         } catch (err) {
