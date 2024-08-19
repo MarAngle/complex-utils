@@ -6,10 +6,6 @@ const option = {
   env: {
     data: '',
     real: ''
-  } as Record<PropertyKey, string | undefined>,
-  mode: {
-    data: '',
-    real: ''
   } as Record<PropertyKey, any>,
   life: new LifeList('life')
 }
@@ -17,9 +13,9 @@ const option = {
 /**
  * 设置环境变量
  * @param {*} data 环境变量
- * @param {'data' | 'real'} prop 环境变量属性值,data为当前环境变量,real为当前真实的环境变量
+ * @param {string} prop 环境变量属性值,data为当前环境变量,real为当前真实的环境变量
  */
-export function setEnv(data: string, prop = 'data', unTriggerChange?: boolean) {
+export function setEnv(data: any, prop = 'data', unTriggerChange?: boolean) {
   option.env[prop] = data
   if (!unTriggerChange) {
     option.life.trigger('env')
@@ -28,30 +24,10 @@ export function setEnv(data: string, prop = 'data', unTriggerChange?: boolean) {
 
 /**
  * 获取环境变量
- * @param {'data' | 'real'} prop 环境变量属性值,data为当前环境变量,real为当前真实的环境变量
+ * @param {string} prop 环境变量属性值,data为当前环境变量,real为当前真实的环境变量
  */
 export function getEnv(prop = 'data') {
   return option.env[prop]
-}
-
-/**
- * 设置环境数据
- * @param {*} data 环境数据
- * @param {'data' | 'real'} prop 环境数据属性值,data为当前环境数据,real为当前真实的环境数据
- */
-export function setEnvMode(data: unknown, prop = 'data', unTriggerChange?: boolean) {
-  option.mode[prop] = data
-  if (!unTriggerChange) {
-    option.life.trigger('mode')
-  }
-}
-
-/**
- * 获取环境数据
- * @param {'data' | 'real'} prop 环境数据属性值,data为当前环境数据,real为当前真实的环境数据
- */
-export function getEnvMode(prop = 'data') {
-  return option.mode[prop]
 }
 
 /**

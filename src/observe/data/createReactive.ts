@@ -26,4 +26,5 @@ function createReactive(obj: Record<PropertyKey, any>, prop: PropertyKey) {
     }
   })
 }
+
 export default createReactive
