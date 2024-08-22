@@ -8,7 +8,7 @@ import Wait from './src/class/Wait'
 import storage from './src/storage/index'
 
 // env加载
-import { getEnv, setEnv, getEnvMode, setEnvMode, resetEnvData, onEnvChange } from './src/env/index'
+import { getEnv, setEnv, resetEnvData, onEnvChange } from './src/env/index'
 
 // function加载
 import triggerFunction from './src/function/triggerFunction'
@@ -119,8 +119,6 @@ export {
   // env
   getEnv,
   setEnv,
-  getEnvMode,
-  setEnvMode,
   resetEnvData,
   onEnvChange,
 
