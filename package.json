@@ -1,6 +1,6 @@
 {
   "name": "complex-utils",
-  "version": "2.6.3",
+  "version": "2.6.5",
   "description": "a complex utils",
   "main": "index.ts",
   "repository": {

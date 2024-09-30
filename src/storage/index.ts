@@ -9,10 +9,10 @@ type storageValueType<V = any> = {
 
 const storage = {
   prop: '$CS',
-  timeProp: '$CS-T',
+  timeProp: '$CST',
   setProp(prop: string) {
     this.prop = prop
-    this.timeProp = prop + '-T'
+    this.timeProp = prop + 'T'
   },
   getProp(name: string) {
     return this.prop + ':' + name
@@ -22,14 +22,14 @@ const storage = {
   },
   _buildSetData(targetStorage: Storage) {
     return function(name: string, value?: unknown, time?: number) {
-      name = storage.getProp(name)
-      const timeName = storage.getTimeProp(name)
+      const prop = storage.getProp(name)
+      const timeProp = storage.getTimeProp(name)
       const storageValue = {
         v: value
       } as storageValueType
       try {
-        targetStorage.setItem(timeName, String(Math.floor((time || Date.now()) / 1000)))
-        targetStorage.setItem(name, JSON.stringify(storageValue))
+        targetStorage.setItem(timeProp, String(Math.floor((time || Date.now()) / 1000)))
+        targetStorage.setItem(prop, JSON.stringify(storageValue))
         return true
       } catch (err) {
         console.error(err)
@@ -39,28 +39,28 @@ const storage = {
   },
   _buildGetData(targetStorage: Storage) {
     return function(name: string, option?: true | number, refresh?: boolean) {
-      name = storage.getProp(name)
-      const timeName = storage.getTimeProp(name)
+      const prop = storage.getProp(name)
+      const timeProp = storage.getTimeProp(name)
       if (option && option !== true) {
-        const storageTime = Number(targetStorage.getItem(timeName))
+        const storageTime = Number(targetStorage.getItem(timeProp))
         if ((Date.now() - storageTime) > option) {
           // 超时，此时option不会为true，直接返回undefined
           return undefined
         }
       }
-      const storageValueStr = targetStorage.getItem(name)
-      if (storageValueStr) {
+      const storageStr = targetStorage.getItem(prop)
+      if (storageStr) {
         try {
-          const storageValue = JSON.parse(storageValueStr) as storageValueType
+          const storageValue = JSON.parse(storageStr) as storageValueType
           if (refresh) {
-            targetStorage.setItem(timeName, String(Math.floor(Date.now() / 1000)))
+            targetStorage.setItem(timeProp, String(Math.floor(Date.now() / 1000)))
           }
           if (option !== true) {
             return storageValue.v
           } else {
             return {
               v: storageValue.v,
-              t: Number(targetStorage.getItem(timeName))
+              t: Number(targetStorage.getItem(timeProp))
             }
           }
         } catch (err) {
@@ -73,8 +73,10 @@ const storage = {
   },
   _buildRemoveData(targetStorage: Storage) {
     return function(name: string) {
-      name = storage.getProp(name)
-      targetStorage.removeItem(name)
+      const prop = storage.getProp(name)
+      const timeProp = storage.getTimeProp(name)
+      targetStorage.removeItem(prop)
+      targetStorage.removeItem(timeProp)
     }
   },
   _buildClearData(targetStorage: Storage) {
