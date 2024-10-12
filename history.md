@@ -1,4 +1,7 @@
 
+### 2.6.6
+- 修正isComplex和deepCloneData中类型判断未使用getComplexType的错误
+
 ### 2.6.5
 - 优化storage逻辑
 

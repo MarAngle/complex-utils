@@ -1,4 +1,4 @@
-import getType from './../type/getType'
+import getComplexType from './../type/getComplexType'
 
 const hasOwnProperty = Object.prototype.hasOwnProperty
 
@@ -9,7 +9,7 @@ const hasOwnProperty = Object.prototype.hasOwnProperty
  * @returns
  */
 function deepCloneData<T>(origindata: T, map = new Map()): T {
-  const type = getType(origindata)
+  const type = getComplexType(origindata)
   // 复杂对象进行递归
   if (type === 'object' || type === 'array') {
     let result = map.get(origindata)

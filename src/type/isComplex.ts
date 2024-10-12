@@ -1,5 +1,4 @@
-import getType from './getType'
-import { ComplexType } from "./getComplexType"
+import getComplexType, { ComplexType } from "./getComplexType"
 
 /**
  * 是否是复杂对象
@@ -11,12 +10,12 @@ export function _isComplex(type: ComplexType): boolean {
 }
 
 /**
- * 通过getType获取对应的类型并判断此类型是否是复杂对象
+ * 通过getComplexType获取对应的类型并判断此类型是否是复杂对象
  * @param {*} value 需要进行判断的值
  * @returns {boolean} 是否是复杂对象
  */
 function isComplex(value: unknown): value is object | Array<unknown> {
-  return _isComplex(getType(value))
+  return _isComplex(getComplexType(value))
 }
 
 export default isComplex
