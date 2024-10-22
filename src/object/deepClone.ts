@@ -2,15 +2,15 @@ import deepCloneData from './deepCloneData'
 
 /**
  * 深拷贝
- * @param {*} origindata 需要进行深拷贝的对象
+ * @param {*} data 需要进行深拷贝的对象
  * @param {boolean | object} [option] 用户设置的设置项,根据此项调用不同方法
  * @returns
  */
-function deepClone<T>(origindata:T, option?: boolean): T {
+function deepClone<T>(data:T, option?: boolean): T {
   if (!option) {
-    return JSON.parse(JSON.stringify(origindata))
+    return JSON.parse(JSON.stringify(data))
   } else {
-    return deepCloneData(origindata)
+    return deepCloneData(data)
   }
 }
 

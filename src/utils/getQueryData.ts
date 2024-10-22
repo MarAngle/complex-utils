@@ -5,7 +5,7 @@
  * @returns {object}
  */
 function getQueryData(url: string) {
-  const queryData: Record<PropertyKey, string> = {}
+  const queryData: Record<PropertyKey, undefined | string> = {}
   const queryUrl = url.split('?')[1]
   if (queryUrl) {
     const queryList = queryUrl.split('&')

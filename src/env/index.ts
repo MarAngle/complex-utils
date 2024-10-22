@@ -15,10 +15,10 @@ const option = {
  * @param {*} data 环境变量
  * @param {string} prop 环境变量属性值,data为当前环境变量,real为当前真实的环境变量
  */
-export function setEnv(data: any, prop = 'data', unTriggerChange?: boolean) {
+export function setEnv(prop: string, data: any, unTriggerChange?: boolean) {
   option.env[prop] = data
   if (!unTriggerChange) {
-    option.life.trigger('env')
+    option.life.trigger('env', prop, data)
   }
 }
 
@@ -26,7 +26,7 @@ export function setEnv(data: any, prop = 'data', unTriggerChange?: boolean) {
  * 获取环境变量
  * @param {string} prop 环境变量属性值,data为当前环境变量,real为当前真实的环境变量
  */
-export function getEnv(prop = 'data') {
+export function getEnv(prop: string) {
   return option.env[prop]
 }
 

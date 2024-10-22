@@ -4,32 +4,32 @@ const hasOwnProperty = Object.prototype.hasOwnProperty
 
 /**
  * 基础版本的深拷贝
- * @param {*} origindata 深拷贝对象
+ * @param {*} data 深拷贝对象
  * @param {*} map 循环引用缓存
  * @returns
  */
-function deepCloneData<T>(origindata: T, map = new Map()): T {
-  const type = getComplexType(origindata)
+function deepCloneData<T>(data: T, map = new Map()): T {
+  const type = getComplexType(data)
   // 复杂对象进行递归
   if (type === 'object' || type === 'array') {
-    let result = map.get(origindata)
+    let result = map.get(data)
     if (result) {
       return result
     } else {
       result = type === 'object' ? {} : []
-      if (Object.getPrototypeOf(result) !== Object.getPrototypeOf(origindata)) {
-        Object.setPrototypeOf(result, Object.getPrototypeOf(origindata))
+      if (Object.getPrototypeOf(result) !== Object.getPrototypeOf(data)) {
+        Object.setPrototypeOf(result, Object.getPrototypeOf(data))
       }
-      map.set(origindata, result)
-      for (const key in origindata) {
-        if (hasOwnProperty.call(origindata, key)) {
-          result[key] = deepCloneData(origindata[key], map)
+      map.set(data, result)
+      for (const key in data) {
+        if (hasOwnProperty.call(data, key)) {
+          result[key] = deepCloneData(data[key], map)
         }
       }
       return result
     }
   } else {
-    return origindata
+    return data
   }
 }
 

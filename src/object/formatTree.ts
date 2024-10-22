@@ -43,15 +43,15 @@ export class MapData {
   childrenBuild?: boolean
   format?: formatType
   data: Map<PropertyKey, MapItem>
-  constructor(originList: Record<PropertyKey, any>[], option: optionType = {}) {
+  constructor(list: Record<PropertyKey, any>[], option: optionType = {}) {
     const idProp = option.id || 'id'
     const parentIdProp = option.parentId || 'parentId'
     this.childrenProp = option.children || 'children'
     this.childrenBuild = option.childrenBuild
     this.format = option.format
     this.data = new Map()
-    for (let n = 0; n < originList.length; n++) {
-      const originData = originList[n]
+    for (let n = 0; n < list.length; n++) {
+      const originData = list[n]
       const id = originData[idProp]
       const parentId = originData[parentIdProp]
       this.assignItem(id, parentId, originData)
@@ -92,8 +92,8 @@ export class MapData {
   }
 }
 
-function formatTree(originList: Record<PropertyKey, any>[], option: optionType = {}) {
-  return new MapData(originList, option)
+function formatTree(list: Record<PropertyKey, any>[], option: optionType = {}) {
+  return new MapData(list, option)
 }
 
 export default formatTree

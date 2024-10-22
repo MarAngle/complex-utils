@@ -5,6 +5,8 @@
  * @param {*} value 属性值
  * @param {'json' | 'form'} [type] 需要添加对象的对应类型,默认为json
  */
+function appendProp(data: Record<string, any>, propName: string, value: unknown, type?: 'json'): void
+function appendProp(data: FormData, propName: string, value: unknown, type?: 'form'): void
 function appendProp(data: Record<string, any> | FormData, propName: string, value: unknown, type: 'json' | 'form' = 'json') {
   if (type === 'json') {
     (data as Record<string, any>)[propName] = value

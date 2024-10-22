@@ -1,4 +1,8 @@
 
+### 2.6.7
+- 非兼容性更新:setEnv参数prop和data顺序调换,getEnv参数必传
+- 优化参数和类型
+
 ### 2.6.6
 - 修正isComplex和deepCloneData中类型判断未使用getComplexType的错误
 

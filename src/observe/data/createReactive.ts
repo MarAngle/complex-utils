@@ -4,14 +4,14 @@ import Dep from './Dep'
 
 /**
  * 创建响应式
- * @param {object} obj 响应式的对象
+ * @param {object} data 响应式的对象
  * @param {string} prop 对应的属性
  * @returns {boolean}
  */
-function createReactive(obj: Record<PropertyKey, any>, prop: PropertyKey) {
+function createReactive(data: Record<PropertyKey, any>, prop: PropertyKey) {
   const dep = new Dep()
-  let childOb = observe(obj[prop])
-  return defineReactive(obj, prop, {
+  let childOb = observe(data[prop])
+  return defineReactive(data, prop, {
     get: function() {
       if (Dep.target) {
         dep.depend()

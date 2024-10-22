@@ -2,14 +2,14 @@ const hasOwnProperty = Object.prototype.hasOwnProperty
 
 /**
  * 判断对象是否存在对应属性
- * @param {object} value 对象
+ * @param {object} data 对象
  * @param {string} prop 属性
- * @returns value has prop
+ * @returns data has prop
  */
-function hasProp(value: Record<PropertyKey, any>, prop: string): boolean {
-  if (value[prop] === undefined) {
-    if (!hasOwnProperty.call(value, prop)) {
-      for (const n in value) {
+function hasProp(data: Record<PropertyKey, any>, prop: string): boolean {
+  if (data[prop] === undefined) {
+    if (!hasOwnProperty.call(data, prop)) {
+      for (const n in data) {
         if (n == prop) {
           return true
         }
