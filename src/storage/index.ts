@@ -43,7 +43,7 @@ const storage = {
       const timeProp = storage.getTimeProp(name)
       if (option && option !== true) {
         const storageTime = Number(targetStorage.getItem(timeProp))
-        if ((Date.now() - storageTime) > option) {
+        if ((Math.floor(Date.now() / 1000) - storageTime) > option) {
           // 超时，此时option不会为true，直接返回undefined
           return undefined
         }

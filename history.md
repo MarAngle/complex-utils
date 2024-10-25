@@ -1,4 +1,7 @@
 
+### 2.6.8
+- 修正storage.getData的时间计算错误的BUG
+
 ### 2.6.7
 - 非兼容性更新:setEnv参数prop和data顺序调换,getEnv参数必传
 - 优化参数和类型
