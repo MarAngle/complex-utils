@@ -101,7 +101,11 @@ import $exportMsg from './src/utils/$exportMsg'
 import exportMsg from './src/utils/exportMsg'
 import parseUrl from './src/utils/parseUrl'
 import showJson from './src/utils/showJson'
-import transformFile from './src/utils/transformFile'
+import Base64ToBlob from './src/utils/Base64ToBlob'
+import Base64ToFile from './src/utils/Base64ToFile'
+import BlobToBase64 from './src/utils/BlobToBase64'
+import BlobToFile from './src/utils/BlobToFile'
+import FileToBlob from './src/utils/FileToBlob'
 import trimData from './src/utils/trimData'
 
 // worker加载
@@ -214,7 +218,11 @@ export {
   exportMsg,
   parseUrl,
   showJson,
-  transformFile,
+  Base64ToBlob,
+  Base64ToFile,
+  BlobToBase64,
+  BlobToFile,
+  FileToBlob,
   trimData,
   
   // worker
