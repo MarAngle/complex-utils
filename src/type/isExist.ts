@@ -1,5 +1,5 @@
-import config from '../../config';
-import isSame from './isSame';
+import config from '../../config'
+import isSame from './isSame'
 
 /**
  * 值是否存在

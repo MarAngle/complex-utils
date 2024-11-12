@@ -1,4 +1,7 @@
 
+### 2.6.10
+- 简化isEmpty/trimData
+
 ### 2.6.9
 - 删除transformFile函数
 - 添加Base64ToBlob/Base64ToFile/BlobToBase64/BlobToFile/FileToBlob相关文件类型转换函数

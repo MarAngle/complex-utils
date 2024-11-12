@@ -5,8 +5,7 @@ import exportMsg, { consoleType } from './exportMsg'
  * @param {'error' | 'warn' | 'log'} [type = error] 信息提示类型
  */
 function $exportMsg(msg: string, type?: consoleType) {
-  const preMsg = '[complex-plugin]'
-  exportMsg(preMsg + msg, type)
+  exportMsg('[complex-plugin]' + msg, type)
 }
 
 export default $exportMsg
