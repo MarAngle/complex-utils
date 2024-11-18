@@ -47,8 +47,7 @@ class Watcher {
     this.active = true
     this.target = target
     this.getter = parsePath(expression)
-    const optionType = getType(option)
-    if (optionType != 'object') {
+    if (getType(option) !== 'object') {
       option = {
         handler: option as handlerType
       }

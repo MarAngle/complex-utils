@@ -1,5 +1,6 @@
 import getComplexType from "../type/getComplexType"
 import Observer, { oberveProp, observeObject } from "./data/Observer"
+import { hasOwnProperty } from "../../config"
 
 /**
  * 双向绑定原理
@@ -9,8 +10,6 @@ import Observer, { oberveProp, observeObject } from "./data/Observer"
  * watcher通过get方法获取数据
  * 此时将Dep.target(全局唯一变量)设置为自身，然后获取对应的属性，触发get
  */
-
-const hasOwnProperty = Object.prototype.hasOwnProperty
 
 /**
  * 将value设置为观察者数据

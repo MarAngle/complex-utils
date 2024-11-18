@@ -2,14 +2,16 @@ import $exportMsg from '../utils/$exportMsg'
 import isPromise from './../type/isPromise'
 import triggerFunction from './triggerFunction'
 
-type callback = (data?: unknown) => unknown
+type UnpackPromise<T> = T extends Promise<infer R> ? R : T
 
-export type optionType = {
-  error?: callback
-  start?: callback
-  success?: callback
-  fail?: callback
-  finish?: callback
+type callback<D = any> = (data?: D) => unknown
+
+export type optionType<D> = {
+  error?: callback<string>
+  start?: callback<undefined>
+  success?: callback<D>
+  fail?: callback<D>
+  finish?: callback<undefined>
 }
 
 /**
@@ -22,21 +24,21 @@ export type optionType = {
  * @param {function} [option.fail] 失败回调
  * @param {function} [option.finish] 完成回调
  */
-function triggerPromise(promise: Promise<unknown>, {
+function triggerPromise<P extends Promise<any> = Promise<any>>(promise: P, {
   error,
   start,
   success,
   fail,
   finish
-}: optionType = {}) {
-  if (isPromise(promise)) {
+}: optionType<UnpackPromise<P>> = {}) {
+  if (isPromise(promise)) { 
     triggerFunction(start)
-    promise?.then(res => {
+    promise.then(res => {
       triggerFunction(success, res)
-      triggerFunction(finish, res)
     }, err => {
       triggerFunction(fail, err)
-      triggerFunction(finish, err)
+    }).finally(() => {
+      triggerFunction(finish)
     })
   } else {
     triggerFunction(error, 'notPromise')

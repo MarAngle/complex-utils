@@ -1,6 +1,5 @@
 import getComplexType from './../type/getComplexType'
-
-const hasOwnProperty = Object.prototype.hasOwnProperty
+import { hasOwnProperty } from '../../config'
 
 /**
  * 基础版本的深拷贝

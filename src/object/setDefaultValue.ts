@@ -15,21 +15,11 @@ type existType = {
  * @param {*} defaultValue 默认值
  * @param {object | array} exist 存在判断值
  */
-function setDefaultValue(data: Record<PropertyKey, any>, prop: string, defaultValue: any, exist?: any[] | existType) {
+function setDefaultValue(data: Record<PropertyKey, any>, prop: string, defaultValue: any, exist?: existType) {
   let next = false
   if (exist) {
-    const type = getType(exist)
-    if (type === 'array') {
-      if (!isExist(data[prop], (<any[]>exist))) {
-        next = true
-      }
-    } else {
-      if (type !== 'object') {
-        exist = {}
-      }
-      if (!isExist(data[prop], (<existType>exist).existList, (<existType>exist).unExistList)) {
-        next = true
-      }
+    if (!isExist(data[prop], exist.existList, exist.unExistList)) {
+      next = true
     }
   } else if (!hasProp(data, prop)) {
     next = true

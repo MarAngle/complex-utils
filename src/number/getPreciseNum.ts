@@ -14,7 +14,7 @@ function getPreciseNum(originNum: unknown, type: mathType = 'round', radix = 2, 
   let [integer, decimal] = parseNum(originNum)
   if (isNaN(integer) || isNaN(decimal)) {
     if (NANZERO) {
-      console.log('NAN is change to zero')
+      console.log('NAN is change to 0!')
       return 0
     } else {
       return NaN

@@ -1,4 +1,4 @@
-const hasOwnProperty = Object.prototype.hasOwnProperty
+import { hasOwnProperty } from "../../config"
 
 /**
  * 判断对象是否存在对应属性
