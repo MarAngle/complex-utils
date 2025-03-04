@@ -6,7 +6,7 @@ import { hasOwnProperty } from "../../config"
  * @param {string} prop 属性
  * @returns data has prop
  */
-function hasProp(data: Record<PropertyKey, any>, prop: string): boolean {
+function hasProp(data: Record<PropertyKey, any>, prop: PropertyKey): boolean {
   if (data[prop] === undefined) {
     if (!hasOwnProperty.call(data, prop)) {
       for (const n in data) {

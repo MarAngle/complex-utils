@@ -14,7 +14,7 @@ type existType = {
  * @param {*} defaultValue 默认值
  * @param {object | array} exist 存在判断值
  */
-function setDefaultValue(data: Record<PropertyKey, any>, prop: string, defaultValue: any, exist?: existType) {
+function setDefaultValue(data: Record<PropertyKey, any>, prop: PropertyKey, defaultValue: any, exist?: existType) {
   let next = false
   if (exist) {
     if (!isExist(data[prop], exist.existList, exist.unExistList)) {
