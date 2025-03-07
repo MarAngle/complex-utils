@@ -1,6 +1,3 @@
-
-const location = window.location
-
 type optionType = {
   pathname?: boolean
 }
@@ -11,10 +8,11 @@ type optionType = {
  * @param {boolean} [option.pathname] 是否添加pathname
  * @returns {string}
  */
-function getCurrentUrl(option: optionType = {}) {
-  let url = location.protocol + '//' + location.host
-  if (option.pathname || option.pathname == undefined) {
-    url += location.pathname
+function getCurrentUrl(option: optionType = {}): string {
+  const { protocol, host, pathname } = window.location
+  let url = `${protocol}//${host}`
+  if (option.pathname !== false) {
+    url += pathname
   }
   return url
 }

@@ -4,12 +4,12 @@ const URL = window.URL || window.webkitURL
 
 /**
  * 下载blob文件
- * @param {*} blobValue
- * @param {string} type
- * @param {string} [name]
+ * @param {BlobPart} blobValue Blob内容
+ * @param {string} type Blob类型
+ * @param {string} [name] 文件名称
  * @returns {boolean} 是否成功
  */
-function downloadBlob(blobValue: BlobPart, type: string, name?: string) {
+function downloadBlob(blobValue: BlobPart, type: string, name?: string): boolean {
   const blob = new Blob([blobValue], { type: type })
   const url = URL.createObjectURL(blob)
   downloadFile(url, name)

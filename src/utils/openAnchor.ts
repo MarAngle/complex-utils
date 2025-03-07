@@ -22,6 +22,7 @@ function openAnchor(url: string, download: string | true = true, target = '_blan
   }
   anchor.click()
   setTimeout(function() {
+    anchor!.remove()
     anchor = null
   }, 0)
 }

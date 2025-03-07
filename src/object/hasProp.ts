@@ -1,4 +1,3 @@
-import { hasOwnProperty } from "../../config"
 
 /**
  * 判断对象是否存在对应属性
@@ -7,20 +6,7 @@ import { hasOwnProperty } from "../../config"
  * @returns data has prop
  */
 function hasProp(data: Record<PropertyKey, any>, prop: PropertyKey): boolean {
-  if (data[prop] === undefined) {
-    if (!hasOwnProperty.call(data, prop)) {
-      for (const n in data) {
-        if (n == prop) {
-          return true
-        }
-      }
-      return false
-    } else {
-      return true
-    }
-  } else {
-    return true
-  }
+  return prop in data
 }
 
 export default hasProp

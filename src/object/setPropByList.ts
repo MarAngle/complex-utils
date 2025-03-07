@@ -11,21 +11,23 @@ function setPropByList(data: Record<PropertyKey, any>, propList: PropertyKey[], 
   let tempData = data
   try {
     for (let n = 0; n < propList.length; n++) {
+      const prop = propList[n]
       if (n < propList.length - 1) {
-        if (!tempData[propList[n]]) {
-          tempData[propList[n]] = {} as Record<PropertyKey, any>
+        if (!tempData[prop]) {
+          tempData[prop] = {} as Record<PropertyKey, any>
         }
-        tempData = tempData[propList[n]] as Record<PropertyKey, any>
+        tempData = tempData[prop] as Record<PropertyKey, any>
       } else {
         if (!useSetData) {
-          tempData[propList[n]] = value
+          tempData[prop] = value
         } else {
-          config.setData(tempData, propList[n], value)
+          config.setData(tempData, prop, value)
         }
       }
     }
     return true
   } catch (e) {
+    console.error(e)
     return false
   }
 }

@@ -64,6 +64,7 @@ const storage = {
             }
           }
         } catch (err) {
+          console.error(err)
           return undefined
         }
       } else {

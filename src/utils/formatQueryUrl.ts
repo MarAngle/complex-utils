@@ -6,13 +6,14 @@ import localEncodeURIComponent from './localEncodeURIComponent'
  * @param {object} data 值对象
  * @returns {string}
  */
-function formatQueryUrl(url: string, data: Record<PropertyKey, string>) {
-  url = url.indexOf('?') > -1 ? url += '&' : url += '?'
-  for (const n in data) {
-    url = url + n + '=' + localEncodeURIComponent(data[n])
-    url += '&'
+function formatQueryUrl(url: string, data: Record<PropertyKey, string>): string {
+  url = url.includes('?') ? `${url}&` : `${url}?`
+  for (const key in data) {
+    if (Object.prototype.hasOwnProperty.call(data, key)) {
+      url += `${key}=${localEncodeURIComponent(data[key])}&`
+    }
   }
-  return url.substring(0, url.length - 1)
+  return url.slice(0, -1)
 }
 
 export default formatQueryUrl

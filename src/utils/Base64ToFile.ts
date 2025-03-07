@@ -1,13 +1,17 @@
-
 /**
- * 
- * @param value Base64字符串
- * @param filename 名称
- * @returns 
+ * 将Base64字符串转换为File对象
+ * @param {string} value Base64字符串
+ * @param {string} fileName 文件名称
+ * @param {FilePropertyBag} [options] 文件属性配置
+ * @returns {File}
  */
-function Base64ToFile(value: any, fileName: string, options?: FilePropertyBag) {
+function Base64ToFile(value: string, fileName: string, options?: FilePropertyBag): File {
   const arr = value.split(',')
-  const mime = arr[0].match(/:(.*?);/)[1]
+  const mimeMatch = arr[0].match(/:(.*?);/)
+  if (!mimeMatch) {
+    throw new Error('Invalid Base64 string')
+  }
+  const mime = mimeMatch[1]
   const bstr = atob(arr[1])
   let n = bstr.length
   const u8arr = new Uint8Array(n)

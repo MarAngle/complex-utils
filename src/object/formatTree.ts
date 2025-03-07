@@ -50,8 +50,7 @@ export class MapData {
     this.childrenBuild = option.childrenBuild
     this.format = option.format
     this.data = new Map()
-    for (let n = 0; n < list.length; n++) {
-      const originData = list[n]
+    for (const originData of list) {
       const id = originData[idProp]
       const parentId = originData[parentIdProp]
       this.assignItem(id, parentId, originData)

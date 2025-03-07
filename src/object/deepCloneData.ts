@@ -27,6 +27,20 @@ function deepCloneData<T>(data: T, map = new Map()): T {
       }
       return result
     }
+  } else if (type === 'map') {
+    const result = new Map()
+    map.set(data, result);
+    (data as unknown as Map<any, any>).forEach((value, key) => {
+      result.set(key, deepCloneData(value, map))
+    })
+    return result as unknown as T
+  } else if (type === 'set') {
+    const result = new Set()
+    map.set(data, result);
+    (data as unknown as Set<any>).forEach((value) => {
+      result.add(deepCloneData(value, map))
+    })
+    return result as unknown as T
   } else {
     return data
   }

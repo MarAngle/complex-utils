@@ -6,7 +6,7 @@ import getComplexType, { ComplexType } from "./getComplexType"
  * @returns {boolean} type is 复杂对象
  */
 export function _isComplex(type: ComplexType): boolean {
-  return ['object', 'array'].indexOf(type) > -1
+  return ['object', 'array', 'map', 'set'].includes(type)
 }
 
 /**

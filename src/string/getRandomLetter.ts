@@ -1,8 +1,8 @@
 import getRandomInList from './getRandomInList'
 
 type letterDataType = {
-  small: string[],
-  big: string[],
+  small: string[]
+  big: string[]
   number: string[]
 }
 
@@ -30,23 +30,20 @@ export type letterType = {
 /**
  * 获取随机字符
  * @param {object} [letter] 字符串库设置
- * @param {boolean} [letter.small] 字符串库设置,小写字母,默认为真
- * @param {boolean} [letter.big] 字符串库设置,大写字母,默认为真
- * @param {boolean} [letter.number] 字符串库设置,整数,默认为真
+ * @param {boolean} [letter.small=true] 字符串库设置,小写字母,默认为真
+ * @param {boolean} [letter.big=true] 字符串库设置,大写字母,默认为真
+ * @param {boolean} [letter.number=true] 字符串库设置,整数,默认为真
  * @returns {string}
  */
-function getRandomLetter(letter?: letterType) {
+function getRandomLetter(letter: letterType = { small: true, big: true, number: true }): string {
   let list: string[] = []
-  if (!letter) {
-    letter = {}
-  }
-  if (letter.small == undefined || letter.small) {
+  if (letter.small) {
     list = list.concat(letterData.small)
   }
-  if (letter.big == undefined || letter.big) {
+  if (letter.big) {
     list = list.concat(letterData.big)
   }
-  if (letter.number == undefined || letter.number) {
+  if (letter.number) {
     list = list.concat(letterData.number)
   }
   return getRandomInList(list)

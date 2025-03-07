@@ -8,8 +8,7 @@ import getComplexProp from './getComplexProp'
 function showArrayProp(list: Record<PropertyKey, any>[], prop: string) {
   const propList = []
   for (let i = 0; i < list.length; i++) {
-    const item = list[i]
-    propList.push(getComplexProp(item, prop))
+    propList.push(getComplexProp(list[i], prop))
   }
   console.log(JSON.stringify(propList))
 }

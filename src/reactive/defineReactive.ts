@@ -30,8 +30,8 @@ function defineReactive(obj: Record<PropertyKey, any>, prop: PropertyKey, option
     return false
   }
   const currentDescriptor = Object.getOwnPropertyDescriptor(obj, prop)
-  const getter = currentDescriptor && currentDescriptor.get
-  const setter = currentDescriptor && currentDescriptor.set
+  const getter = currentDescriptor?.get
+  const setter = currentDescriptor?.set
   const descriptor = option.descriptor || {}
   if (descriptor.configurable == undefined) {
     descriptor.configurable = true
@@ -47,18 +47,14 @@ function defineReactive(obj: Record<PropertyKey, any>, prop: PropertyKey, option
     // getter/setter存在时
     descriptor.get = function() {
       const value = getter.call(obj)
-      if (option.get) {
-        option.get(value)
-      }
+      option.get?.(value)
       return value
     }
     descriptor.set = function(newVal) {
       const value = getter.call(obj)
       if (newVal !== value) {
         setter.call(obj, newVal)
-        if (option.set) {
-          option.set(newVal, value)
-        }
+        option.set?.(newVal, value)
       }
     }
   } else if (!getter && !setter) {
@@ -67,18 +63,14 @@ function defineReactive(obj: Record<PropertyKey, any>, prop: PropertyKey, option
       val = obj[prop]
     }
     descriptor.get = function() {
-      if (option.get) {
-        option.get(val)
-      }
+      option.get?.(val)
       return val
     }
     descriptor.set = function(newVal) {
       if (newVal !== val) {
         const oldVal = val
         val = newVal
-        if (option.set) {
-          option.set(val, oldVal)
-        }
+        option.set?.(val, oldVal)
       }
     }
   } else {

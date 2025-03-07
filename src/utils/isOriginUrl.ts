@@ -2,7 +2,7 @@ import parseUrl, { simpleLocation } from './parseUrl'
 
 const location = window.location
 
-const propList: ['protocol', 'hostname', 'port'] = ['protocol', 'hostname', 'port']
+const propList: Array<keyof simpleLocation> = ['protocol', 'hostname', 'port']
 
 /**
  * 判断2个URL是否同源
@@ -10,17 +10,12 @@ const propList: ['protocol', 'hostname', 'port'] = ['protocol', 'hostname', 'por
  * @param {string} [otherUrl] 不存在时取当前url对应的location
  * @returns {boolean}
  */
-function isOriginUrl(url: string, otherUrl?: string) {
+function isOriginUrl(url: string, otherUrl?: string): boolean {
   const urlLocation = parseUrl(url)
-  let otherUrlLocation: simpleLocation
-  if (otherUrl) {
-    otherUrlLocation = parseUrl(otherUrl)
-  } else {
-    otherUrlLocation = location
-  }
-  for (let i = 0; i < propList.length; i++) {
-    const prop = propList[i];
-    if (urlLocation[prop] != otherUrlLocation[prop]) {
+  const otherUrlLocation: simpleLocation = otherUrl ? parseUrl(otherUrl) : location
+
+  for (const prop of propList) {
+    if (urlLocation[prop] !== otherUrlLocation[prop]) {
       return false
     }
   }

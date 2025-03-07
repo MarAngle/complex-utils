@@ -8,7 +8,7 @@ import getPropByList from './getPropByList'
  * @returns
  */
 function getComplexProp(value: Record<PropertyKey, any>, prop: string, showError?: boolean) {
-  return getPropByList(value, prop.indexOf('.') > -1 ? prop.split('.') : [prop], showError)
+  return getPropByList(value, prop.includes('.') ? prop.split('.') : [prop], showError)
 }
 
 export default getComplexProp

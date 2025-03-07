@@ -1,5 +1,10 @@
-
-function BlobToFile(value: Blob, fileName?: string) {
+/**
+ * 将Blob对象转换为File对象
+ * @param {Blob} value Blob对象
+ * @param {string} [fileName] 文件名称
+ * @returns {File}
+ */
+function BlobToFile(value: Blob, fileName?: string): File {
   if (!fileName) {
     const suffix = value.type.split('/')[1]
     fileName = 'newFile.' + suffix

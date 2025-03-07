@@ -1,12 +1,16 @@
-
 /**
- * 
- * @param value Base64字符串
- * @returns 
+ * 将Base64字符串转换为Blob对象
+ * @param {string} value Base64字符串
+ * @param {BlobPropertyBag} [options] Blob属性配置
+ * @returns {Blob}
  */
-function Base64ToBlob(value: any, options?: BlobPropertyBag) {
+function Base64ToBlob(value: string, options?: BlobPropertyBag): Blob {
   const arr = value.split(',')
-  const mime = arr[0].match(/:(.*?);/)[1]
+  const mimeMatch = arr[0].match(/:(.*?);/)
+  if (!mimeMatch) {
+    throw new Error('Invalid Base64 string')
+  }
+  const mime = mimeMatch[1]
   const bstr = atob(arr[1])
   let n = bstr.length
   const u8arr = new Uint8Array(n)

@@ -5,9 +5,9 @@ const URL = window.URL || window.webkitURL
 export type funcType<A extends any[] = any[], R extends Promise<unknown> = Promise<unknown>> = (...args: A) => R
 
 export type optionType<A extends any[] = any[], R extends Promise<unknown> = Promise<unknown>> = {
-  func: funcType<A, R>,
-  args: A,
-  option?: WorkerOptions,
+  func: funcType<A, R>
+  args: A
+  option?: WorkerOptions
   log?: boolean
 }
 
@@ -17,17 +17,17 @@ export type optionType<A extends any[] = any[], R extends Promise<unknown> = Pro
  * @param {boolean} [log] 日志打印判断
  * @returns {string} 分支代码字符串
  */
-function parseWorkerContent(func: (...args: any[]) => unknown, log?: boolean) {
+function parseWorkerContent(func: (...args: any[]) => unknown, log?: boolean): string {
   return `
     onmessage = function (e) {
-      ${log ? 'console.log("Worker Start")' : '' }
+      ${log ? 'console.log("Worker Start")' : ''}
       var func = ${func.toString()}
       func.apply(null, e.data.args).then(res => {
         postMessage({ status: 'success', data: res })
-        ${log ? 'console.log("Worker Success")' : '' }
+        ${log ? 'console.log("Worker Success")' : ''}
       }).catch(err => {
         postMessage({ status: 'fail', data: err })
-        ${log ? 'console.log("Worker Fail")' : '' }
+        ${log ? 'console.log("Worker Fail")' : ''}
       })
     }
   `
@@ -42,9 +42,9 @@ function parseWorkerContent(func: (...args: any[]) => unknown, log?: boolean) {
  * @param {boolean} [option.log] 日志打印判断
  * @returns {Promise} 分支运行的Promise
  */
-function startWorker({ func, args, option, log }: optionType) {
+function startWorker<A extends any[], R extends Promise<unknown>>({ func, args, option, log }: optionType<A, R>): Promise<unknown> {
   const type = getType(func)
-  if (type == 'function') {
+  if (type === 'function') {
     if (window.Worker) {
       return new Promise((resolve, reject) => {
         const content = parseWorkerContent(func, log)
@@ -57,7 +57,7 @@ function startWorker({ func, args, option, log }: optionType) {
         }
         worker.onmessage = function (event) {
           const res = event.data
-          if (res.status == 'success') {
+          if (res.status === 'success') {
             resolve(res.data)
           } else {
             reject(res)

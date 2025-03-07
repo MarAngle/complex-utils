@@ -12,7 +12,7 @@ import getRandomLetter, { letterType } from './getRandomLetter'
 function getRandomData(size: number, letter?: letterType) {
   let data = ''
   for (let n = 0; n < size; n++) {
-    data = data + getRandomLetter(letter)
+    data += getRandomLetter(letter)
   }
   return data
 }
