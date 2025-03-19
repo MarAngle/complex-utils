@@ -96,6 +96,7 @@ import isCompleteUrl from './src/utils/isCompleteUrl'
 import isOriginUrl from './src/utils/isOriginUrl'
 import openAnchor from './src/utils/openAnchor'
 import openWindow from './src/utils/openWindow'
+import parseColor from './src/utils/parseColor'
 import parseLayout from './src/utils/parseLayout'
 import $exportMsg from './src/utils/$exportMsg'
 import exportMsg from './src/utils/exportMsg'
@@ -213,6 +214,7 @@ export {
   isOriginUrl,
   openAnchor,
   openWindow,
+  parseColor,
   parseLayout,
   $exportMsg,
   exportMsg,
