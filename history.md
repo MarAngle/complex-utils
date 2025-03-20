@@ -1,4 +1,7 @@
 
+### 2.8.5
+- fix:修正parseLayout函数未传递offset的BUG
+
 ### 2.8.4
 - 添加颜色解析函数parseColor
 

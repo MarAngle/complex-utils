@@ -10,7 +10,7 @@
  * @param maxWidth 单个元素的最大宽度（可选）
  * @returns 返回一个对象，包含单个元素的宽度（width）和能够容纳的元素数量（size）
  */
-function parseLayout(contentWidth: number, minWidth: number, offset: number, maxWidth?: number): { width: number, size: number } {
+function parseLayout(contentWidth: number, minWidth: number, offset: number, maxWidth?: number): { width: number, offset: number, size: number } {
   // 计算基于最小宽度和偏移量的元素数量，向下取整
   const size = Math.floor((contentWidth + offset) / (minWidth + offset))
   
@@ -27,6 +27,7 @@ function parseLayout(contentWidth: number, minWidth: number, offset: number, max
   // 返回计算出的宽度和数量
   return {
     width,
+    offset,
     size
   }
 }
