@@ -1,4 +1,7 @@
 
+### 2.8.6
+- feat:parseLayout添加边界判断函数isLayoutBoundary
+
 ### 2.8.5
 - fix:修正parseLayout函数未传递offset的BUG
 

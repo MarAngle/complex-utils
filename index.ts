@@ -97,7 +97,7 @@ import isOriginUrl from './src/utils/isOriginUrl'
 import openAnchor from './src/utils/openAnchor'
 import openWindow from './src/utils/openWindow'
 import parseColor from './src/utils/parseColor'
-import parseLayout from './src/utils/parseLayout'
+import parseLayout, { isLayoutBoundary } from './src/utils/parseLayout'
 import $exportMsg from './src/utils/$exportMsg'
 import exportMsg from './src/utils/exportMsg'
 import parseUrl from './src/utils/parseUrl'
@@ -216,6 +216,7 @@ export {
   openWindow,
   parseColor,
   parseLayout,
+  isLayoutBoundary,
   $exportMsg,
   exportMsg,
   parseUrl,
