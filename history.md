@@ -1,5 +1,5 @@
 
-### 2.8.6
+### 2.8.6/7
 - feat:parseLayout添加边界判断函数isLayoutBoundary
 
 ### 2.8.5

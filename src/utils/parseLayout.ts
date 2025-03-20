@@ -7,7 +7,7 @@
  * @returns 
  */
 export const isLayoutBoundary = (index: number, size: number, type: 'left' | 'right' = 'right') => {
-  return (index + type === 'right' ? 1 : 0) % size === 0
+  return (index + (type === 'right' ? 1 : 0)) % size === 0
 }
 
 /**
