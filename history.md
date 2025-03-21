@@ -1,4 +1,7 @@
 
+### 2.8.8
+- fix:修正parseLayout函数在contentWidth<minWidth时的计算错误，以及size=1时的offset的错误计算
+
 ### 2.8.6/7
 - feat:parseLayout添加边界判断函数isLayoutBoundary
 

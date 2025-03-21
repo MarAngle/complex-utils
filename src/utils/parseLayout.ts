@@ -25,6 +25,14 @@ function parseLayout(contentWidth: number, minWidth: number, offset: number, max
   offset: number
   size: number
 } {
+  if (contentWidth <= minWidth) {
+    // size小于0时的判断
+    return {
+      width: minWidth,
+      offset: 0,
+      size: 1
+    }
+  }
   // 计算基于最小宽度和偏移量的元素数量，向下取整
   const size = Math.floor((contentWidth + offset) / (minWidth + offset))
   // 初步计算单个元素的宽度
@@ -33,7 +41,7 @@ function parseLayout(contentWidth: number, minWidth: number, offset: number, max
   if (maxWidth && width > maxWidth) {
     width = maxWidth
     // 重新计算偏移量，以均匀分布额外的空间
-    offset = (contentWidth - width * size) / (size - 1)
+    offset = size > 1 ? (contentWidth - width * size) / (size - 1) : 0
   }
   // 返回计算出的宽度和数量
   return {
