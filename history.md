@@ -1,4 +1,7 @@
 
+### 2.9.1
+- feat:修改模块加载逻辑为ES2020
+
 ### 2.8.8
 - fix:修正parseLayout函数在contentWidth<minWidth时的计算错误，以及size=1时的offset的错误计算
 
