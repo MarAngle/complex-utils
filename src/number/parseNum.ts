@@ -5,15 +5,13 @@
  * @returns {[Number, Number]}
  */
 function parseNum(value: unknown): [number, number] {
-  if (value) {
-    const valueStr = typeof value === 'string' ? value : value.toString()
-    const valueStrList = valueStr.split('.')
-    const integerStr = valueStrList.shift()
-    const decimalStr = valueStrList.join('')
-    return [integerStr ? Number(integerStr) : 0, decimalStr ? Number('0.' + decimalStr) : 0]
-  } else {
+  const num = Number(value)
+  if (!isFinite(num)) {
     return [0, 0]
   }
+  const integerPart = Math.trunc(num)
+  const decimalPart = Number((num - integerPart).toPrecision(15))
+  return [integerPart, decimalPart]
 }
 
 export default parseNum

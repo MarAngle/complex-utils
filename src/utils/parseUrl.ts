@@ -1,50 +1,15 @@
-import config from '../../config'
-
-const location = window.location
-
-type protocolType = 'http:' | 'https:' | 'ftp:'
-
-export type simpleLocation = {
-  href: string | undefined
-  protocol: string | undefined
-  hostname: string | undefined
-  port: string | undefined
-}
-
 /**
- * 解析url为基本location对象
- * @param {string} url
- * @returns {simpleLocation} location
+ * 使用标准 URL API 解析一个 URL 字符串。
+ * @param {string} url - 需要解析的 URL。可以是绝对路径，也可以是相对路径。
+ * @returns {URL} 返回一个 URL 实例。如果 URL 无效，则返回一个指向 'about:blank' 的 URL 实例。
  */
-function parseUrl(url: string): simpleLocation {
-  let protocol: string | undefined
-  let hostname: string | undefined
-  let port: string | undefined
-
-  if (url.includes('//')) {
-    const urlList = url.split('//')
-    protocol = (urlList[0] || location.protocol).toLowerCase()
-    url = urlList[1]
-    if (url) {
-      if (url.includes('/')) {
-        url = url.split('/')[0]
-      }
-      if (url.includes(':')) {
-        const portList = url.split(':')
-        hostname = portList[0]
-        port = portList[1]
-      } else {
-        hostname = url
-        port = config.url.protocolPort[protocol as protocolType]
-      }
-    }
-  }
-
-  return {
-    href: url,
-    protocol,
-    hostname,
-    port
+function parseUrl(url: string): URL {
+  try {
+    // 使用 window.location.href 作为 base URL，以正确解析相对路径。
+    return new URL(url, window.location.href)
+  } catch (e) {
+    // 如果 new URL() 构造失败，返回一个表示无效状态的 URL 对象。
+    return new URL('about:blank')
   }
 }
 

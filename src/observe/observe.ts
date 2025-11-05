@@ -1,5 +1,5 @@
 import getComplexType from "../type/getComplexType"
-import Observer, { oberveProp, observeObject } from "./data/Observer"
+import Observer, { observeProp, observeObject } from "./data/Observer"
 import { hasOwnProperty } from "../../config"
 
 /**
@@ -21,8 +21,8 @@ function observe(value: unknown) {
     return
   }
   let ob: Observer
-  if (hasOwnProperty.call(value, oberveProp) && (value as observeObject)[oberveProp] instanceof Observer) {
-    ob = (value as observeObject)[oberveProp]
+  if (hasOwnProperty.call(value, observeProp) && (value as observeObject)[observeProp] instanceof Observer) {
+    ob = (value as observeObject)[observeProp]
   } else {
     ob = new Observer(value as Record<PropertyKey, any>)
   }

@@ -1,4 +1,4 @@
-import { oberveProp, observeObject } from "./Observer"
+import { observeProp, observeObject } from "./Observer"
 
 const seenObjects: Set<number> = new Set()
 
@@ -20,8 +20,8 @@ function _traverse(val: unknown, seen: Set<number>) {
   if (typeof val !== 'object' || val === null) {
     return
   }
-  if ((val as observeObject)[oberveProp]) {
-    const depId = (val as observeObject)[oberveProp].dep.id
+  if ((val as observeObject)[observeProp]) {
+    const depId = (val as observeObject)[observeProp].dep.id
     if (seen.has(depId)) {
       return
     }

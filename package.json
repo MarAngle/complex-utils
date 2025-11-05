@@ -1,19 +1,29 @@
 {
   "name": "complex-utils",
-  "version": "2.9.2",
+  "version": "2.10.1",
   "description": "a complex utils",
   "type": "module",
-  "main": "index.ts",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/MarAngle/complex-utils.git"
   },
   "scripts": {
+    "build": "tsc",
     "check": "tsc --noEmit",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "vitest",
+    "coverage": "vitest run --coverage",
+    "prepublishOnly": "npm run build"
   },
   "devDependencies": {
-    "typescript": "^5.2.2"
+    "jsdom": "^27.1.0",
+    "typescript": "^5.2.2",
+    "vitest": "^4.0.7"
   },
   "keywords": [
     "complex",

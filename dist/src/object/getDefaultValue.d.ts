@@ -1,0 +1,11 @@
+/**
+ * 获取value[prop]，当value[prop]不存在时获取默认值defaultValue，注意判断条件是isExist
+ * @param {*} value 值
+ * @param {string} prop 属性
+ * @param {*} defaultValue 默认值
+ * @param {*[]} [existList] 存在列表
+ * @param {*[]} [unExistList] 不存在列表
+ * @returns {*}
+ */
+declare function getDefaultValue(data: undefined | null | Record<PropertyKey, any>, prop: PropertyKey, defaultValue?: unknown, existList?: unknown[], unExistList?: unknown[]): any;
+export default getDefaultValue;

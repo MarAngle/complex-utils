@@ -1,0 +1,24 @@
+type setDataType = (name: string, value?: unknown) => boolean;
+type getDataType = (name: string, option?: true | number, refresh?: boolean) => any;
+type removeDataType = (name: string) => void;
+type clearDataType = () => void;
+declare const storage: {
+    prop: string;
+    timeProp: string;
+    setProp(prop: string): void;
+    getProp(name: string): string;
+    getTimeProp(name: string): string;
+    _buildSetData(targetStorage: Storage): (name: string, value?: unknown, time?: number) => boolean;
+    _buildGetData(targetStorage: Storage): (name: string, option?: true | number, refresh?: boolean) => any;
+    _buildRemoveData(targetStorage: Storage): (name: string) => void;
+    _buildClearData(targetStorage: Storage): () => void;
+    setData: setDataType;
+    setSessionData: setDataType;
+    getData: getDataType;
+    getSessionData: getDataType;
+    removeData: removeDataType;
+    removeSessionData: removeDataType;
+    clearData: clearDataType;
+    clearSessionData: clearDataType;
+};
+export default storage;

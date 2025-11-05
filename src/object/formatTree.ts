@@ -81,10 +81,13 @@ export class MapData {
     parentItem.append(targetItem.data)
   }
   parse() {
-    let list: Record<PropertyKey, any>[] = []
+    const list: Record<PropertyKey, any>[] = []
     this.data.forEach(item => {
-      if (!item.load) {
-        list = list.concat(item.data[this.childrenProp])
+      // 一个节点是根节点，如果它作为父节点被创建（load=false），但从未被加载过真实数据。
+      // 同时检查它是否真的有子节点，以兼容为空的可能。
+      if (!item.load && item.data[this.childrenProp]) {
+        // 使用 push 和扩展运算符替换 concat，可以避免重复创建新数组，性能更好。
+        list.push(...item.data[this.childrenProp])
       }
     })
     return list

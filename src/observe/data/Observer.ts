@@ -2,10 +2,10 @@ import createReactive from './createReactive'
 import Dep from './Dep'
 import observe from '../observe'
 
-export const oberveProp = Symbol('oberve')
+export const observeProp = Symbol('observe')
 
 export type observeObject = {
-  [oberveProp]: Observer
+  [observeProp]: Observer
   [prop: PropertyKey]: any
 }
 
@@ -40,15 +40,9 @@ const methodsToPatch = [
 methodsToPatch.forEach(function (method) {
   // cache original method
   const original = arrayProto[method];
-  def(arrayMethods, method, function mutator (this: Observer) {
-    const args = []
-    let len = arguments.length;
-    while (len--) {
-      // eslint-disable-next-line prefer-rest-params
-      args[ len ] = arguments[ len ]
-    }
+  def(arrayMethods, method, function mutator (this: observeObject, ...args: any[]) {
     const result = original.apply(this, args);
-    const ob = this[oberveProp];
+    const ob = this[observeProp];
     let inserted;
     switch (method) {
       case 'push':
@@ -83,11 +77,11 @@ const arrayKeys = Object.getOwnPropertyNames(arrayMethods)
 
 class Observer {
   dep: Dep
-  [oberveProp]!: Observer
+  [observeProp]!: Observer
   constructor(value: Record<PropertyKey, any>) {
     // 每个Observer实例上都存在dep
     this.dep = new Dep()
-    Object.defineProperty(value, oberveProp, {
+    Object.defineProperty(value, observeProp, {
       value: this,
       enumerable: false,
       writable: true

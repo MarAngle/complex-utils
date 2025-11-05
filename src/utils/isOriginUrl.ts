@@ -1,25 +1,22 @@
-import parseUrl, { simpleLocation } from './parseUrl'
+import parseUrl from './parseUrl'
 
 const location = window.location
 
-const propList: Array<keyof simpleLocation> = ['protocol', 'hostname', 'port']
-
 /**
- * 判断2个URL是否同源
- * @param {string} url
- * @param {string} [otherUrl] 不存在时取当前url对应的location
- * @returns {boolean}
+ * 判断2个URL是否同源（协议、主机名、端口均相同）。
+ * @param {string} url 需要比较的第一个 URL。
+ * @param {string} [otherUrl] 需要比较的第二个 URL。如果未提供，则默认为当前页面的 URL (`window.location`)。
+ * @returns {boolean} 如果两个 URL 同源则返回 `true`，否则返回 `false`。
  */
 function isOriginUrl(url: string, otherUrl?: string): boolean {
   const urlLocation = parseUrl(url)
-  const otherUrlLocation: simpleLocation = otherUrl ? parseUrl(otherUrl) : location
+  const otherUrlLocation: URL | Location = otherUrl ? parseUrl(otherUrl) : location
 
-  for (const prop of propList) {
-    if (urlLocation[prop] !== otherUrlLocation[prop]) {
-      return false
-    }
-  }
-  return true
+  return (
+    urlLocation.protocol === otherUrlLocation.protocol &&
+    urlLocation.hostname === otherUrlLocation.hostname &&
+    urlLocation.port === otherUrlLocation.port
+  )
 }
 
 export default isOriginUrl

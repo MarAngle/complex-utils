@@ -1,153 +1,164 @@
+### 2.10.1
+- feat(build): 重构项目构建与发布配置，添加 `build` 和 `prepublishOnly` 脚本，并修正 `package.json` 和 `tsconfig.json` 中的发布选项。
+- feat(test): 集成 `Vitest` 单元测试框架，并添加 `test` 和 `coverage` 脚本。
+- test: 为 `camelToLine` 函数添加单元测试。
+- fix(observe): 修复 `traverse` 函数中 `observeProp` 的拼写错误。
+- fix(number): 修复 `parseNum` 函数对负数处理不当的BUG。
+- refactor(object): 优化 `deepClone` 函数的API，通过 `useComplex` 参数明确区分两种拷贝模式，并更新文档。
+- perf(object): 优化 `formatTree` 函数的性能，通过替换 `concat` 为 `push` 来减少内存分配。
+- refactor(function): 增强 `debounce` 和 `throttle` 函数的TypeScript类型定义，提高类型安全和开发者体验。
+- refactor(observe): 修正响应式模块中的拼写错误 (`oberveProp` -> `observeProp`) 并进行微小优化。
+- refactor(worker): 优化 `startWorker` 函数，添加关于闭包限制的重要文档并增强返回类型安全。
+- refactor(utils): 使用标准的 `URL` API 重构 `parseUrl` 函数，提高健壮性和功能，并同步更新 `isOriginUrl`。
 
 ### 2.9.1/2
-- feat:修改模块加载逻辑为ES2020
+- feat: 修改模块加载逻辑为ES2020
 
 ### 2.8.8
-- fix:修正parseLayout函数在contentWidth<minWidth时的计算错误，以及size=1时的offset的错误计算
+- fix: 修正 `parseLayout` 函数在 `contentWidth` < `minWidth` 时的计算错误。
+- fix: 修正 `parseLayout` 函数在 `size`=1 时的 `offset` 错误计算。
 
 ### 2.8.6/7
-- feat:parseLayout添加边界判断函数isLayoutBoundary
+- feat: 为 `parseLayout` 添加边界判断函数 `isLayoutBoundary`。
 
 ### 2.8.5
-- fix:修正parseLayout函数未传递offset的BUG
+- fix: 修正 `parseLayout` 函数未传递 `offset` 的BUG。
 
 ### 2.8.4
-- 添加颜色解析函数parseColor
+- feat: 添加颜色解析函数 `parseColor`。
 
 ### 2.8.3
-- 基于AI优化代码
+- refactor: 基于AI进行全局代码优化。
 
 ### 2.8.2
-- 优化部分函数的prop类型，由string放宽至PropertyKey
+- refactor: 将部分函数的 `prop` 类型由 `string` 放宽至 `PropertyKey`。
 
 ### 2.8.1
-- 稳定版更新
+- chore: 稳定版更新。
 
 ### 2.6.12/16
-- 全局类型和逻辑优化
+- refactor: 全局类型和逻辑优化。
 
 ### 2.6.11
-- 优化Wait类提示相关逻辑
+- refactor: 优化 `Wait` 类中的提示相关逻辑。
 
 ### 2.6.10
-- 简化isEmpty/trimData
+- refactor: 简化 `isEmpty` 和 `trimData` 函数。
 
 ### 2.6.9
-- 删除transformFile函数
-- 添加Base64ToBlob/Base64ToFile/BlobToBase64/BlobToFile/FileToBlob相关文件类型转换函数
+- refactor: 删除 `transformFile` 函数。
+- feat: 添加 `Base64ToBlob`, `Base64ToFile`, `BlobToBase64`, `BlobToFile`, `FileToBlob` 等文件类型转换函数。
 
 ### 2.6.8
-- 修正storage.getData的时间计算错误的BUG
+- fix: 修正 `storage.getData` 的时间计算错误的BUG。
 
 ### 2.6.7
-- 非兼容性更新:setEnv参数prop和data顺序调换,getEnv参数必传
-- 优化参数和类型
+- refactor!: **[非兼容性更新]** `setEnv` 函数的 `prop` 和 `data` 参数顺序调换, `getEnv` 参数变为必传。
+- refactor: 优化参数和类型定义。
 
 ### 2.6.6
-- 修正isComplex和deepCloneData中类型判断未使用getComplexType的错误
+- fix: 修正 `isComplex` 和 `deepCloneData` 中类型判断未使用 `getComplexType` 的错误。
 
 ### 2.6.5
-- 优化storage逻辑
+- refactor: 优化 `storage` 逻辑。
 
 ### 2.6.3
-- 添加parseLayout函数,实现给定的布局参数计算内容的宽度和数量
+- feat: 添加 `parseLayout` 函数，用于根据布局参数计算内容的宽度和数量。
 
 ### 2.6.1/2
-- 优化ENV逻辑，删除mode数据，简化结构
-- 双数稳定版
+- refactor: 优化 `ENV` 逻辑，删除 `mode` 数据，简化结构。
+- chore: 双数稳定版更新。
 
 ### 2.3.3/4
-- 添加Wait类，实现加载等待逻辑
-- 优化本地缓存前缀，简化长度
+- feat: 添加 `Wait` 类，实现加载等待逻辑。
+- refactor: 优化本地缓存前缀，简化长度。
 
 ### 2.3.1/2
-- 优化Life相关逻辑
+- refactor: 优化 `Life` 相关逻辑。
 
 ### 2.2.16/18
-- 优化undefined判断
+- refactor: 优化 `undefined` 判断逻辑。
 
 ### 2.2.13/14/15
-- config结构简化
-- 优化防抖和节流
+- refactor: 简化 `config` 结构。
+- perf: 优化 `debounce` 和 `throttle` 函数。
 
 ### 2.2.12
-- 删除getProp/setPropByType函数
-- 因setProp可能存在的大量调用，setProp不解析'a.b'的prop,需要解析'a.b'的prop的相关函数限定为getComplexProp/setComplexProp
+- refactor: 删除 `getProp/setPropByType` 函数。
+- refactor: 限定带路径解析的属性设置函数为 `getComplexProp` / `setComplexProp`。
 
 ### 2.2.11
-- env环境life优化
-- storage添加clear
-- 其他代码和类型优化
+- refactor: 优化 `env` 环境的 `life` 逻辑。
+- feat: 为 `storage` 添加 `clear` 方法。
+- refactor: 其他代码和类型优化。
 
 ### 2.2.10
-- 全局减少Record<PropertyKey, unknow>类型的使用
+- refactor: 全局减少 `Record<PropertyKey, unknow>` 类型的使用。
 
 ### 2.2.9
-- 删除loadContexts
+- refactor: 删除 `loadContexts` 函数。
 
 ### 2.2.7/8
-- 删除原isComplex,checkComplex=>isComplex
+- refactor!: **[非兼容性更新]** 删除原 `isComplex`，`checkComplex` 重命名为 `isComplex`。
 
 ### 2.2.5/6
-- 删除getQueryUrl
+- refactor: 删除 `getQueryUrl` 函数。
 
 ### 2.2.4
-- storage相关函数优化，分离时间和数据存储，优化存储容量
+- refactor: 优化 `storage` 相关函数，分离时间和数据存储，优化存储容量。
 
 ### 2.2.3
-- 重构Life相关逻辑
+- refactor: 重构 `Life` 相关逻辑。
 
 ### 2.2.0/1/2
-- 重构Data/Life相关逻辑
-- 重构本地缓存相关逻辑
+- refactor: 重构 `Data` 及 `Life` 相关逻辑。
+- refactor: 重构本地缓存相关逻辑。
 
 ### 2.1.4
-- defineReactive优化
-- getLocalData优化
+- refactor: 优化 `defineReactive` 和 `getLocalData`。
 
 ### 2.1.3
-- 类型优化
+- refactor: 全局类型优化。
 
 ### 2.1.2
-- 非兼容性更新:getRandomNum的第二个参数由之前的size长度修正为end结束值,调用逻辑简单明了
-- formatConfig添加module判断值判断是否是模块
+- refactor!: **[非兼容性更新]** `getRandomNum` 的第二个参数由 `size` (长度) 修正为 `end` (结束值)。
+- feat: `formatConfig` 添加 `module` 判断值。
 
 ### 2.1.1
-- 非兼容性更新:camelToUnderline/underlinetoCamel=>camelToLine/linetoCamel
-- observe不对File/Blob等特殊类型进行响应式构建
+- refactor!: **[非兼容性更新]** `camelToUnderline`/`underlinetoCamel` 重命名为 `camelToLine`/`linetoCamel`。
+- refactor: `observe` 不再对 `File`/`Blob` 等特殊类型进行响应式构建。
 
 ### 2.1.0
-- 稳定版本
+- chore: 稳定版本。
 
 ### 2.0.14
-- 添加camelToUnderline/underlinetoCamel函数
+- feat: 添加 `camelToUnderline`/`underlinetoCamel` 函数。
 
 ### 2.0.11/12/13
-- 非兼容性更新:删除setDataByDefault函数，需要可通过deepClone+mergeData实现
-- 非兼容性更新:Data => UtilsData
-- UtilsData初始化时添加格式化函数
-- 扩展格式化函数的参数，添加级别和推荐值
+- refactor!: **[非兼容性更新]** 删除 `setDataByDefault` 函数。
+- refactor!: **[非兼容性更新]** `Data` 重命名为 `UtilsData`。
+- feat: `UtilsData` 初始化时添加格式化函数。
+- feat: 扩展格式化函数的参数，添加级别和推荐值。
 
 ### 2.0.9/10
-- 修正triggerFunction的类型
-- 删除env的默认process取值
+- fix: 修正 `triggerFunction` 的类型。
+- refactor: 删除 `env` 的默认 `process` 取值。
 
 ### 2.0.8
-- 非兼容性更新:getDefaultData=>getDefaultValue/setDefaultData=>setDefaultValue
-- 添加mergeData/updateData
+- refactor!: **[非兼容性更新]** `getDefaultData`/`setDefaultData` 重命名为 `getDefaultValue`/`setDefaultValue`。
+- feat: 添加 `mergeData`/`updateData`。
 
 ### 2.0.6/7
-- 实现接口-DataWithLife
-- 优化resetEnvData函数
-- 类型优化：减少any
+- feat: 实现 `DataWithLife` 接口。
+- refactor: 优化 `resetEnvData` 函数。
+- refactor: 类型优化，减少 `any` 的使用。
 
 ### 2.0.4
-- 简化setProp/getProp函数
-- 添加setComplexProp/getComplexProp函数
+- refactor: 简化 `setProp`/`getProp` 函数。
+- feat: 添加 `setComplexProp`/`getComplexProp` 函数。
 
 ### 2.0.3
-- 添加observe/reactive模块
+- feat: 添加 `observe`/`reactive` 模块。
 
 ### 2.0.1
-- 基于complex-utils简化逻辑，实现基本的工具函数功能
-
+- feat: 项目初始化，实现基本的工具函数功能。
