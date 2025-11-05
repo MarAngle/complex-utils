@@ -1,5 +1,8 @@
+### 2.10.2
+- refactor(build): 移除项目的所有构建配置，回归到纯源码模式，依赖于引用项目的构建工具进行即时编译。
+- feat(api): 创建了统一的 `index.ts` API 入口，明确导出了库的所有公共成员，增强了API的稳定性和可维护性。
+
 ### 2.10.1
-- feat(build): 重构项目构建与发布配置，添加 `build` 和 `prepublishOnly` 脚本，并修正 `package.json` 和 `tsconfig.json` 中的发布选项。
 - feat(test): 集成 `Vitest` 单元测试框架，并添加 `test` 和 `coverage` 脚本。
 - test: 为 `camelToLine` 函数添加单元测试。
 - fix(observe): 修复 `traverse` 函数中 `observeProp` 的拼写错误。
