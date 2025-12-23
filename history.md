@@ -1,3 +1,6 @@
+### 2.10.3
+- fix: 修正 `getRandomInList` 调用 `getRandomNum` 生成随机数时未正确传递end的BUG。
+
 ### 2.10.2
 - refactor(build): 移除项目的所有构建配置，回归到纯源码模式，依赖于引用项目的构建工具进行即时编译。
 - feat(api): 创建了统一的 `index.ts` API 入口，明确导出了库的所有公共成员，增强了API的稳定性和可维护性。

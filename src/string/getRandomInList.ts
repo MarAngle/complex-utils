@@ -6,7 +6,7 @@ import getRandomNum from './../number/getRandomNum'
  * @returns {*}
  */
 function getRandomInList<T>(list: T[]):T {
-  return list[getRandomNum(0, list.length)]
+  return list[getRandomNum(0, list.length - 1)]
 }
 
 export default getRandomInList
