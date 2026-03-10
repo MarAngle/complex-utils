@@ -1,3 +1,6 @@
+### 2.10.4
+- fix: 修正 `parseNum` 处理小数时可能存在的浮点数问题。
+
 ### 2.10.3
 - fix: 修正 `getRandomInList` 调用 `getRandomNum` 生成随机数时未正确传递end的BUG。
 
