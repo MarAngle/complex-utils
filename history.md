@@ -1,5 +1,5 @@
 ### 2.10.5
-- feat: 将TypeScript类型导入语法升级为type关键字形式
+- refactor: 将TypeScript类型导入语法升级为type关键字形式
 
 ### 2.10.4
 - fix: 修正 `parseNum` 处理小数时可能存在的浮点数问题。
