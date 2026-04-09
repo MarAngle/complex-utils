@@ -1,4 +1,4 @@
-import getType, { SimpleType } from './getType'
+import getType, { type SimpleType } from './getType'
 import getTag from './getTag'
 
 export type ComplexType = SimpleType | "file" | "blob" | "regExp" | "date" | 'map' | 'set'

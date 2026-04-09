@@ -1,6 +1,6 @@
 import { LifeList } from "../class/LifeData"
 import $exportMsg from "../utils/$exportMsg"
-import { consoleType } from "../utils/exportMsg"
+import { type consoleType } from "../utils/exportMsg"
 
 const option = {
   env: {

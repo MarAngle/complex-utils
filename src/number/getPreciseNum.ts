@@ -1,4 +1,4 @@
-import { mathType } from './getNum'
+import { type mathType } from './getNum'
 import parseNum from './parseNum'
 
 /**

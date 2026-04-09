@@ -1,4 +1,4 @@
-import { ComplexType } from '../type/getComplexType'
+import { type ComplexType } from '../type/getComplexType'
 import getNum from './../number/getNum'
 
 /**

@@ -1,5 +1,5 @@
 import _Data from "./_Data"
-import { LifeData, LifeList, LifeMap, LifeValueInitOptionWithExtra } from "./LifeData"
+import { LifeData, LifeList, LifeMap, type LifeValueInitOptionWithExtra } from "./LifeData"
 
 export interface DataWithLife {
   $life: Life
